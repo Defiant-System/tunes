@@ -1,0 +1,47 @@
+
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter x="-6.1%" y="-3.9%" width="112.1%" height="113.2%" filterUnits="objectBoundingBox" id="player-filter-1">
+			<feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+			<feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+			<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+			<feMerge>
+				<feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+				<feMergeNode in="SourceGraphic"></feMergeNode>
+			</feMerge>
+		</filter>
+		<linearGradient id="a" gradientTransform="matrix(.6278 .7783 -.7783 .6278 295.9889 -102.6574)" gradientUnits="userSpaceOnUse" x1="43.3452" x2="467.3457" y1="258.1934" y2="258.1934">
+			<stop offset="0" stop-color="#fff"/>
+			<stop offset=".5368" stop-color="#eee"/>
+			<stop offset="1" stop-color="#e5e5e5"/>
+		</linearGradient>
+		<linearGradient id="b" gradientTransform="matrix(.6278 .7783 -.7783 .6278 295.9889 -102.6574)" gradientUnits="userSpaceOnUse" x1="35.8452" x2="474.8457" y1="258.1934" y2="258.1934">
+			<stop offset="0" stop-color="#ff5e4e"/>
+			<stop offset=".1505" stop-color="#ff5c6d"/>
+			<stop offset=".1694" stop-color="#ff5e73"/>
+			<stop offset=".2476" stop-color="#ff6385"/>
+			<stop offset=".3026" stop-color="#ff658c"/>
+			<stop offset=".3685" stop-color="#e4729f"/>
+			<stop offset=".4329" stop-color="#d17cad"/>
+			<stop offset=".4772" stop-color="#ca7fb2"/>
+			<stop offset=".5528" stop-color="#9d6cff"/>
+			<stop offset=".5934" stop-color="#9870ff" stop-opacity=".9882"/>
+			<stop offset=".6432" stop-color="#897afe" stop-opacity=".9725"/>
+			<stop offset=".6979" stop-color="#708cfe" stop-opacity=".9529"/>
+			<stop offset=".7556" stop-color="#4da4fd" stop-opacity=".9333"/>
+			<stop offset=".8022" stop-color="#2cbcfc" stop-opacity=".9176"/>
+			<stop offset="1" stop-color="#00c7ff"/>
+		</linearGradient>
+		<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="128.63179295" x2="384.0201395" y1="90.89488104" y2="422.37177288">
+			<stop offset="0" stop-color="#ff5e4e"/>
+			<stop offset=".249" stop-color="#ff5c6d"/>
+			<stop offset=".3765" stop-color="#ff658c"/>
+			<stop offset=".497" stop-color="#ca7fb2"/>
+			<stop offset=".6267" stop-color="#9d6cff"/>
+			<stop offset=".7628" stop-color="#2cbcfc" stop-opacity=".9176"/>
+			<stop offset="1" stop-color="#00c7ff"/>
+		</linearGradient>
+	</defs>
+	<path filter="url(#player-filter-1)" d="M121.066,430.033 C22.053,358.488-0.488,219.889,70.719,120.458C141.922,21.03,279.917-1.578,378.933,69.965 c99.012,71.542,121.554,210.142,50.352,309.576C358.077,478.971,220.086,501.578,121.066,430.033L121.066,430.033z" fill="url(#a)" stroke="url(#b)" stroke-width="20"/>
+	<path d="M328.653,355.691c13.984-4.1,23.858-14.047,27.897-28.098l1.192-4.127l0.157-110.766 c0.116-82.95,0.004-111.28-0.458-112.827c-0.483-1.64-1.253-3.015-2.26-4.102c-1.479-0.911-3.259-1.393-5.275-1.389 c-1.391,0-6.218,0.67-10.721,1.488c-19.924,3.628-137.358,27.018-139.364,27.759c-3.104,1.147-6.177,3.873-7.635,6.767l-1.236,2.451 c0,0-0.584,173.615-1.484,175.57c-1.367,2.975-4.404,5.791-7.205,6.691c-1.326,0.424-6.57,1.604-11.66,2.611 c-23.562,4.691-32.312,8.068-39.715,15.336c-4.205,4.127-7.318,9.76-8.664,15.672c-1.287,5.65-0.856,14.104,0.977,19.244 c1.922,5.377,5.014,9.969,9.058,13.582c3.676,2.832,8.015,4.941,12.894,6.191c10.785,2.762,30.979-0.309,41.301-6.279 c4.316-2.498,9.869-7.736,12.758-12.043c1.146-1.707,2.863-5.137,3.824-7.631c3.363-8.732,3.469-164.265,3.897-166.225 c0.729-3.324,3.002-5.757,6.134-6.585c2.822-0.74,115.9-23.096,119.084-23.543c2.799-0.388,5.442,0.514,6.888,2.291 c0.855,0.46,1.579,1.08,2.085,1.842c0.918,1.368,0.975,4.072,1.111,53.315c0.155,56.676,0.227,55.348-2.854,58.926 c-2.243,2.6-5.039,3.607-16.533,5.953c-17.487,3.568-23.47,5.266-30.168,8.531c-8.361,4.088-13.007,8.562-16.596,15.994 c-2.537,5.26-3.484,9.201-3.478,14.432c0.015,9.361,3.244,16.672,10.526,23.83c0.672,0.66,1.33,1.271,1.995,1.85 c3.667,2.836,7.409,4.545,12.113,5.629C304.333,359.668,318.772,358.592,328.653,355.691z" fill="url(#c)"/>
+</svg>

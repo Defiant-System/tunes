@@ -1,0 +1,36 @@
+<MenuBar>
+	<Menu name="Player">
+		<Menu name="About Player" hotkey="meta+a"/>
+		<Menu type="divider"/>
+		<Menu name="Preferences" hotkey="shift+," click="preferences"/>
+		<Menu type="divider"/>
+		<Menu name="Services">
+			<Menu name="Open"/>
+			<Menu name="Close"/>
+		</Menu>
+		<Menu type="divider"/>
+		<Menu name="Hide Player"/>
+		<Menu name="Hide Others"/>
+		<Menu name="Show All" disabled="1"/>
+		<Menu type="divider"/>
+		<Menu name="Quit Player" shell="win -c"/>
+	</Menu>
+	<Menu name="Playback">
+		<Menu name="Play" click="play-play"/>
+		<Menu type="divider"/>
+		<Menu name="Next" click="play-next"/>
+		<Menu name="Previous" click="play-previous"/>
+		<Menu name="Shuffle" click="play-random" is-checked="0"/>
+		<Menu name="Repeat" click="play-repeat" is-checked="0"/>
+		<Menu type="divider"/>
+		<Menu name="Volume Up" click="volume-up"/>
+		<Menu name="Volume Down" click="volume-down"/>
+	</Menu>
+	<Menu name="Help">
+		<Menu name="Send Player Feedback"/>
+		<Menu type="divider"/>
+		<Menu name="Player Help"/>
+		<Menu type="divider"/>
+		<Menu name="License"/>
+	</Menu>
+</MenuBar>
