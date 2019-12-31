@@ -35,7 +35,7 @@ border: 1px solid rgba(0,0,150,.3);
 }
 
 content {
-	.select(none);
+	user-select: none;
 
 	&.extended {
 		section.options {
@@ -80,7 +80,7 @@ content {
 		font-size: 0;
 		opacity: 0;
 		margin-top: -27px;
-		.transition(200ms);
+		transition: all 200ms;
 
 		div {
 			background: rgba(255,25,255,0.05);
@@ -118,7 +118,7 @@ content {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		.transitionWhat(padding, 200ms);
+		transition: padding 200ms;
 
 		//padding: 8px 0 0 11px;
 		//background: darken(#0e5389dd, 0.5%);
@@ -135,7 +135,7 @@ content {
 		overflow-y: auto;
 		opacity: 0;
 		margin-top: -200px;
-		.transition(200ms);
+		transition: all 200ms;
 
 		ul {
 			list-style-type: decimal;
@@ -184,7 +184,7 @@ content {
 		--color-2: transparent;
 		border-top: 1px solid #65aefc1a;
 		border-bottom: 1px solid #65aefc1a;
-		.transition(200ms);
+		transition: all 200ms;
 
 		> span {
 			position: relative;
