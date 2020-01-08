@@ -2,6 +2,8 @@
 //@import url('https://fonts.googleapis.com/css?family=Nunito:200&display=swap');
 
 border: 1px solid rgba(0,0,150,.3);
+background-color: rgba(0,70,180,.8);
+backdrop-filter: blur(9px);
 
 .window-caption-buttons {
 	top: 6px;
@@ -18,11 +20,6 @@ border: 1px solid rgba(0,0,150,.3);
 
 .window-caption-bar {
 	right: 59px;
-}
-
-.window-body {
-	background-color: rgba(0,70,180,.8);
-	backdrop-filter: blur(9px);
 }
 
 &.focused {
@@ -61,13 +58,13 @@ content {
 		background-position: 50% 50%;
 		display: inline-block;
 
-		&.player-icon-collapse { background-image: url(/app/ant/tunes/icons/icon-collapse.png);  }
-		&.player-icon-equalizer { background-image: url(/app/ant/tunes/icons/icon-equalizer.png);  }
-		&.player-icon-random { background-image: url(/app/ant/tunes/icons/icon-random.png);  }
-		&.player-icon-previous { background-image: url(/app/ant/tunes/icons/icon-previous.png);  }
-		&.player-icon-play { background-image: url(/app/ant/tunes/icons/icon-play.png);  }
-		&.player-icon-next { background-image: url(/app/ant/tunes/icons/icon-next.png);  }
-		&.player-icon-repeat { background-image: url(/app/ant/tunes/icons/icon-repeat.png);  }
+		&.player-icon-collapse { background-image: url(~/icons/icon-collapse.png); }
+		&.player-icon-equalizer { background-image: url(~/icons/icon-equalizer.png); }
+		&.player-icon-random { background-image: url(~/icons/icon-random.png); }
+		&.player-icon-previous { background-image: url(~/icons/icon-previous.png); }
+		&.player-icon-play { background-image: url(~/icons/icon-play.png); }
+		&.player-icon-next { background-image: url(~/icons/icon-next.png); }
+		&.player-icon-repeat { background-image: url(~/icons/icon-repeat.png); }
 	}
 
 	section.options {
@@ -199,7 +196,7 @@ content {
 
 			&.btn-play {
 				&.playing .player-icon-play {
-					background-image: url(/app/ant/tunes/icons/icon-pause.png);
+					background-image: url(~/icons/icon-pause.png);
 				}
 
 				&:before {

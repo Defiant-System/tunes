@@ -69,7 +69,7 @@ const tunes = {
 				break;
 			// custom events
 			case "window.open":
-				//this.audio.attr({src: "/fs/Documents/mp3/Ayben - Rap Benim.mp3"});
+				//this.audio.attr({src: "/fs/usr/mp3/Eclectek_-_02_-_We_Are_Going_To_Eclecfunk_Your_Ass.mp3"});
 				//this.dispatch({type: "window.maximize"});
 				break;
 			case "window.close":
