@@ -1,6 +1,6 @@
 <MenuBar>
 	<Menu name="Player">
-		<Menu name="About Player" hotkey="meta+a"/>
+		<Menu name="About Player" shell="win -a"/>
 		<Menu type="divider"/>
 		<Menu name="Preferences" hotkey="shift+," click="preferences"/>
 		<Menu type="divider"/>
