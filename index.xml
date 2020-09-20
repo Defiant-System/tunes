@@ -8,7 +8,7 @@
 		<meta name="height" value="117"/>
 		<meta name="top" value="180"/>
 		<meta name="left" value="850"/>
-		<meta name="headless"/>
+		<meta name="headless" value="true"/>
 		<meta name="minimize" value="false"/>
 		<meta name="maximize" value="false"/>
 		<meta name="resize" value="disabled"/>
