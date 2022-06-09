@@ -24,6 +24,9 @@ const tunes = {
 			.on("timeupdate", this.dispatch.bind(this))
 			.on("canplaythrough", this.dispatch.bind(this))
 			.on("progress", this.dispatch.bind(this));
+
+		//this.audio.attr({src: "/fs/usr/mp3/Eclectek_-_02_-_We_Are_Going_To_Eclecfunk_Your_Ass.mp3"});
+		//this.dispatch({type: "window.maximize"});
 	},
 	async dispatch(event) {
 		let Self = tunes,
@@ -35,11 +38,7 @@ const tunes = {
 			value;
 		// console.log(event);
 		switch (event.type) {
-			// custom events
-			case "window.open":
-				//Self.audio.attr({src: "/fs/usr/mp3/Eclectek_-_02_-_We_Are_Going_To_Eclecfunk_Your_Ass.mp3"});
-				//Self.dispatch({type: "window.maximize"});
-				break;
+			// system events
 			case "window.close":
 				if (Self.els.btnPlay.hasClass("playing")) Self.dispatch({type: "toggle-play"});
 				break;
