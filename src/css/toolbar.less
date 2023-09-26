@@ -3,7 +3,7 @@
 @text: #b7cbe0;
 
 .tools-left {
-	width: calc(50% - 140px);
+	width: calc(50% - 200px);
 	text-align: right;
 
 	> div:last-child {
@@ -12,7 +12,7 @@
 }
 
 .display {
-	width: 210px;
+	width: 320px;
 	height: 31px;
 	padding-left: 17px;
 	padding-right: 17px;
@@ -29,23 +29,6 @@
 		background: radial-gradient(ellipse at bottom center, rgba(#fff,.3), transparent 80%),
 					linear-gradient(180deg, #a1a1a1 0%, #8c8c8c 43%, #767676 43%, #717171 100%);
 		border-radius: 3px;
-	}
-
-	&.tool-disabled_ {
-		filter: grayscale(100%);
-
-		&:after {
-			display: none;
-		}
-
-		.toolbar-field_ {
-			text-shadow: 0 1px 0 rgba(0,0,0,.25);
-		}
-
-		.toolbar-canvas_ {
-			background: #888;
-			box-shadow: inset 0 1px 2px #555555aa;
-		}
 	}
 
 	.toolbar-field_ {
@@ -100,7 +83,7 @@
 }
 
 .tools-right {
-	width: calc(40% - 70px);
+	width: calc(40% - 120px);
 
 	&:last-child {
 		text-align: left;
