@@ -1,0 +1,25 @@
+<CaptionToolBar has="display">
+	<Group class="tools-left">
+		<Options>
+			<Tool symbol="icon-previous" click="previous"/>
+			<Tool symbol="icon-next" click="next"/>
+			<Tool symbol="icon-pause" click="pause"/>
+			<Tool symbol="icon-play" click="play"/>
+		</Options>
+	</Group>
+	<Group class="display">
+		<Field>
+			
+		</Field>
+		<Canvas/>
+	</Group>
+	<Group class="tools-right">
+		<Options>
+			<Tool symbol="icon-random" click="random"/>
+			<Tool symbol="icon-repeat" click="repeat"/>
+			<Tool symbol="icon-collapse" click="collapse"/>
+			<Tool symbol="icon-equalizer" click="equalizer"/>
+		</Options>
+	</Group>
+	<Group class="empty"/>
+</CaptionToolBar>

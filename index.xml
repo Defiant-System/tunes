@@ -1,23 +1,24 @@
 <Application>
 	<Head>
 		<meta name="id" value="tunes"/>
-		<meta name="title" value="Tunes Player" version="1.21"/>
+		<meta name="title" value="Tunes Player" version="1.23"/>
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/tunes"/>
-		<meta name="width" value="340"/>
-		<meta name="height" value="117"/>
+		<meta name="width" value="800"/>
+		<meta name="height" value="500"/>
 		<meta name="top" value="230"/>
 		<meta name="left" value="380"/>
-		<meta name="headless" value="true"/>
-		<meta name="minimize" value="false"/>
-		<meta name="maximize" value="false"/>
-		<meta name="resize" value="disabled"/>
+		<meta name="minimize"/>
+		<meta name="maximize"/>
+		<meta name="resize"/>
+		<meta name="icons" value="src/svg/icons.svg"/>
 		<meta name="script" value="src/js/main.js"/>
 		<meta name="style" value="src/css/main.less"/>
-		<meta name="icons" value="src/svg/icons.svg"/>
+		<meta name="toolbar-style" value="src/css/toolbar.less"/>
 		<meta name="content" value="src/partials/content.htm"/>
 
 		@import "src/partials/menubar.xml"
+		@import "src/partials/caption-toolbar.xml"
 	</Head>
 </Application>
