@@ -1,7 +1,4 @@
 
-@bg: #182c40;
-@text: #b7cbe0;
-
 .tools-left {
 	width: calc(50% - 200px);
 	text-align: right;
@@ -26,8 +23,8 @@
 		right: 18px;
 		z-index: 1;
 		pointer-events: none;
-		background: radial-gradient(ellipse at bottom center, rgba(#fff,.3), transparent 80%),
-					linear-gradient(180deg, #a1a1a1 0%, #8c8c8c 43%, #767676 43%, #717171 100%);
+		background: radial-gradient(ellipse at bottom center, rgba(#fff,.5), transparent 80%),
+					linear-gradient(180deg, #e1e1e1 0%, #c5c5c5 43%, #bbb 43%, #b1b1b1 100%);
 		border-radius: 3px;
 	}
 
@@ -38,7 +35,7 @@
 		z-index: 3;
 		font-size: 9px;
 		text-transform: uppercase;
-		color: lighten(@bg, 37%);
+		color: #333;
 		height: 13px;
 		line-height: 1;
 		background: transparent;
@@ -62,17 +59,16 @@
 			position: absolute;
 			pointer-events: none;
 			top: -20px;
-			left: 18px;
-			right: 18px;
+			left: 19px;
+			right: 19px;
 			height: 30px;
 			border-radius: 3px;
-			box-shadow: 0 0 0 1px fadeout(@bg, 21%);
+			box-shadow: 0 0 0 1px rgba(#000,.25);
 			pointer-events: none;
 		}
 	}
 
 	.toolbar-canvas_ {
-		// background: @bg;
 		position: relative;
 		top: -4px;
 		width: 100%;
