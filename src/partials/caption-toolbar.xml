@@ -22,7 +22,7 @@
 			</div>
 			<!-- random / repeat -->
 			<span class="icon-random" click="play-random"/>
-			<span class="icon-repeat" click="play-repeat"/>
+			<span class="icon-repeat active" click="play-repeat"/>
 		</Field>
 		<Canvas/>
 	</Group>
