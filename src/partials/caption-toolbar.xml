@@ -1,23 +1,34 @@
 <CaptionToolBar has="display">
 	<Group class="tools-left">
 		<Options>
-			<Tool symbol="icon-random" click="random"/>
 			<Tool symbol="icon-previous" click="previous"/>
 			<!-- <Tool symbol="icon-pause" click="pause"/> -->
 			<Tool symbol="icon-play" click="play"/>
 			<Tool symbol="icon-next" click="next"/>
-			<Tool symbol="icon-repeat" click="repeat"/>
 		</Options>
 	</Group>
 	<Group class="display">
 		<Field>
-			
+			<!-- song title -->
+			<div class="song-name">50 Cent - In Da Club</div>
+			<!-- progress bar -->
+			<div class="progress">
+				<span class="time-played">-:--</span>
+				<span class="progress-track">
+					<span class="progress-played"></span>
+					<span class="knob"></span>
+				</span>
+				<span class="time-total">-:--</span>
+			</div>
+			<!-- random / repeat -->
+			<span class="icon-random" click="play-random"/>
+			<span class="icon-repeat" click="play-repeat"/>
 		</Field>
 		<Canvas/>
 	</Group>
 	<Group class="tools-right">
 		<Icon symbol="icon-volume-0"/>
-		<Slider id="volume" class="volume" name="volume" value="5" min="0" max="100" step="1" change="set-volume"/>
+		<Slider id="volume" class="volume" name="volume" value="50" min="0" max="100" step="1" change="set-volume"/>
 		<Icon symbol="icon-volume-3"/>
 	</Group>
 	<Group class="empty"/>
