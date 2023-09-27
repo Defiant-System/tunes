@@ -1,10 +1,17 @@
 
+@import "modules/test.js"
+
+
 const tunes = {
 	async init() {
-		// fast references
-		this.els = {
-			content: window.find("content"),
-		};
+		// init all sub-objects
+		Object.keys(this)
+			.filter(i => typeof this[i].init === "function")
+			.map(i => this[i].init());
+
+		// DEV-ONLY-START
+		Test.init(this);
+		// DEV-ONLY-END
 	},
 	async dispatch(event) {
 		let Self = tunes,
@@ -18,7 +25,8 @@ const tunes = {
 			case "progress":
 				break;
 		}
-	}
+	},
+	sidebar: @import "modules/sidebar.js",
 };
 
 window.exports = tunes;

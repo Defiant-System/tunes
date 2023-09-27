@@ -8,7 +8,7 @@
 		<meta name="width" value="800"/>
 		<meta name="height" value="500"/>
 		<meta name="top" value="230"/>
-		<meta name="left" value="380"/>
+		<meta name="left" value="110"/>
 		<meta name="minimize"/>
 		<meta name="maximize"/>
 		<meta name="resize"/>
@@ -17,8 +17,12 @@
 		<meta name="style" value="src/css/main.less"/>
 		<meta name="toolbar-style" value="src/css/toolbar.less"/>
 		<meta name="content" value="src/partials/content.htm"/>
+		<meta name="xsl" value="src/partials/templates.xsl"/>
 
 		@import "src/partials/menubar.xml"
 		@import "src/partials/caption-toolbar.xml"
 	</Head>
+
+	@import "src/partials/data.xml"
+
 </Application>
