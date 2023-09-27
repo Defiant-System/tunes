@@ -69,6 +69,14 @@
 		height: 11px;
 		// background: rgba(#000,.1);
 
+		&:hover {
+			.progress-track {
+				.knob {
+					opacity: 1;
+				}
+			}
+		}
+
 		.progress-track {
 			position: absolute;
 			top: 4px;
@@ -77,12 +85,6 @@
 			height: 2px;
 			background: #999;
 			box-shadow: 0 0 1px rgba(#000,.1);
-
-			&:hover {
-				.knob {
-					opacity: 1;
-				}
-			}
 
 			.progress-played {
 				background: #4e97f5;
@@ -105,6 +107,7 @@
 				opacity: 0;
 				box-shadow: 0 0 0 1px rgba(#fff,.2);
 				transition: opacity 120ms ease-in-out;
+				cursor: ew-resize;
 			}
 		}
 
@@ -142,8 +145,8 @@
 		}
 
 		&.active {
-			opacity: .65;
-			filter: sepia(1) saturate(15) hue-rotate(205deg);
+			opacity: .7;
+			// filter: sepia(1) saturate(15) hue-rotate(205deg);
 		}
 	}
 
