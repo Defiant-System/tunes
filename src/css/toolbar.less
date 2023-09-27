@@ -10,7 +10,7 @@
 
 .display {
 	width: 320px;
-	height: 31px;
+	height: 30px;
 	padding-left: 17px;
 	padding-right: 17px;
 
@@ -23,9 +23,8 @@
 		right: 18px;
 		z-index: 1;
 		pointer-events: none;
-		background: radial-gradient(ellipse at bottom center, rgba(#fff,.5), transparent 80%),
-					linear-gradient(180deg, #e1e1e1 0%, #c5c5c5 43%, #bbb 43%, #b1b1b1 100%);
 		border-radius: 3px;
+		box-shadow: 0 0 0 1px rgba(#000,.35);
 	}
 
 	.toolbar-field_ {
@@ -41,31 +40,6 @@
 		background: transparent;
 		box-shadow: 0 0 0;
 		border: 0;
-
-		&:before {
-			content: "";
-			position: absolute;
-			top: -20px;
-			left: 17px;
-			right: 17px;
-			height: 1px;
-			opacity: .25;
-			background: linear-gradient(90deg, transparent 0%, #fff 50%, transparent 100%);
-			pointer-events: none;
-		}
-
-		&:after {
-			content: "";
-			position: absolute;
-			pointer-events: none;
-			top: -19px;
-			left: 19px;
-			right: 19px;
-			height: 29px;
-			border-radius: 3px;
-			box-shadow: 0 0 0 1px rgba(#000,.2);
-			pointer-events: none;
-		}
 	}
 
 	.toolbar-canvas_ {
@@ -81,15 +55,9 @@
 .tools-right {
 	width: calc(40% - 120px);
 
-	&:last-child {
-		text-align: left;
-	}
-
-	.toolbar-options_ {
-		.toolbar-tool_ {
-			margin-left: 0;
-			margin-right: 0;
-		}
+	input[type=range] {
+		width: 110px;
+		margin: 0 3px;
 	}
 }
 
