@@ -26,7 +26,9 @@ const tunes = {
 				break;
 		}
 	},
-	sidebar: @import "modules/sidebar.js",
+	toolbar: @import "sections/toolbar.js",
+	sidebar: @import "sections/sidebar.js",
+	content: @import "sections/content.js",
 };
 
 window.exports = tunes;
