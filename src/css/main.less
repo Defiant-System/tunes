@@ -1,2 +1,26 @@
 
+content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
 
+	&.show-sidebar {
+		sidebar { width: 210px; }
+	}
+
+	sidebar {
+		position: relative;
+		width: 0;
+		overflow-x: hidden;
+		user-select: none;
+		transition: width 120ms linear;
+		color: #666;
+
+		&:after {
+			border-right-color: #bdc0c780;
+		}
+	}
+}
