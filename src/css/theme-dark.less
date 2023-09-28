@@ -23,6 +23,51 @@
 
 		.wrapper {
 			padding-right: 1px;
+
+			.list-wrapper {
+				ul {
+					li {
+						&.active {
+							.name {
+								color: #ccc;
+							}
+						}
+					}
+
+					.name {
+						color: #aaa;
+					}
+
+					.icon {
+						filter: invert(1) brightness(2);
+					}
+				}
+			}
+		}
+	}
+
+	.table {
+		i[class^="icon-"] {
+			filter: invert(1) brightness(2);
+		}
+
+		.row {
+			border-bottom-color: rgba(#fff,.1);
+
+			&.head {
+				.cell {
+					i.icon-clock {
+						filter: invert(1) brightness(2);
+					}
+
+					&.sort-desc,
+					&.sort-asc {
+						&:after {
+							filter: invert(1) brightness(2);
+						}
+					}
+				}
+			}
 		}
 	}
 }
