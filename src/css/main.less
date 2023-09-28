@@ -225,6 +225,7 @@ content {
 							position: absolute;
 							top: 10px;
 							left: 17px;
+							cursor: pointer;
 						}
 
 						&:before {
@@ -267,11 +268,6 @@ content {
 				.cell {
 					i.icon-clock {
 						margin: 3px 6px -3px 0;
-						pointer-events: none;
-					}
-
-					i.icon-thumb {
-						margin: 3px 8px -3px 0;
 						pointer-events: none;
 					}
 
@@ -325,6 +321,7 @@ content {
 				&:hover .cell:nth-child(1) {
 					.icon-play {
 						background-size: 0 0;
+						cursor: default;
 						opacity: .7;
 
 						&:after {
@@ -389,8 +386,8 @@ content {
 				padding: 10px 11px 0 0;
 			}
 			&:nth-child(2) { flex: 1; min-width: 21%; }
-			&:nth-child(3) { width: 25%; }
-			&:nth-child(4) { width: 23%; }
+			&:nth-child(3) { width: 23%; }
+			&:nth-child(4) { width: 21%; }
 			&:nth-child(5) { width: 50px; }
 
 			&:last-child { text-align: right; padding-right: 7px; }

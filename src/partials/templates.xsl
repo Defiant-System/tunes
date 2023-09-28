@@ -52,10 +52,10 @@
 					</div>
 					<div class="cell"><xsl:value-of select="@name"/></div>
 					<div class="cell">
-						<xsl:value-of select="../@name"/>
+						<xsl:value-of select="../@artist"/>
 					</div>
 					<div class="cell">
-						<xsl:value-of select="@name"/>
+						<xsl:value-of select="../@album"/>
 					</div>
 					<div class="cell"><xsl:call-template name="translate-duration">
 						<xsl:with-param name="ms" select="@duration" />

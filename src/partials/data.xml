@@ -6,7 +6,7 @@
 		<i name="Rock"/>
 		<i name="Oldies"/>
 		<i name="Albums">
-			<i name="Boney M - Gold">
+			<i artist="Boney M" album="Gold">
 				<i name="Rivers Of Babylon.mp3" duration="311209" fav="1"/>
 				<i name="Daddy Cool.mp3" duration="312536"/>
 				<i name="Sunny.mp3" duration="122146"/>
