@@ -1,4 +1,7 @@
 <CaptionToolBar has="display">
+	<Group>
+		<Tool symbol="icon-sidebar" click="toggle-sidebar" state="active"/>
+	</Group>
 	<Group class="tools-left">
 		<Options>
 			<Tool symbol="icon-previous" click="previous"/>

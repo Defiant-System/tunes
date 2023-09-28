@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
 
+	<svg id="icon-sidebar" viewBox="0 0 13 13">
+		<style type="text/css">
+			.st0{fill:#333;}
+		</style>
+		<path class="st0" d="M12,1H5H4H1H0v1v9v1h1h3h1h7h1v-1V2V1H12z M1,11V2h3v9H1z M12,11H5V2h7V11z"/>
+		<rect x="2" y="3" class="st0" width="1" height="1"/>
+		<rect x="2" y="5" class="st0" width="1" height="1"/>
+	</svg>
+
 	<svg id="icon-play" viewBox="0 0 13 13">
 		<style type="text/css">
 			.st0{fill:#333;}

@@ -15,7 +15,10 @@ const tunes = {
 	},
 	async dispatch(event) {
 		let Self = tunes,
-			value;
+			name,
+			value,
+			pEl,
+			el;
 		// console.log(event);
 		switch (event.type) {
 			// system events
@@ -24,6 +27,16 @@ const tunes = {
 			// custom events
 			case "progress":
 				break;
+			case "toggle-sidebar":
+				return Self.sidebar.dispatch(event);
+			default:
+				if (event.el) {
+					pEl = event.el.data("area") ? event.el : event.el.parents(`[data-area]`);
+					if (pEl.length) {
+						name = pEl.data("area");
+						Self[name].dispatch(event);
+					}
+				}
 		}
 	},
 	toolbar: @import "sections/toolbar.js",

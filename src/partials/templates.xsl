@@ -10,7 +10,11 @@
 		<div class="list-wrapper">
 			<ul>
 				<xsl:for-each select="./Playlists/*">
-				<li class="active1">
+				<li>
+					<xsl:if test="position() = 2">
+						<xsl:attribute name="class">active</xsl:attribute>
+					</xsl:if>
+					<span class="icon"></span>
 					<span class="icon" style="background-image: url(~/icons/icon-folder.png);"></span>
 					<span class="name"><xsl:value-of select="@name"/></span>
 				</li>
@@ -24,6 +28,7 @@
 <xsl:template name="content-list">
 	<div class="playlist-info">
 		<h2>Boney M - Gold</h2>
+		<h5>Hakan Bilgin, 17 songs, 1 h 13 min</h5>
 	</div>
 	<div class="table enum">
 		<div class="row head">

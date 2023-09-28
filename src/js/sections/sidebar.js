@@ -13,6 +13,7 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
+			isOn,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -24,6 +25,10 @@
 					target: Self.els.el
 				});
 				break;
+			case "toggle-sidebar":
+				isOn = Self.els.layout.hasClass("show-sidebar");
+				Self.els.layout.toggleClass("show-sidebar", isOn);
+				return !isOn;
 		}
 	}
 }
