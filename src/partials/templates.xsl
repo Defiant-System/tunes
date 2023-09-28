@@ -28,12 +28,16 @@
 <xsl:template name="content-list">
 	<div class="playlist-info">
 		<h2>Boney M - Gold</h2>
-		<h5>Hakan Bilgin, 17 songs, 1 h 13 min</h5>
+		<ul class="details">
+			<li>Hakan Bilgin</li>
+			<li>17 songs</li>
+			<li>1 h 13 min</li>
+		</ul>
 	</div>
 	<div class="table enum">
 		<div class="row head">
 			<div class="cell"></div>
-			<div class="cell">Title</div>
+			<div class="cell sort-asc">Title</div>
 			<div class="cell">Artist</div>
 			<div class="cell">Album</div>
 			<div class="cell"><i class="icon-clock"></i></div>
