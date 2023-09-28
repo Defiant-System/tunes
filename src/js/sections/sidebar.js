@@ -4,7 +4,7 @@
 {
 	init() {
 		this.els = {
-			layout: window.find("layout"),
+			layout: window.find("content"),
 			el: window.find("sidebar .wrapper"),
 		};
 		// temp

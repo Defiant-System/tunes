@@ -5,5 +5,24 @@
 		<i name="Classic"/>
 		<i name="Rock"/>
 		<i name="Oldies"/>
+		<i name="Albums">
+			<i name="Boney M - Gold">
+				<i name="Rivers Of Babylon.mp3" duration="311209" fav="1"/>
+				<i name="Daddy Cool.mp3" duration="312536"/>
+				<i name="Sunny.mp3" duration="122146"/>
+				<i name="Brown Girl In The Ring.mp3" duration="751318" fav="1"/>
+				<i name="Rasputin.mp3" duration="253453"/>
+				<i name="Ma Baker.mp3" duration="1012311" fav="1"/>
+				<i name="Hooray! Hooray! It's A Holi-Holiday.mp3" duration="843249" fav="1"/>
+				<i name="Painter Man.mp3" duration="131216"/>
+				<i name="Belfast.mp3" duration="754346"/>
+				<i name="No Woman No Cry.mp3" duration="401226"/>
+				<i name="Mary's Boy Child, Oh My Lord.mp3" duration="312109"/>
+				<i name="Gotta Go Home.mp3" duration="331336"/>
+				<i name="Still I'm Sad.mp3" duration="243456"/>
+				<i name="Nightflight To Venus.mp3" duration="621018"/>
+				<i name="Felicidad.mp3" duration="412453"/>
+			</i>
+		</i>
 	</Playlists>
 </Data>
