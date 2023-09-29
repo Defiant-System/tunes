@@ -35,6 +35,8 @@ const tunes = {
 					if (pEl.length) {
 						name = pEl.data("area");
 						Self[name].dispatch(event);
+					} else if (event.el.hasClass("toolbar-tool_")) {
+						Self.toolbar.dispatch(event);
 					}
 				}
 		}
