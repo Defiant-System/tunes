@@ -140,13 +140,16 @@ content {
 						opacity: 0.5;
 						margin: 0 2px 0 0;
 
-						&.folder { background-image: url(~/icons/icon-folder.png); }
-						&.arrow {
-							background-image: url(~/icons/icon-arrow.png);
+						&:first-child {
 							top: 5px;
 							left: 1px;
 							width: 13px;
 							height: 13px;
+						}
+
+						&.folder { background-image: url(~/icons/icon-folder.png); }
+						&.arrow {
+							background-image: url(~/icons/icon-arrow.png);
 							transition: transform 120ms ease-in-out;
 
 							&.down {

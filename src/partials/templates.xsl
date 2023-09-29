@@ -18,7 +18,9 @@
 					<xsl:if test="position() = 2">
 						<xsl:attribute name="class">active</xsl:attribute>
 					</xsl:if>
-					<span class="icon arrow" data-click="toggle-folder"></span>
+					<span class="icon" data-click="toggle-folder">
+						<xsl:if test="count(./*)"><xsl:attribute name="class">icon arrow</xsl:attribute></xsl:if>
+					</span>
 					<span class="icon folder"></span>
 					<span class="name"><xsl:value-of select="@name"/></span>
 				</li>
