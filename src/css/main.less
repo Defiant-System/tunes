@@ -25,36 +25,10 @@ content {
 
 		.wrapper {
 			position: relative;
-			padding: 7px 0 9px;
-
-			.search-field {
-				position: relative;
-				padding: 0 7px;
-
-				input {
-					position: relative;
-					padding-left: 23px;
-					z-index: 1;
-				}
-
-				.icon-magnify {
-					background-image: url(~/icons/icon-magnify.png);
-					background-position: 50% 50%;
-					background-size: 100%;
-					background-repeat: no-repeat;
-					position: absolute;
-					top: 5px;
-					left: 13px;
-					width: 13px;
-					height: 13px;
-					z-index: 2;
-					opacity: .35;
-				}
-			}
 
 			legend {
 				width: 100%;
-				margin: 7px 0 0;
+				margin: 5px 0 0;
 				padding: 5px 7px 3px;
 				font-size: 12px;
 				color: #aaa;
@@ -117,6 +91,7 @@ content {
 						span {
 							display: inline-block;
 							vertical-align: top;
+							pointer-events: none;
 						}
 					}
 
@@ -149,6 +124,7 @@ content {
 
 						&.folder { background-image: url(~/icons/icon-folder.png); }
 						&.arrow {
+							pointer-events: all;
 							background-image: url(~/icons/icon-arrow.png);
 							transition: transform 120ms ease-in-out;
 

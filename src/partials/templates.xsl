@@ -2,22 +2,14 @@
 
 <xsl:template name="sidebar">
 	<div>
-		<div class="search-field">
-			<input type="text" name="t123" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-			<span class="icon-magnify"></span>
-		</div>
-
 		<legend>
 			Playlists
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
-		<div class="list-wrapper">
+		<div class="list-wrapper" data-click="select-playlist">
 			<ul>
 				<xsl:for-each select="./Playlists/*">
 				<li>
-					<xsl:if test="position() = 2">
-						<xsl:attribute name="class">active</xsl:attribute>
-					</xsl:if>
 					<span class="icon" data-click="toggle-folder">
 						<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon arrow</xsl:attribute></xsl:if>
 					</span>
@@ -27,6 +19,16 @@
 				</xsl:for-each>
 			</ul>
 		</div>
+
+		<legend>
+			Favorites
+			<span class="btn-toggle" toggle-text="Show">Hide</span>
+		</legend>
+
+		<legend>
+			Recently Played
+			<span class="btn-toggle" toggle-text="Show">Hide</span>
+		</legend>
 	</div>
 </xsl:template>
 
@@ -37,7 +39,7 @@
 		<ul class="details">
 			<li><xsl:value-of select="//Settings/User/@name"/></li>
 			<li><xsl:value-of select="count(.//*)"/> songs</li>
-			<li><xsl:call-template name="translate-duration">
+			<li><xsl:call-template name="summarize-duration">
 					<xsl:with-param name="ms" select="sum(.//@duration)" />
 				</xsl:call-template></li>
 		</ul>
@@ -96,6 +98,15 @@
 	<xsl:variable name="seconds" select="round( $ms div 1000 ) mod 60"/>
 	<xsl:value-of select="format-number($minutes, '0')"/>
 	<xsl:value-of select="format-number($seconds, ':00')"/>
+</xsl:template>
+
+
+<xsl:template name="summarize-duration">
+	<xsl:param name="ms"/>
+	<xsl:variable name="hours" select="floor( floor( floor( $ms div 1000 ) div 60) div 60) mod 60"/>
+	<xsl:variable name="minutes" select="floor( floor( $ms div 1000 ) div 60) mod 60"/>
+	<xsl:value-of select="format-number($hours, '0 h ')"/>
+	<xsl:value-of select="format-number($minutes, '0 min')"/>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -8,20 +8,19 @@
 			el: window.find("list .wrapper"),
 		};
 		// temp
-		this.dispatch({ type: "init-render" });
+		// this.dispatch({ type: "init-render" });
 	},
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.content,
-			match,
+			xpath,
 			el;
 		// console.log(event);
 		switch (event.type) {
 			case "init-render":
 				// pre-render name-pass
-				// match = `//i[@name = "Hiphop"]`;
-				match = `//i[@name = "Albums"]/i[position() = 2]`,
-				window.bluePrint.selectNodes(match +"/*")
+				xpath = `//i[@name = "Albums"]/i[position() = 2]`;
+				window.bluePrint.selectNodes(xpath +"/*")
 					.map(node => {
 						let name = node.getAttribute("name");
 						if (name.endsWith(".mp3")) {
@@ -33,11 +32,14 @@
 							node.setAttribute("title", title);
 						}
 					});
+				Self.dispatch({ type: "render-playlist", xpath });
+				break;
+			case "render-playlist":
 				// render list view
 				window.render({
-					match,
+					match: event.xpath,
 					template: "content-list",
-					target: Self.els.el
+					target: Self.els.el,
 				});
 				break;
 		}

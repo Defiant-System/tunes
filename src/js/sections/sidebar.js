@@ -13,6 +13,7 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
+			xpath,
 			isOn,
 			el;
 		// console.log(event);
@@ -32,6 +33,14 @@
 			case "toggle-folder":
 				isOn = event.el.hasClass("down");
 				event.el.toggleClass("down", isOn);
+				break;
+			case "select-playlist":
+				el = $(event.target);
+				el.parent().find(".active").removeClass("active");
+				el.addClass("active");
+
+				xpath = `//i[@name = "${el.find(".name").text()}"]`;
+				APP.content.dispatch({ type: "render-playlist", xpath });
 				break;
 		}
 	}
