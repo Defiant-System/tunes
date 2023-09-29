@@ -38,7 +38,7 @@ content {
 			legend {
 				width: 100%;
 				margin: 0;
-				padding: 5px 7px;
+				padding: 5px 7px 3px;
 				font-size: 12px;
 				color: #aaa;
 				white-space: nowrap;
@@ -76,7 +76,7 @@ content {
 						position: relative;
 						display: flex;
 						height: 23px;
-						padding-left: 3px;
+						padding-left: 5px;
 						margin-top: 1px;
 						//color: rgba(0,0,0,0.73);
 
@@ -114,6 +114,21 @@ content {
 						height: 17px;
 						opacity: 0.5;
 						margin: 0 2px 0 0;
+
+						&.folder { background-image: url(~/icons/icon-folder.png); }
+						&.arrow {
+							background-image: url(~/icons/icon-arrow.png);
+							top: 5px;
+							left: 1px;
+							width: 13px;
+							height: 13px;
+							transition: transform 1200ms ease-in-out;
+
+							&.down {
+								transform-origin: 50% 50%;
+								transform: rotate(90deg);
+							}
+						}
 					}
 				}
 			}

@@ -14,8 +14,8 @@
 					<xsl:if test="position() = 2">
 						<xsl:attribute name="class">active</xsl:attribute>
 					</xsl:if>
-					<span class="icon"></span>
-					<span class="icon" style="background-image: url(~/icons/icon-folder.png);"></span>
+					<span class="icon arrow"></span>
+					<span class="icon folder"></span>
 					<span class="name"><xsl:value-of select="@name"/></span>
 				</li>
 				</xsl:for-each>
@@ -54,12 +54,23 @@
 							</xsl:if>
 						</i>
 					</div>
-					<div class="cell"><xsl:value-of select="@name"/></div>
 					<div class="cell">
-						<xsl:value-of select="../@artist"/>
+						<xsl:choose>
+							<xsl:when test="@title"><xsl:value-of select="@title"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+						</xsl:choose>
 					</div>
 					<div class="cell">
-						<xsl:value-of select="../@album"/>
+						<xsl:choose>
+							<xsl:when test="@title"><xsl:value-of select="@artist"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="../@artist"/></xsl:otherwise>
+						</xsl:choose>
+					</div>
+					<div class="cell">
+						<xsl:choose>
+							<xsl:when test="@title"><xsl:value-of select="@album"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="../@album"/></xsl:otherwise>
+						</xsl:choose>
 					</div>
 					<div class="cell"><xsl:call-template name="translate-duration">
 						<xsl:with-param name="ms" select="@duration" />

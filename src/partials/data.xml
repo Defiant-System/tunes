@@ -1,6 +1,18 @@
 <Data>
 	<Playlists>
-		<i name="Hiphop"/>
+		<i name="Hiphop">
+			<i name="Ayben - Rap Benim.mp3" duration="311209"/>
+			<i name="Ceza - Delight.mp3" duration="312536"/>
+			<i name="Ceza - Feyzal.mp3" duration="122146"/>
+			<i name="Ceza - Holocaust.mp3" duration="751318"/>
+			<i name="Ceza - Panorama harem.mp3" duration="253453"/>
+			<i name="Ceza - Paydos.mp3" duration="1012311"/>
+			<i name="Ceza - Pusulam Yok (Featuring Alaturka Mavzer, Mihenk Tasi &amp; Emre).mp3" duration="843249"/>
+			<i name="Eclectek_-_02_-_We_Are_Going_To_Eclecfunk_Your_Ass.mp3" duration="131216"/>
+			<i name="In the Moment of Inspiration.mp3" duration="754346"/>
+			<i name="Killa Hakan feat Ceza . Sido . Alpa Gun Alles Tamam.mp3" duration="401226"/>
+			<i name="MOK  Alpa Gun - Click Bang.mp3" duration="312109"/>
+		</i>
 		<i name="Chillout"/>
 		<i name="Classic"/>
 		<i name="Rock"/>
