@@ -2,11 +2,15 @@
 
 <xsl:template name="sidebar">
 	<div>
+		<div class="search-field">
+			<input type="text" name="t123" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+			<span class="icon-magnify"></span>
+		</div>
+
 		<legend>
 			Playlists
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
-		
 		<div class="list-wrapper">
 			<ul>
 				<xsl:for-each select="./Playlists/*">
