@@ -34,5 +34,7 @@
 		<Slider id="volume" class="volume" name="volume" value="50" min="0" max="100" step="1" change="set-volume"/>
 		<Icon symbol="icon-volume-3"/>
 	</Group>
-	<Group class="empty"/>
+	<Group class="tools-search">
+		<Search placeholder="Search"/>
+	</Group>
 </CaptionToolBar>

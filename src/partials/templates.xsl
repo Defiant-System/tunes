@@ -35,7 +35,7 @@
 	<div class="playlist-info">
 		<h2><xsl:value-of select="@artist"/> - <xsl:value-of select="@album"/></h2>
 		<ul class="details">
-			<li>Hakan Bilgin</li>
+			<li><xsl:value-of select="//Settings/User/@name"/></li>
 			<li><xsl:value-of select="count(.//*)"/> songs</li>
 			<li><xsl:call-template name="translate-duration">
 					<xsl:with-param name="ms" select="sum(.//@duration)" />

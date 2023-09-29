@@ -9,10 +9,10 @@
 }
 
 .display {
-	width: 320px;
+	width: 310px;
 	height: 30px;
 	padding-left: 17px;
-	padding-right: 17px;
+	padding-right: 11px;
 
 	&:after {
 		content: "";
@@ -20,7 +20,7 @@
 		top: -3px;
 		bottom: 3px;
 		left: 18px;
-		right: 18px;
+		right: 12px;
 		z-index: 1;
 		pointer-events: none;
 		border-radius: 3px;
@@ -32,7 +32,7 @@
 		top: -3px;
 		bottom: 0;
 		left: 17px;
-		right: 17px;
+		right: 11px;
 		width: auto;
 		height: auto;
 		z-index: 3;
@@ -163,13 +163,15 @@
 
 .tools-right {
 	// width: calc(40% - 120px);
+	width: 147px;
 
 	input[type=range] {
-		width: 110px;
+		width: 100px;
 		margin: 0 3px;
 	}
 }
 
-.toolbar-group_:last-child.empty {
-	// width: 10%;
+.tools-search {
+	padding-left: 17px;
+	width: 150px;
 }
