@@ -19,8 +19,8 @@
 		switch (event.type) {
 			case "init-render":
 				// pre-render name-pass
-				match = `//i[@name = "Hiphop"]`;
-				// match = `//i[@name = "Albums"]/i`,
+				// match = `//i[@name = "Hiphop"]`;
+				match = `//i[@name = "Albums"]/i[position() = 2]`,
 				window.bluePrint.selectNodes(match +"/*")
 					.map(node => {
 						let name = node.getAttribute("name");

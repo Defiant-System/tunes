@@ -19,7 +19,7 @@
 						<xsl:attribute name="class">active</xsl:attribute>
 					</xsl:if>
 					<span class="icon" data-click="toggle-folder">
-						<xsl:if test="count(./*)"><xsl:attribute name="class">icon arrow</xsl:attribute></xsl:if>
+						<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon arrow</xsl:attribute></xsl:if>
 					</span>
 					<span class="icon folder"></span>
 					<span class="name"><xsl:value-of select="@name"/></span>
@@ -33,11 +33,13 @@
 
 <xsl:template name="content-list">
 	<div class="playlist-info">
-		<h2>Boney M - Gold</h2>
+		<h2><xsl:value-of select="@artist"/> - <xsl:value-of select="@album"/></h2>
 		<ul class="details">
 			<li>Hakan Bilgin</li>
-			<li>17 songs</li>
-			<li>1 h 13 min</li>
+			<li><xsl:value-of select="count(.//*)"/> songs</li>
+			<li><xsl:call-template name="translate-duration">
+					<xsl:with-param name="ms" select="sum(.//@duration)" />
+				</xsl:call-template></li>
 		</ul>
 	</div>
 	<div class="table enum">
