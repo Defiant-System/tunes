@@ -29,6 +29,10 @@
 				isOn = Self.els.layout.hasClass("show-sidebar");
 				Self.els.layout.toggleClass("show-sidebar", isOn);
 				return !isOn;
+			case "toggle-folder":
+				isOn = event.el.hasClass("down");
+				event.el.toggleClass("down", isOn);
+				break;
 		}
 	}
 }

@@ -32,7 +32,6 @@
 							node.setAttribute("artist", artist);
 							node.setAttribute("title", title);
 						}
-						console.log( node.xml );
 					});
 				// render list view
 				window.render({
