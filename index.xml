@@ -5,8 +5,8 @@
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/tunes"/>
-		<meta name="width" value="900"/>
-		<meta name="height" value="540"/>
+		<meta name="width" value="900" min="820"/>
+		<meta name="height" value="540" min="460"/>
 		<meta name="top" value="230"/>
 		<meta name="left" value="110"/>
 		<meta name="minimize"/>
