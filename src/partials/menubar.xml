@@ -1,8 +1,8 @@
 <MenuBar>
-	<Menu name="Player">
-		<Menu name="About Player" shell="win -a"/>
+	<Menu name="Tunes">
+		<Menu name="About Tunes" shell="win -a"/>
 		<Menu type="divider"/>
-		<Menu name="Quit Player" shell="win -c"/>
+		<Menu name="Quit Tunes" shell="win -c"/>
 	</Menu>
 	<Menu name="Playback">
 		<Menu name="Play" click="play-play"/>
@@ -16,9 +16,9 @@
 		<Menu name="Volume Down" click="volume-down"/>
 	</Menu>
 	<Menu name="Help">
-		<Menu name="Send Player Feedback"/>
+		<Menu name="Send Tunes Feedback"/>
 		<Menu type="divider"/>
-		<Menu name="Player Help"/>
+		<Menu name="Tunes Help"/>
 		<Menu type="divider"/>
 		<Menu name="License"/>
 	</Menu>
