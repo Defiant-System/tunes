@@ -13,35 +13,91 @@
 			timeTotal: window.find(`.toolbar-group_ .time-total`),
 			progLoaded: window.find(".progress-loaded"),
 			progPlayed: window.find(".progress-played"),
+			audio: window.find("audio"),
 		};
+		// direct access to audio element
+		this.player = this.els.audio[0];
+		// bind event handlers
+		this.els.audio
+			.on("timeupdate", this.dispatch.bind(this))
+			.on("canplaythrough", this.dispatch.bind(this))
+			.on("progress", this.dispatch.bind(this));
 	},
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.toolbar,
 			name,
 			value,
+			time,
+			seconds,
+			minutes,
+			percentage,
 			el;
 		// console.log(event);
 		switch (event.type) {
+			// player events
+			case "timeupdate":
+				time = Math.round(Self.player.currentTime);
+				seconds = (time % 60).toString().padStart(2, "0");
+				minutes = parseInt(time / 60, 10);
+				Self.els.timePlayed.html(`${minutes}:${seconds}`);
+				// progress bar update
+				percentage = parseInt((Self.player.currentTime / Self.player.duration) * 100, 10);
+				if (percentage === 100) {
+					Self.dispatch({type: "toggle-play"});
+					percentage = 0;
+				}
+				Self.els.progPlayed.css({ width: percentage + "%" });
+				break;
+			case "canplaythrough":
+				time = Math.round(Self.player.duration);
+				seconds = (time % 60).toString().padStart(2, "0");
+				minutes = parseInt(time / 60, 10);
+				Self.els.timeTotal.html(`${minutes}:${seconds}`);
+
+				if (Self.skipPlayThrough) return;
+				// reset time played
+				Self.els.timePlayed.html(`0:00`);
+				break;
+			case "progress":
+				for (var i = 0; i < Self.player.buffered.length; i++) {
+					if (Self.player.buffered.start(Self.player.buffered.length - 1 - i) < Self.player.currentTime) {
+						percentage = parseInt((Self.player.buffered.end(Self.player.buffered.length - 1 - i) / Self.player.duration) * 100, 10);
+						break;
+					}
+				}
+				Self.els.progLoaded.css({ width: percentage + "%" });
+				break;
+			// custom events
 			case "reset-display":
-				Self.els.songTitle.html(event.title || "");
-				Self.els.timePlayed.html("0:00");
-				Self.els.timeTotal.html("0:00");
+				Self.els.songTitle.html(event.base || "");
+				Self.els.timePlayed.html(`0:00`);
+				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoaded.css({ width: 0 });
 				Self.els.progPlayed.css({ width: 0 });
+				// start loading file
+				Self.els.audio.attr({ src: event.path });
 				break;
 			case "toggle-sidebar":
 				return APP.sidebar.dispatch(event);
 			case "play-toggle":
 				el = event.el.find("> span");
-				value = el.hasClass("icon-play") ? "icon-pause" : "icon-play";
+				if (el.hasClass("icon-play")) {
+					value = "icon-pause";
+					Self.player.play();
+				} else {
+					value = "icon-play";
+					Self.player.pause();
+				}
+				// ui update
 				el.removeClass("icon-pause icon-play")
 					.css({ "background-image": `url('~/icons/${value}.png')` })
 					.addClass(value);
 				break;
-			case "play-prev": break;
-			case "play-toggle": break;
-			case "play-next": break;
+			case "play-prev":
+				break;
+			case "play-next":
+				break;
 			case "play-random":
 				value = event.el.hasClass("active");
 				event.el.toggleClass("active", value);

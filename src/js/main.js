@@ -25,11 +25,12 @@ const tunes = {
 			case "window.close":
 				break;
 			case "open.file":
-				Self.toolbar.dispatch({ type: "reset-display", title: event.base });
-				console.log(event);
+				Self.toolbar.dispatch({ ...event, type: "reset-display" });
 				break;
 			// custom events
-			case "progress":
+			case "show-playlist":
+				el = window.find(`sidebar .name:contains("${event.name}")`);
+				if (el.length) el.parent().trigger("click");
 				break;
 			default:
 				if (event.el) {
