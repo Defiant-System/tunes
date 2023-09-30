@@ -4,10 +4,9 @@
 	</Group>
 	<Group class="tools-left">
 		<Options>
-			<Tool symbol="icon-previous" click="previous"/>
-			<!-- <Tool symbol="icon-pause" click="pause"/> -->
-			<Tool symbol="icon-play" click="play"/>
-			<Tool symbol="icon-next" click="next"/>
+			<Tool symbol="icon-previous" click="play-prev"/>
+			<Tool symbol="icon-play" click="play-toggle"/>
+			<Tool symbol="icon-next" click="play-next"/>
 		</Options>
 	</Group>
 	<Group class="display">
@@ -24,8 +23,8 @@
 				<span class="time-total">-:--</span>
 			</div>
 			<!-- random / repeat -->
-			<span class="icon-random" click="play-random"/>
-			<span class="icon-repeat active" click="play-repeat"/>
+			<span class="icon-random" data-click="play-random"/>
+			<span class="icon-repeat active" data-click="play-repeat"/>
 		</Field>
 		<Canvas/>
 	</Group>

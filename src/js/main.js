@@ -24,19 +24,19 @@ const tunes = {
 			// system events
 			case "window.close":
 				break;
+			case "open.file":
+				Self.toolbar.dispatch({ type: "reset-display", title: event.base });
+				console.log(event);
+				break;
 			// custom events
 			case "progress":
 				break;
-			case "toggle-sidebar":
-				return Self.sidebar.dispatch(event);
 			default:
 				if (event.el) {
 					pEl = event.el.data("area") ? event.el : event.el.parents(`[data-area]`);
 					if (pEl.length) {
 						name = pEl.data("area");
-						Self[name].dispatch(event);
-					} else if (event.el.hasClass("toolbar-tool_")) {
-						Self.toolbar.dispatch(event);
+						return Self[name].dispatch(event);
 					}
 				}
 		}
