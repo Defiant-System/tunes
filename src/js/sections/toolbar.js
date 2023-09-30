@@ -5,9 +5,9 @@
 	init() {
 		// fast references
 		this.els = {
-			btnPlay: window.find(`.toolbar-tool_[data-click="play"]`),
-			btnPrev: window.find(`.toolbar-tool_[data-click="prev"]`),
-			btnNext: window.find(`.toolbar-tool_[data-click="next"]`),
+			btnPlay: window.find(`.toolbar-tool_[data-click="play-toggle"]`),
+			btnPrev: window.find(`.toolbar-tool_[data-click="play-prev"]`),
+			btnNext: window.find(`.toolbar-tool_[data-click="play-next"]`),
 			songTitle: window.find(`.toolbar-group_ .song-name`),
 			timePlayed: window.find(`.toolbar-group_ .time-played`),
 			timeTotal: window.find(`.toolbar-group_ .time-total`),
@@ -77,20 +77,26 @@
 				Self.els.progPlayed.css({ width: 0 });
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
+
+				if (event.autoplay) {
+					Self.dispatch({ type: "play-toggle", play: true })
+				}
 				break;
 			case "toggle-sidebar":
 				return APP.sidebar.dispatch(event);
 			case "play-toggle":
-				el = event.el.find("> span");
-				if (el.hasClass("icon-play")) {
+				el = Self.els.btnPlay;
+				if (!el.hasClass("playing") || event.play === true) {
 					value = "icon-pause";
+					el.addClass("playing");
 					Self.player.play();
 				} else {
 					value = "icon-play";
+					el.removeClass("playing");
 					Self.player.pause();
 				}
 				// ui update
-				el.removeClass("icon-pause icon-play")
+				el.find("> span").removeClass("icon-pause icon-play")
 					.css({ "background-image": `url('~/icons/${value}.png')` })
 					.addClass(value);
 				break;

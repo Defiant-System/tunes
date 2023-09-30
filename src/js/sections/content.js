@@ -14,6 +14,8 @@
 		let APP = tunes,
 			Self = APP.content,
 			xpath,
+			xnode,
+			row,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -41,6 +43,27 @@
 					template: "content-list",
 					target: Self.els.el,
 				});
+				break;
+			case "play-song":
+				row = event.el.parents(".row").addClass("track-playing");
+				xpath = `//i[@id="${row.data("id")}"]`;
+				xnode = window.bluePrint.selectSingleNode(xpath);
+
+				APP.toolbar.dispatch({
+					type: "reset-display",
+					base: xnode.getAttribute("name"),
+					path: xnode.getAttribute("path"),
+					autoplay: true,
+				});
+				break;
+			case "toggle-heart":
+				row = event.el.parents(".row");
+
+				if (event.el.hasClass("icon-heart")) {
+					event.el.prop({ className: "icon-heart-full" });
+				} else {
+					event.el.prop({ className: "icon-heart" });
+				}
 				break;
 		}
 	}

@@ -56,9 +56,10 @@
 			<xsl:for-each select="./*">
 				<div class="row">
 					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
+					<xsl:attribute name="data-id"><xsl:value-of select="@id"/></xsl:attribute>
 					<div class="cell">
-						<i class="icon-play"></i>
-						<i class="icon-heart">
+						<i class="icon-play" data-click="play-song"></i>
+						<i class="icon-heart" data-click="toggle-heart">
 							<xsl:if test="@fav = 1">
 								<xsl:attribute name="class">icon-heart-full</xsl:attribute>
 							</xsl:if>

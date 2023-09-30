@@ -231,7 +231,7 @@ content {
 				.row {
 					counter-increment: row-num;
 
-					&:hover .cell:nth-child(1) {
+					&:hover:not(.track-playing) .cell:nth-child(1) {
 						.icon-play { display: inline-block; }
 
 						&:before { display: none; }
@@ -239,7 +239,7 @@ content {
 
 					&.track-playing {
 						.cell:nth-child(1):before {
-							display: none;
+							// display: none;
 						}
 					}
 
@@ -344,7 +344,7 @@ content {
 			}
 
 			&.track-playing {
-				color: #00ea89;
+				color: #f90;
 
 				&:hover .cell:nth-child(1) {
 					.icon-play {
