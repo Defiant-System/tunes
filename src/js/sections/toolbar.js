@@ -15,8 +15,10 @@
 			songTitle: window.find(`.toolbar-group_ .song-name`),
 			timePlayed: window.find(`.toolbar-group_ .time-played`),
 			timeTotal: window.find(`.toolbar-group_ .time-total`),
-			progTrack: window.find(`.progress-track`),
+			progLoad: window.find(`.progress-loaded`),
 			progPlayed: window.find(`.progress-played`),
+			progTrack: window.find(`.progress-track`),
+			progKnob: window.find(`.progress-track .knob`),
 			volumeRange: window.find(`.tools-right input[name="volume"]`),
 			audio: window.find("audio"),
 		};
@@ -45,22 +47,25 @@
 			seconds,
 			minutes,
 			percentage,
+			left,
 			el;
 		// console.log(event);
 		switch (event.type) {
 			// player events
 			case "timeupdate":
+				// if drag'n drop seeker
+				if (Self.drag) return;
+				// calculate display ui update
 				time = Math.round(Self.player.currentTime);
 				seconds = (time % 60).toString().padStart(2, "0");
 				minutes = parseInt(time / 60, 10);
 				Self.els.timePlayed.html(`${minutes}:${seconds}`);
 				// progress bar update
-				percentage = parseInt((Self.player.currentTime / Self.player.duration) * 100, 10);
-				if (percentage === 100) {
-					Self.dispatch({type: "toggle-play"});
-					percentage = 0;
-				}
-				Self.els.progPlayed.css({ width: percentage + "%" });
+				percentage = Self.player.currentTime / Self.player.duration;
+				if (percentage === 1) return Self.dispatch({ type: "play-next" });
+				left = +Self.els.progTrack.prop("offsetWidth") * percentage;
+				Self.els.progKnob.css({ left });
+				Self.els.progPlayed.css({ width: left });
 				break;
 			case "canplaythrough":
 				time = Math.round(Self.player.duration);
@@ -79,14 +84,14 @@
 						break;
 					}
 				}
-				Self.els.progLoaded.css({ width: percentage + "%" });
+				Self.els.progLoad.css({ width: percentage + "%" });
 				break;
 			// custom events
 			case "reset-display":
 				Self.els.songTitle.html(event.base || "");
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
-				Self.els.progLoaded.css({ width: 0 });
+				Self.els.progLoad.css({ width: 0 });
 				Self.els.progPlayed.css({ width: 0 });
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
@@ -170,9 +175,12 @@
 				Drag.percentage = Drag.invLerp_(Drag.minX, Drag.maxX, left);
 				break;
 			case "mouseup":
-				console.log( "jump to: ", Drag.percentage )
+				// seek to "time"
+				Self.player.currentTime = Self.player.duration * Drag.percentage;
 				// reset progress-track
 				Drag.rEl.removeClass("hover");
+				// clean up
+				delete Self.drag;
 				// cover app
 				window.el.removeClass("ant-window-cover_");
 				// unbind event handlers

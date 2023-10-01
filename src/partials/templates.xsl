@@ -57,7 +57,7 @@
 				<xsl:variable name="song" select="//Data/AllFiles/*[@id = current()/@ref]"/>
 				<div class="row">
 					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
-					<xsl:attribute name="data-id"><xsl:value-of select="@id"/></xsl:attribute>
+					<xsl:attribute name="data-id"><xsl:value-of select="@ref"/></xsl:attribute>
 					<div class="cell">
 						<i class="icon-play" data-click="play-song"></i>
 						<i class="icon-heart" data-click="toggle-heart">

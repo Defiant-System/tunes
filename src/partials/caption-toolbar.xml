@@ -17,6 +17,7 @@
 			<div class="progress">
 				<span class="time-played">-:--</span>
 				<span class="progress-track">
+					<span class="progress-loaded"></span>
 					<span class="progress-played"></span>
 					<span class="knob"></span>
 				</span>

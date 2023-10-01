@@ -60,7 +60,7 @@
 				
 				// prepare toolbar event
 				row.addClass("track-playing active");
-				xpath = `//i[@id="${row.data("id")}"]`;
+				xpath = `//AllFiles//i[@id="${row.data("id")}"]`;
 				xnode = window.bluePrint.selectSingleNode(xpath);
 
 				APP.toolbar.dispatch({
