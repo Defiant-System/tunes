@@ -344,7 +344,7 @@ content {
 			}
 
 			&.track-playing {
-				color: #f90;
+				color: #69d;
 
 				&:hover .cell:nth-child(1) {
 					.icon-play {
@@ -398,7 +398,17 @@ content {
 							box-shadow: 0 0 0 2px rgba(0,0,0,.35);
 						}
 					}
+
+					.icon-heart,
+					.icon-heart-full {
+						filter: hue-rotate(210deg);
+					}
 				}
+			}
+
+			.icon-heart,
+			.icon-heart-full {
+				filter: grayscale(1);
 			}
 		}
 
@@ -429,8 +439,8 @@ i[class^="icon-"] {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	display: inline-block;
 	opacity: .3;
+	display: inline-block;
 	transition: opacity 200ms ease-in-out;
 
 	&.icon-play         { background-image: url(~/icons/icon-play.png); }
