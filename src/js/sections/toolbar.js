@@ -41,6 +41,8 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.toolbar,
+			xpath,
+			xnode,
 			name,
 			value,
 			time,
@@ -88,7 +90,7 @@
 				break;
 			// custom events
 			case "reset-display":
-				Self.els.songTitle.html(event.base || "");
+				Self.els.songTitle.html(event.name || "");
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoad.css({ width: 0 });
@@ -102,6 +104,21 @@
 				break;
 			case "toggle-sidebar":
 				return APP.sidebar.dispatch(event);
+			case "play-list":
+				Self.playIndex = event.index || 0;
+				Self.playList = event.list || Self.playList || APP.content.dispatch({ type: "get-song-list" });
+
+				value = Self.playList[Self.playIndex];
+				xpath = `//AllFiles//i[@id="${value}"]`;
+				xnode = window.bluePrint.selectSingleNode(xpath);
+
+				Self.dispatch({
+					type: "reset-display",
+					name: xnode.getAttribute("name"),
+					path: xnode.getAttribute("path"),
+					autoplay: true,
+				});
+				break;
 			case "play-toggle":
 				el = Self.els.btnPlay;
 				if (!el.hasClass("playing") || event.play === true) {
@@ -118,11 +135,17 @@
 					.css({ "background-image": `url('~/icons/${value}.png')` })
 					.addClass(value);
 				// content list update
-				APP.content.els.el.find(".track-playing").toggleClass("paused", el.hasClass("playing"));
+				APP.content.dispatch({
+					type: "update-active",
+					id: Self.playList[Self.playIndex],
+					playing: el.hasClass("playing"),
+				});
 				break;
 			case "play-prev":
+				Self.dispatch({ type: "play-list", index: Self.playIndex - 1 });
 				break;
 			case "play-next":
+				Self.dispatch({ type: "play-list", index: Self.playIndex + 1 });
 				break;
 			case "play-random":
 				value = event.el.hasClass("active");

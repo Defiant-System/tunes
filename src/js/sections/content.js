@@ -14,7 +14,7 @@
 		let APP = tunes,
 			Self = APP.content,
 			xpath,
-			xnode,
+			list,
 			row,
 			el;
 		// console.log(event);
@@ -44,6 +44,14 @@
 					target: Self.els.el,
 				});
 				break;
+			case "update-active":
+				el = Self.els.el.find(`.row[data-id="${event.id}"]`);
+				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
+				el.addClass("track-playing")
+					.toggleClass("paused", event.playing);
+				break;
+			case "get-song-list":
+				return Self.els.el.find(".row[data-id]").map(r => r.getAttribute("data-id"));
 			case "play-song":
 				row = event.el.parents(".row");
 				if (row.hasClass("track-playing")) {
@@ -60,14 +68,11 @@
 				
 				// prepare toolbar event
 				row.addClass("track-playing active");
-				xpath = `//AllFiles//i[@id="${row.data("id")}"]`;
-				xnode = window.bluePrint.selectSingleNode(xpath);
-
+				// create list and play songs
 				APP.toolbar.dispatch({
-					type: "reset-display",
-					base: xnode.getAttribute("name"),
-					path: xnode.getAttribute("path"),
-					autoplay: true,
+					type: "play-list",
+					list: Self.dispatch({ type: "get-song-list" }),
+					index: row.index(),
 				});
 				break;
 			case "toggle-heart":
