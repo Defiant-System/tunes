@@ -99,6 +99,8 @@
 				el.find("> span").removeClass("icon-pause icon-play")
 					.css({ "background-image": `url('~/icons/${value}.png')` })
 					.addClass(value);
+				// content list update
+				APP.content.els.el.find(".track-playing").toggleClass("paused", el.hasClass("playing"));
 				break;
 			case "play-prev":
 				break;

@@ -80,11 +80,15 @@ content {
 						//color: rgba(0,0,0,0.73);
 
 						&.active {
-							background: rgba(#000,0.15);
+							background: #36b;
 							font-weight: 600;
 
 							.name {
-								color: #666;
+								color: #fff;
+							}
+
+							.icon {
+								filter: invert(1) brightness(2);
 							}
 						}
 
@@ -373,11 +377,7 @@ content {
 					.icon-play {
 						&:after {
 							background-image: url(~/icons/icon-play.png);
-							// background-size: 50% 45%;
-							// top: -2px;
-							// left: -2px;
-							// width: 19px;
-							// height: 19px;
+							background-position: 6px 5px;
 						}
 					}
 				}
@@ -386,15 +386,11 @@ content {
 					.icon-play {
 						background-size: 0 0;
 						opacity: .5;
-
-						// &:before {
-						// 	box-shadow: 0 0 0 2px rgba(0,0,0,.35);
-						// }
 					}
 
 					.icon-heart,
 					.icon-heart-full {
-						filter: hue-rotate(230deg) saturate(5);
+						filter: hue-rotate(210deg) brightness(.75) saturate(2);
 					}
 				}
 			}
