@@ -1,69 +1,43 @@
 <Data>
 	<Playlists>
 		<i name="Hiphop">
-			<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" duration="311209"/>
-			<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" duration="312536"/>
-			<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" duration="122146"/>
-			<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" duration="751318"/>
-			<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" duration="253453" fav="1"/>
-			<i id="453a3dae0ddba5e62fabb483ae3d0b957310f31a" duration="1012311"/>
-			<i id="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0" duration="843249" fav="1"/>
-			<i id="831b87865520e513805e033568a7cdc90bff4881" duration="401226"/>
-			<i id="4434a582d688eb895f53bfafca20199468785c43" duration="312109"/>
+			<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
+			<i ref="18eea04e31813f6a294f920be15d727ae92c8aaa"/>
+			<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+			<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+			<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
+			<i ref="453a3dae0ddba5e62fabb483ae3d0b957310f31a"/>
+			<i ref="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0"/>
+			<i ref="831b87865520e513805e033568a7cdc90bff4881"/>
+			<i ref="4434a582d688eb895f53bfafca20199468785c43"/>
 		</i>
 		<i name="Chillout"/>
 		<i name="Classic">
-			<i id="a884a5ae543073430d2a0d01e8186707d06e276f" duration="754346"/>
+			<i ref="a884a5ae543073430d2a0d01e8186707d06e276f"/>
 		</i>
 		<i name="Rock"/>
 		<i name="Oldies">
-			<i id="87ee181bf9f493e82f7829b8f8aeef811c61981f" duration="131216"/>
+			<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
 		</i>
 		<i name="Albums">
-			<i artist="Boney M" album="Gold">
-				<i name="Rivers Of Babylon.mp3" duration="311209" fav="1"/>
-				<i name="Daddy Cool.mp3" duration="312536"/>
-				<i name="Sunny.mp3" duration="122146"/>
-				<i name="Brown Girl In The Ring.mp3" duration="751318" fav="1"/>
-				<i name="Rasputin.mp3" duration="253453"/>
-				<i name="Ma Baker.mp3" duration="1012311" fav="1"/>
-				<i name="Hooray! Hooray! It's A Holi-Holiday.mp3" duration="843249" fav="1"/>
-				<i name="Painter Man.mp3" duration="131216"/>
-				<i name="Belfast.mp3" duration="754346"/>
-				<i name="No Woman No Cry.mp3" duration="401226"/>
-				<i name="Mary's Boy Child, Oh My Lord.mp3" duration="312109"/>
-				<i name="Gotta Go Home.mp3" duration="331336"/>
-				<i name="Still I'm Sad.mp3" duration="243456"/>
-				<i name="Nightflight To Venus.mp3" duration="621018"/>
-				<i name="Felicidad.mp3" duration="412453"/>
-			</i>
-			<i artist="Enigma" album="MCMXC a.D.">
-				<i name="The voice of enigma.mp3" duration="311209"/>
-				<i name="Principles of lust.mp3" duration="312536"/>
-				<i name="Sadeness.mp3" duration="122146"/>
-				<i name="Find love.mp3" duration="751318"/>
-				<i name="Sadeness (reprise).mp3" duration="253453"/>
-				<i name="Callas went away.mp3" duration="1012311"/>
-				<i name="Mea culpa.mp3" duration="843249"/>
-				<i name="The voice &amp; the snake.mp3" duration="131216"/>
-				<i name="Knocking on forbidden doors.mp3" duration="754346"/>
-				<i name="Back to the rivers of belief.mp3" duration="401226"/>
-				<i name="Hallelujah.mp3" duration="312109"/>
-				<i name="Sadeness (meditation).mp3" duration="331336"/>
-				<i name="Mea culpa (fading shades).mp3" duration="243456"/>
-				<i name="Principles of lust (everlasting lust).mp3" duration="621018"/>
-				<i name="The river of blief (the returnung silence).mp3" duration="412453"/>
-			</i>
-		</i>
-		<i name="Albums">
-			<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" duration="311209"/>
-			<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" duration="122146"/>
-			<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" duration="751318"/>
-			<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" duration="253453"/>
+			<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
+			<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+			<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+			<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
 		</i>
 	</Playlists>
 	<Unsorted>
 		<i name="Sadeness.mp3" duration="122146"/>
 	</Unsorted>
-	<AllFiles/>
+	<AllFiles>
+		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" duration="311209"/>
+		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" duration="312536"/>
+		<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" duration="122146"/>
+		<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" duration="751318"/>
+		<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" duration="253453" fav="1"/>
+		<i id="453a3dae0ddba5e62fabb483ae3d0b957310f31a" duration="1012311"/>
+		<i id="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0" duration="843249" fav="1"/>
+		<i id="831b87865520e513805e033568a7cdc90bff4881" duration="401226"/>
+		<i id="4434a582d688eb895f53bfafca20199468785c43" duration="312109"/>
+	</AllFiles>
 </Data>

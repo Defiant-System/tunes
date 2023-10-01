@@ -5,6 +5,8 @@
 	init() {
 		// fast references
 		this.els = {
+			doc: $(document),
+			content: window.find(`content`),
 			btnPlay: window.find(`.toolbar-tool_[data-click="play-toggle"]`),
 			btnPrev: window.find(`.toolbar-tool_[data-click="play-prev"]`),
 			btnNext: window.find(`.toolbar-tool_[data-click="play-next"]`),
@@ -13,7 +15,7 @@
 			songTitle: window.find(`.toolbar-group_ .song-name`),
 			timePlayed: window.find(`.toolbar-group_ .time-played`),
 			timeTotal: window.find(`.toolbar-group_ .time-total`),
-			progLoaded: window.find(`.progress-loaded`),
+			progTrack: window.find(`.progress-track`),
 			progPlayed: window.find(`.progress-played`),
 			volumeRange: window.find(`.tools-right input[name="volume"]`),
 			audio: window.find("audio"),
@@ -31,6 +33,8 @@
 			.on("timeupdate", this.dispatch.bind(this))
 			.on("canplaythrough", this.dispatch.bind(this))
 			.on("progress", this.dispatch.bind(this));
+		// display seeker
+		this.els.progTrack.on("mousedown", this.doSeeker);
 	},
 	dispatch(event) {
 		let APP = tunes,
@@ -128,6 +132,51 @@
 				Self.player.volume = event.value / 100;
 				// auto update settings
 				APP.settings.Volume = event.value;
+				break;
+		}
+	},
+	doSeeker(event) {
+		let APP = tunes,
+			Self = APP.toolbar,
+			Drag = Self.drag;
+		switch (event.type) {
+			case "mousedown":
+				let el  = $(event.target);
+				if (el.hasClass("progress-track")) el = el.find(".knob");
+
+				let rEl = Self.els.progTrack.parent(),
+					pEl = Self.els.progPlayed,
+					clickX = event.clientX - +el.prop("offsetLeft"),
+					minX = 0,
+					maxX = +rEl.prop("offsetWidth"),
+					min_ = Math.min,
+					max_ = Math.max,
+					invLerp_ = Math.invLerp;
+
+				Self.drag = { el, pEl, rEl, clickX, minX, maxX, min_, max_, invLerp_ };
+
+				// "hover" even if mouse go away
+				rEl.addClass("hover");
+				// cover app
+				window.el.addClass("ant-window-cover_");
+				// bind event handlers
+				Self.els.doc.on("mousemove mouseup", Self.doSeeker);
+				break;
+			case "mousemove":
+				let left = Drag.min_(Drag.max_(event.clientX - Drag.clickX, Drag.minX), Drag.maxX);
+				Drag.el.css({ left });
+				Drag.pEl.css({ width: left });
+				// save percentage
+				Drag.percentage = Drag.invLerp_(Drag.minX, Drag.maxX, left);
+				break;
+			case "mouseup":
+				console.log( "jump to: ", Drag.percentage )
+				// reset progress-track
+				Drag.rEl.removeClass("hover");
+				// cover app
+				window.el.removeClass("ant-window-cover_");
+				// unbind event handlers
+				Self.els.doc.off("mousemove mouseup", Self.doSeeker);
 				break;
 		}
 	}

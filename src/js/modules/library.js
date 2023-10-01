@@ -15,7 +15,7 @@
 			case "parse-music-files":
 				event.list.map(file => {
 					let id = file.path.sha1(),
-						xNode = window.bluePrint.selectNodes(`//Data//*[@id="${id}"]`);
+						xNode = window.bluePrint.selectNodes(`//AllFiles//*[@id="${id}"]`);
 					if (xNode.length) {
 						let name = file.name.endsWith(".mp3") ? file.name.slice(0,-4) : file.name;
 						if (name.includes(" - ")) {
@@ -30,8 +30,8 @@
 							x.setAttribute("path", file.path);
 						});
 					}
-					// console.log(file);
 				});
+				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
 		}
 	}

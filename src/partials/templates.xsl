@@ -54,6 +54,7 @@
 		</div>
 		<div class="table-body">
 			<xsl:for-each select="./*">
+				<xsl:variable name="song" select="//Data/AllFiles/*[@id = current()/@ref]"/>
 				<div class="row">
 					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
 					<xsl:attribute name="data-id"><xsl:value-of select="@id"/></xsl:attribute>
@@ -67,24 +68,21 @@
 					</div>
 					<div class="cell">
 						<xsl:choose>
-							<xsl:when test="@title"><xsl:value-of select="@title"/></xsl:when>
-							<xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+							<xsl:when test="$song/@title"><xsl:value-of select="$song/@title"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="$song/@name"/></xsl:otherwise>
 						</xsl:choose>
 					</div>
 					<div class="cell">
-						<xsl:choose>
-							<xsl:when test="@title"><xsl:value-of select="@artist"/></xsl:when>
-							<xsl:otherwise><xsl:value-of select="../@artist"/></xsl:otherwise>
-						</xsl:choose>
+						<xsl:value-of select="$song/@artist"/>
 					</div>
 					<div class="cell">
 						<xsl:choose>
-							<xsl:when test="@title"><xsl:value-of select="@album"/></xsl:when>
+							<xsl:when test="$song/@album"><xsl:value-of select="$song/@album"/></xsl:when>
 							<xsl:otherwise><xsl:value-of select="../@album"/></xsl:otherwise>
 						</xsl:choose>
 					</div>
 					<div class="cell"><xsl:call-template name="translate-duration">
-						<xsl:with-param name="ms" select="@duration" />
+						<xsl:with-param name="ms" select="$song/@duration" />
 					</xsl:call-template></div>
 				</div>
 			</xsl:for-each>

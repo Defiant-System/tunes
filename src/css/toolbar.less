@@ -70,8 +70,12 @@
 		height: 11px;
 		// background: rgba(#000,.1);
 
+		&.hover,
 		&:hover {
 			.progress-track {
+				top: 3px;
+				height: 4px;
+
 				.progress-played {
 					background: #4e97f5;
 				}
@@ -97,16 +101,20 @@
 				bottom: 0;
 				left: 0;
 				width: 0;
+				width: 50px;
 				z-index: 1;
+				pointer-events: none;
 			}
 
 			.knob {
 				background: #999;
 				position: absolute;
 				top: -2px;
+				bottom: -2px;
 				left: 0;
-				width: 3px;
-				height: 6px;
+				left: 50px;
+				width: 4px;
+				margin-left: -2px;
 				z-index: 2;
 				opacity: 0;
 				box-shadow: 0 0 0 1px rgba(#fff,.2);
