@@ -30,7 +30,7 @@
 	</Group>
 	<Group class="tools-right">
 		<Icon symbol="icon-volume-0"/>
-		<Slider id="volume" class="volume" name="volume" value="50" min="0" max="100" step="1" change="set-volume"/>
+		<Slider id="volume" name="volume" value="50" min="0" max="100" step="1" change="set-volume"/>
 		<Icon symbol="icon-volume-3"/>
 	</Group>
 	<Group class="empty"/>

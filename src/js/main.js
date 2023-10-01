@@ -3,8 +3,20 @@
 @import "modules/test.js"
 
 
+
+let Pref = {
+		"Sidebar": true,
+		"Random": false,
+		"Repeat": false,
+		"Volume": .65,
+	};
+
+
 const tunes = {
 	async init() {
+		// get settings, if any
+		this.settings = window.settings.getItem("settings") || { ...Pref };
+
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")

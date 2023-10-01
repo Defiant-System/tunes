@@ -8,15 +8,24 @@
 			btnPlay: window.find(`.toolbar-tool_[data-click="play-toggle"]`),
 			btnPrev: window.find(`.toolbar-tool_[data-click="play-prev"]`),
 			btnNext: window.find(`.toolbar-tool_[data-click="play-next"]`),
+			iconRandom: window.find(`.toolbar-group_ .icon-random`),
+			iconRepeat: window.find(`.toolbar-group_ .icon-repeat`),
 			songTitle: window.find(`.toolbar-group_ .song-name`),
 			timePlayed: window.find(`.toolbar-group_ .time-played`),
 			timeTotal: window.find(`.toolbar-group_ .time-total`),
-			progLoaded: window.find(".progress-loaded"),
-			progPlayed: window.find(".progress-played"),
+			progLoaded: window.find(`.progress-loaded`),
+			progPlayed: window.find(`.progress-played`),
+			volumeRange: window.find(`.tools-right input[name="volume"]`),
 			audio: window.find("audio"),
 		};
 		// direct access to audio element
 		this.player = this.els.audio[0];
+		// random & repeat buttons
+		this.els.iconRandom.toggleClass("active", !tunes.settings.Random);
+		this.els.iconRepeat.toggleClass("active", !tunes.settings.Repeat);
+		// set volume
+		this.player.volume = tunes.settings.Volume;
+		this.els.volumeRange.val(tunes.settings.Volume * 100 | 0);
 		// bind event handlers
 		this.els.audio
 			.on("timeupdate", this.dispatch.bind(this))
@@ -115,7 +124,10 @@
 				event.el.toggleClass("active", value);
 				break;
 			case "set-volume":
-				console.log(event.value);
+				// set volume of player
+				Self.player.volume = event.value / 100;
+				// auto update settings
+				APP.settings.Volume = event.value;
 				break;
 		}
 	}
