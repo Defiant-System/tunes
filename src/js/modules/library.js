@@ -13,13 +13,16 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.library,
+			xRoot,
 			el;
 		// console.log(event);
 		switch (event.type) {
 			case "parse-music-files":
+				xRoot = window.bluePrint.selectSingleNode(`//AllFiles`);
+				// loop all files
 				event.list.map(file => {
 					let id = file.path.sha1(),
-						xNode = window.bluePrint.selectNodes(`//AllFiles//*[@id="${id}"]`);
+						xNode = xRoot.selectNodes(`//*[@id="${id}"]`);
 					if (xNode.length) {
 						let name = file.name.endsWith(".mp3") ? file.name.slice(0,-4) : file.name;
 						if (name.includes(" - ")) {
@@ -34,9 +37,16 @@
 							x.setAttribute("path", file.path);
 							x.setAttribute("date", file.isodate);
 						});
+					} else {
+						// new file
+						xNode = $.nodeFromString(`<i id="${id}" name="${file.name}"/>`);
+						xNode = xRoot.appendChild(xNode);
+						
 					}
 				});
-				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
+				// check if old nodes needs to be purged
+
+				console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
 		}
 	}

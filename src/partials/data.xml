@@ -27,7 +27,7 @@
 		</i>
 	</Playlists>
 	<System>
-		<i name="Favorites" icon="heart-full" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
+		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
 		<i name="History" icon="upload" xpath="//AllFiles" sort="@lp" limit="5"/>
 		<i name="Recently Uploaded" icon="clock" xpath="//AllFiles" sort="@date" limit="5"/>
 	</System>
