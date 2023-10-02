@@ -22,6 +22,10 @@
 			volumeRange: window.find(`.tools-right input[name="volume"]`),
 			audio: window.find("audio"),
 		};
+		// defaults
+		this.playTrack = null;
+		this.playIndex = 0;
+		this.playList = [];
 		// direct access to audio element
 		this.player = this.els.audio[0];
 		// random & repeat buttons
@@ -74,6 +78,13 @@
 				seconds = (time % 60).toString().padStart(2, "0");
 				minutes = parseInt(time / 60, 10);
 				Self.els.timeTotal.html(`${minutes}:${seconds}`);
+				// update song duration
+				APP.content.dispatch({
+					type: "update-song-duration",
+					id: Self.playTrack,
+					time: `${minutes}:${seconds}`,
+					duration: time * 1e3,
+				});
 
 				if (Self.skipPlayThrough) return;
 				// reset time played
@@ -108,21 +119,24 @@
 				return APP.sidebar.dispatch(event);
 			case "play-list":
 				Self.playIndex = event.index || 0;
-				Self.playList = event.list || Self.playList || APP.content.dispatch({ type: "get-song-list" });
-
-				value = Self.playList[Self.playIndex];
-				xpath = `//AllFiles//i[@id="${value}"]`;
-				xnode = window.bluePrint.selectSingleNode(xpath);
+				Self.playList = event.list || APP.content.dispatch({ type: "get-song-list" });
+				Self.playTrack = Self.playList[Self.playIndex];
+				
+				xpath = `//AllFiles//i[@id="${Self.playTrack}"]`;
+				Self.playNode = window.bluePrint.selectSingleNode(xpath);
 
 				Self.dispatch({
 					type: "reset-display",
-					name: xnode.getAttribute("name"),
-					path: xnode.getAttribute("path"),
+					name: Self.playNode.getAttribute("name"),
+					path: Self.playNode.getAttribute("path"),
 					autoplay: true,
 				});
 				break;
 			case "play-toggle":
 				el = Self.els.btnPlay;
+				// get track, if not set
+				if (!Self.playTrack) return Self.dispatch({ type: "play-list" });
+				
 				if (!el.hasClass("playing") || event.play === true) {
 					value = "icon-pause";
 					el.addClass("playing");
@@ -139,7 +153,7 @@
 				// content list update
 				APP.content.dispatch({
 					type: "update-active",
-					id: Self.playList[Self.playIndex],
+					id: Self.playTrack,
 					playing: el.hasClass("playing"),
 				});
 				break;

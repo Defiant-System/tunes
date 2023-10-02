@@ -39,14 +39,15 @@
 						});
 					} else {
 						// new file
-						xNode = $.nodeFromString(`<i id="${id}" name="${file.name}"/>`);
+						xNode = $.nodeFromString(`<i id="${id}" name="${file.name}" path="${file.path}"/>`);
 						xNode = xRoot.appendChild(xNode);
-						
+
 					}
 				});
 				// check if old nodes needs to be purged
+				xRoot.selectNodes(`.//*[not(@path)]`).map(x => x.parentNode.removeChild(x));
 
-				console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
+				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
 		}
 	}

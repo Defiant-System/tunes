@@ -97,9 +97,11 @@
 							<xsl:otherwise><xsl:value-of select="../@album"/></xsl:otherwise>
 						</xsl:choose>
 					</div>
-					<div class="cell"><xsl:call-template name="translate-duration">
-						<xsl:with-param name="ms" select="$song/@dur" />
-					</xsl:call-template></div>
+					<div class="cell"><xsl:if test="$song/@dur">
+						<xsl:call-template name="translate-duration">
+							<xsl:with-param name="ms" select="$song/@dur" />
+						</xsl:call-template>
+					</xsl:if></div>
 				</div>
 			</xsl:for-each>
 		</div>
