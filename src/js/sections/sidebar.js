@@ -13,6 +13,8 @@
 			match: `//Data`,
 			target: this.els.el
 		});
+		// "auto click" item saved in settings
+		this.dispatch({ type: "apply-settings" });
 	},
 	dispatch(event) {
 		let APP = tunes,
@@ -25,9 +27,20 @@
 			el;
 		// console.log(event);
 		switch (event.type) {
+			case "apply-settings":
+				if (APP.settings.Sidebar["expanded"]) {
+					window.find(`.toolbar-tool_[data-click="toggle-sidebar"]`).trigger("click");
+				}
+				setTimeout(() => {
+					Self.els.el.find(`li:nth(${APP.settings.Sidebar["active-li"]})`).trigger("click")
+				});
+				break;
 			case "toggle-sidebar":
 				isOn = Self.els.layout.hasClass("show-sidebar");
 				Self.els.layout.toggleClass("show-sidebar", isOn);
+				// save to settings
+				APP.settings.Sidebar["expanded"] = !isOn;
+
 				return !isOn;
 			case "toggle-folder":
 				isOn = event.el.hasClass("down");
@@ -36,6 +49,8 @@
 			case "select-playlist":
 				Self.els.el.find(".active").removeClass("active");
 				el = $(event.target).addClass("active");
+				// save to settings
+				APP.settings.Sidebar["active-li"] = el.index();
 
 				options = {
 					changePath: `//xsl:for-each`,
@@ -44,6 +59,7 @@
 					sortSelect: `@lp`,
 					sortOrder: `ascending`,
 					sortType: `text`,
+					limit: 999,
 				};
 
 				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${el.data("_id")}"]`);

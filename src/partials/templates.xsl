@@ -69,40 +69,42 @@
 		<div class="table-body">
 			<xsl:for-each select="./*">
 				<xsl:sort order="ascending" select="@lp"/>
-				<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
-				<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
-				<div class="row">
-					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
-					<xsl:attribute name="data-id"><xsl:value-of select="@ref | @id"/></xsl:attribute>
-					<div class="cell">
-						<i class="icon-play" data-click="play-song"></i>
-						<i class="icon-heart" data-click="toggle-heart">
-							<xsl:if test="$song/@fav = 1">
-								<xsl:attribute name="class">icon-heart-full</xsl:attribute>
-							</xsl:if>
-						</i>
+				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
+					<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
+					<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
+					<div class="row">
+						<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
+						<xsl:attribute name="data-id"><xsl:value-of select="@ref | @id"/></xsl:attribute>
+						<div class="cell">
+							<i class="icon-play" data-click="play-song"></i>
+							<i class="icon-heart" data-click="toggle-heart">
+								<xsl:if test="$song/@fav = 1">
+									<xsl:attribute name="class">icon-heart-full</xsl:attribute>
+								</xsl:if>
+							</i>
+						</div>
+						<div class="cell">
+							<xsl:choose>
+								<xsl:when test="$song/@title"><xsl:value-of select="$song/@title"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="$song/@name"/></xsl:otherwise>
+							</xsl:choose>
+						</div>
+						<div class="cell">
+							<xsl:value-of select="$song/@artist"/>
+						</div>
+						<div class="cell">
+							<xsl:choose>
+								<xsl:when test="$song/@album"><xsl:value-of select="$song/@album"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="../@album"/></xsl:otherwise>
+							</xsl:choose>
+						</div>
+						<div class="cell"><xsl:if test="$song/@dur">
+							<xsl:call-template name="translate-duration">
+								<xsl:with-param name="ms" select="$song/@dur" />
+							</xsl:call-template>
+						</xsl:if></div>
 					</div>
-					<div class="cell">
-						<xsl:choose>
-							<xsl:when test="$song/@title"><xsl:value-of select="$song/@title"/></xsl:when>
-							<xsl:otherwise><xsl:value-of select="$song/@name"/></xsl:otherwise>
-						</xsl:choose>
-					</div>
-					<div class="cell">
-						<xsl:value-of select="$song/@artist"/>
-					</div>
-					<div class="cell">
-						<xsl:choose>
-							<xsl:when test="$song/@album"><xsl:value-of select="$song/@album"/></xsl:when>
-							<xsl:otherwise><xsl:value-of select="../@album"/></xsl:otherwise>
-						</xsl:choose>
-					</div>
-					<div class="cell"><xsl:if test="$song/@dur">
-						<xsl:call-template name="translate-duration">
-							<xsl:with-param name="ms" select="$song/@dur" />
-						</xsl:call-template>
-					</xsl:if></div>
-				</div>
+				</xsl:if>
 			</xsl:for-each>
 		</div>
 	</div>

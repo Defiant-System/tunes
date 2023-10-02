@@ -5,7 +5,10 @@
 
 
 let Pref = {
-		"Sidebar": true,
+		"Sidebar": {
+			"expanded": true,
+			"active-li": 1,
+		},
 		"Random": false,
 		"Repeat": false,
 		"Volume": .65,
@@ -59,8 +62,8 @@ const tunes = {
 	},
 	library: @import "modules/library.js",
 	toolbar: @import "sections/toolbar.js",
-	sidebar: @import "sections/sidebar.js",
 	content: @import "sections/content.js",
+	sidebar: @import "sections/sidebar.js",
 };
 
 window.exports = tunes;

@@ -18,6 +18,8 @@
 		// console.log(event);
 		switch (event.type) {
 			case "render-playlist":
+				// set limit value
+				window.bluePrint.selectSingleNode(`//AllFiles`).setAttribute("limit", event.options.limit);
 				// render list view
 				window.render({
 					match: event.xpath,
