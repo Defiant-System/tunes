@@ -36,6 +36,8 @@ const tunes = {
 		switch (event.type) {
 			// system events
 			case "window.close":
+				// save settings
+				window.settings.setItem("settings", Self.settings);
 				break;
 			case "open.file":
 				Self.toolbar.dispatch({ ...event, type: "reset-display" });
