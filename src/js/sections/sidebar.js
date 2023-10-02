@@ -13,6 +13,7 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
+			title,
 			xpath,
 			isOn,
 			el;
@@ -38,8 +39,9 @@
 				Self.els.el.find(".active").removeClass("active");
 				el = $(event.target).addClass("active");
 
+				title = el.find(".name").html();
 				xpath = el.data("xpath") || `//*[@name = "${el.find(".name").text()}"]`;
-				APP.content.dispatch({ type: "render-playlist", xpath });
+				APP.content.dispatch({ type: "render-playlist", xpath, title });
 				break;
 		}
 	}

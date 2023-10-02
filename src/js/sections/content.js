@@ -39,10 +39,21 @@
 			case "render-playlist":
 				// render list view
 				window.render({
+					// sortNodeXpath
+					// sortSelect
+					// sortOrder,
+					// sortType,
+					changePath: `//xsl:for-each`,
+					changeSelect: "./*[@fav]",
 					match: event.xpath,
 					template: "content-list",
 					target: Self.els.el,
 				});
+				// fix "title" if empty
+				el = Self.els.el.find(`.playlist-info h2`);
+				if (el.text().trim() === "-") {
+					el.html(event.title);
+				}
 				break;
 			case "no-active":
 				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
