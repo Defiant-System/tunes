@@ -50,7 +50,20 @@
 		}
 	}
 
+	list {
+		.wrapper {
+			.playlist-info {
+				h2 {
+					color: #bbb;
+					text-shadow: 0 1px 1px rgba(#000,.1);
+				}
+			}
+		}
+	}
+
 	.table {
+		color: #ccc;
+
 		i[class^="icon-"] {
 			filter: invert(1) brightness(2);
 		}
@@ -72,6 +85,22 @@
 						filter: invert(1) brightness(2) drop-shadow(-1px 0 0 rgba(#000,.25));
 					}
 				}
+			}
+
+			&.track-playing {
+				color: #fff;
+
+				.cell:nth-child(1) {
+					.icon-heart,
+					.icon-heart-full {
+						opacity: .6;
+						filter: invert(1) brightness(3) drop-shadow(0 1px 0 rgba(#000,.25));
+					}
+				}
+			}
+
+			i[class^="icon-"] {
+				filter: invert(1) brightness(2) drop-shadow(0 1px 0 rgba(#000,.25));
 			}
 		}
 	}

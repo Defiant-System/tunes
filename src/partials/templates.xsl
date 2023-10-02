@@ -30,6 +30,7 @@
 	<ul>
 		<xsl:for-each select="$xParent/*">
 		<li>
+			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:if test="@xpath">
 				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
 			</xsl:if>
@@ -67,11 +68,12 @@
 		</div>
 		<div class="table-body">
 			<xsl:for-each select="./*">
+				<xsl:sort order="ascending" select="@lp"/>
 				<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
 				<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
 				<div class="row">
 					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
-					<xsl:attribute name="data-id"><xsl:value-of select="@ref"/></xsl:attribute>
+					<xsl:attribute name="data-id"><xsl:value-of select="@ref | @id"/></xsl:attribute>
 					<div class="cell">
 						<i class="icon-play" data-click="play-song"></i>
 						<i class="icon-heart" data-click="toggle-heart">

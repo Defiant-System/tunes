@@ -13,7 +13,9 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
+			options = {},
 			title,
+			xnode,
 			xpath,
 			isOn,
 			el;
@@ -39,9 +41,23 @@
 				Self.els.el.find(".active").removeClass("active");
 				el = $(event.target).addClass("active");
 
+				options = {
+					changePath: `//xsl:for-each`,
+					changeSelect: `./*`,
+					sortNodeXpath: `//xsl:for-each/xsl:sort`,
+					sortSelect: `@lp`,
+					sortOrder: `ascending`,
+					sortType: `text`,
+				};
+
+				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${el.data("_id")}"]`);
+				Object.keys(options).map(k => {
+					if (xnode.getAttribute(k)) options[k] = xnode.getAttribute(k);
+				});
+
 				title = el.find(".name").html();
 				xpath = el.data("xpath") || `//*[@name = "${el.find(".name").text()}"]`;
-				APP.content.dispatch({ type: "render-playlist", xpath, title });
+				APP.content.dispatch({ type: "render-playlist", xpath, title, options });
 				break;
 		}
 	}
