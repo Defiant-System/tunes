@@ -26,6 +26,11 @@
 			<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
 		</i>
 	</Playlists>
+	<System>
+		<i name="Favorites" icon="heart-full" xpath="//*[@name='Hiphop']"/>
+		<i name="History" icon="upload" xpath="//*[@name='Classic']"/>
+		<i name="Recently Uploaded" icon="clock" xpath="//*[@name='Oldies']"/>
+	</System>
 	<AllFiles>
 		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" duration="311209"/>
 		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" duration="312536"/>

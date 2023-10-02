@@ -7,17 +7,9 @@
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
 		<div class="list-wrapper" data-click="select-playlist">
-			<ul>
-				<xsl:for-each select="./Playlists/*">
-				<li>
-					<i class="icon-blank" data-click="toggle-folder">
-						<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
-					</i>
-					<i class="icon-folder"></i>
-					<span class="name"><xsl:value-of select="@name"/></span>
-				</li>
-				</xsl:for-each>
-			</ul>
+			<xsl:call-template name="render-sidebar-list">
+				<xsl:with-param name="xParent" select="./Playlists" />
+			</xsl:call-template>
 		</div>
 
 		<legend>
@@ -25,25 +17,32 @@
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
 		<div class="list-wrapper" data-click="select-playlist">
-			<ul>
-				<li>
-					<i class="icon-blank"></i>
-					<i class="icon-heart-full"></i>
-					<span class="name">Favorites</span>
-				</li>
-				<li>
-					<i class="icon-blank"></i>
-					<i class="icon-upload"></i>
-					<span class="name">Recently Uploaded</span>
-				</li>
-				<li>
-					<i class="icon-blank"></i>
-					<i class="icon-clock"></i>
-					<span class="name">History</span>
-				</li>
-			</ul>
+			<xsl:call-template name="render-sidebar-list">
+				<xsl:with-param name="xParent" select="./System" />
+			</xsl:call-template>
 		</div>
 	</div>
+</xsl:template>
+
+
+<xsl:template name="render-sidebar-list">
+	<xsl:param name="xParent"/>
+	<ul>
+		<xsl:for-each select="$xParent/*">
+		<li>
+			<xsl:if test="@xpath">
+				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
+			</xsl:if>
+			<i class="icon-blank" data-click="toggle-folder">
+				<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
+			</i>
+			<i class="icon-folder">
+				<xsl:if test="@icon"><xsl:attribute name="class">icon-<xsl:value-of select="@icon"/></xsl:attribute></xsl:if>
+			</i>
+			<span class="name"><xsl:value-of select="@name"/></span>
+		</li>
+		</xsl:for-each>
+	</ul>
 </xsl:template>
 
 

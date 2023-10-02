@@ -28,6 +28,7 @@
 						xNode.map(x => {
 							x.setAttribute("name", name);
 							x.setAttribute("path", file.path);
+							x.setAttribute("date", file.isodate);
 						});
 					}
 				});

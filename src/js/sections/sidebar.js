@@ -38,7 +38,7 @@
 				Self.els.el.find(".active").removeClass("active");
 				el = $(event.target).addClass("active");
 
-				xpath = `//i[@name = "${el.find(".name").text()}"]`;
+				xpath = el.data("xpath") || `//*[@name = "${el.find(".name").text()}"]`;
 				APP.content.dispatch({ type: "render-playlist", xpath });
 				break;
 		}
