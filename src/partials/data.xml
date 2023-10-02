@@ -27,19 +27,19 @@
 		</i>
 	</Playlists>
 	<System>
-		<i name="Favorites" icon="heart-full" xpath="//*[@name='Hiphop']"/>
-		<i name="History" icon="upload" xpath="//*[@name='Classic']"/>
-		<i name="Recently Uploaded" icon="clock" xpath="//*[@name='Oldies']"/>
+		<i name="Favorites" icon="heart-full" xpath="//AllFiles" sort="@fav" limit="5"/>
+		<i name="History" icon="upload" xpath="//AllFiles" sort="@lp" limit="5"/>
+		<i name="Recently Uploaded" icon="clock" xpath="//AllFiles" sort="@date" limit="5"/>
 	</System>
 	<AllFiles>
-		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" duration="311209"/>
-		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" duration="312536"/>
-		<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" duration="122146"/>
-		<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" duration="751318"/>
-		<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" duration="253453" fav="1"/>
-		<i id="453a3dae0ddba5e62fabb483ae3d0b957310f31a" duration="1012311"/>
-		<i id="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0" duration="843249" fav="1"/>
-		<i id="831b87865520e513805e033568a7cdc90bff4881" duration="401226"/>
-		<i id="4434a582d688eb895f53bfafca20199468785c43" duration="312109"/>
+		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" lp="1696245119460" dur="311209"/>
+		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" lp="1696245219460" dur="312536"/>
+		<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" lp="1696245319460" dur="122146"/>
+		<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" lp="1696245419460" dur="751318"/>
+		<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" lp="1696245519460" dur="253453" fav="1"/>
+		<i id="453a3dae0ddba5e62fabb483ae3d0b957310f31a" lp="1696245619460" dur="1012311"/>
+		<i id="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0" lp="1696245719460" dur="843249" fav="1"/>
+		<i id="831b87865520e513805e033568a7cdc90bff4881" lp="1696245819460" dur="401226"/>
+		<i id="4434a582d688eb895f53bfafca20199468785c43" lp="1696245919460" dur="312109"/>
 	</AllFiles>
 </Data>

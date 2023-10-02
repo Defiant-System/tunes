@@ -53,7 +53,7 @@
 			<li><xsl:value-of select="//Settings/User/@name"/></li>
 			<li><xsl:value-of select="count(.//*)"/> songs</li>
 			<li><xsl:call-template name="summarize-duration">
-					<xsl:with-param name="ms" select="sum(.//@duration)" />
+					<xsl:with-param name="ms" select="sum(.//@dur)" />
 				</xsl:call-template></li>
 		</ul>
 	</div>
@@ -67,14 +67,15 @@
 		</div>
 		<div class="table-body">
 			<xsl:for-each select="./*">
-				<xsl:variable name="song" select="//Data/AllFiles/*[@id = current()/@ref]"/>
+				<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
+				<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
 				<div class="row">
 					<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
 					<xsl:attribute name="data-id"><xsl:value-of select="@ref"/></xsl:attribute>
 					<div class="cell">
 						<i class="icon-play" data-click="play-song"></i>
 						<i class="icon-heart" data-click="toggle-heart">
-							<xsl:if test="@fav = 1">
+							<xsl:if test="$song/@fav = 1">
 								<xsl:attribute name="class">icon-heart-full</xsl:attribute>
 							</xsl:if>
 						</i>
@@ -95,7 +96,7 @@
 						</xsl:choose>
 					</div>
 					<div class="cell"><xsl:call-template name="translate-duration">
-						<xsl:with-param name="ms" select="$song/@duration" />
+						<xsl:with-param name="ms" select="$song/@dur" />
 					</xsl:call-template></div>
 				</div>
 			</xsl:for-each>
