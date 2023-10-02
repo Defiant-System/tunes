@@ -47,8 +47,11 @@
 				event.el.toggleClass("down", isOn);
 				break;
 			case "select-playlist":
+				el = $(event.target);
+				if (el.nodeName() !== "li") return;
+
 				Self.els.el.find(".active").removeClass("active");
-				el = $(event.target).addClass("active");
+				el.addClass("active");
 				// save to settings
 				APP.settings.Sidebar["active-li"] = el.index();
 
