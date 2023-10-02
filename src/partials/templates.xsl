@@ -10,10 +10,10 @@
 			<ul>
 				<xsl:for-each select="./Playlists/*">
 				<li>
-					<span class="icon" data-click="toggle-folder">
-						<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon arrow</xsl:attribute></xsl:if>
-					</span>
-					<span class="icon folder"></span>
+					<i class="icon-blank" data-click="toggle-folder">
+						<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
+					</i>
+					<i class="icon-folder"></i>
 					<span class="name"><xsl:value-of select="@name"/></span>
 				</li>
 				</xsl:for-each>
@@ -21,14 +21,28 @@
 		</div>
 
 		<legend>
-			Favorites
+			System
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
-
-		<legend>
-			Recently Played
-			<span class="btn-toggle" toggle-text="Show">Hide</span>
-		</legend>
+		<div class="list-wrapper" data-click="select-playlist">
+			<ul>
+				<li>
+					<i class="icon-blank"></i>
+					<i class="icon-heart-full"></i>
+					<span class="name">Favorites</span>
+				</li>
+				<li>
+					<i class="icon-blank"></i>
+					<i class="icon-upload"></i>
+					<span class="name">Recently Uploaded</span>
+				</li>
+				<li>
+					<i class="icon-blank"></i>
+					<i class="icon-clock"></i>
+					<span class="name">History</span>
+				</li>
+			</ul>
+		</div>
 	</div>
 </xsl:template>
 

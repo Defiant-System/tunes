@@ -35,9 +35,8 @@
 				event.el.toggleClass("down", isOn);
 				break;
 			case "select-playlist":
-				el = $(event.target);
-				el.parent().find(".active").removeClass("active");
-				el.addClass("active");
+				Self.els.el.find(".active").removeClass("active");
+				el = $(event.target).addClass("active");
 
 				xpath = `//i[@name = "${el.find(".name").text()}"]`;
 				APP.content.dispatch({ type: "render-playlist", xpath });

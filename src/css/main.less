@@ -99,7 +99,7 @@ content {
 								color: #fff;
 							}
 
-							.icon {
+							i[class^="icon-"] {
 								filter: invert(1) brightness(2);
 							}
 						}
@@ -120,14 +120,16 @@ content {
 						color: #888;
 					}
 					
-					.icon {
+					i[class^="icon-"] {
 						background-position: 50% 50%;
 						background-size: 100%;
 						background-repeat: no-repeat;
+						display: inline-block;
+						vertical-align: top;
 						position: relative;
 						top: 3px;
-						width: 17px;
-						height: 17px;
+						// width: 17px;
+						// height: 17px;
 						opacity: 0.5;
 						margin: 0 2px 0 0;
 
@@ -138,10 +140,8 @@ content {
 							height: 13px;
 						}
 
-						&.folder { background-image: url(~/icons/icon-folder.png); }
-						&.arrow {
+						&.icon-arrow {
 							pointer-events: all;
-							background-image: url(~/icons/icon-arrow.png);
 							transition: transform 120ms ease-in-out;
 
 							&.down {
@@ -443,6 +443,10 @@ i[class^="icon-"] {
 	display: inline-block;
 	transition: opacity 200ms ease-in-out;
 
+	&.icon-blank 		{  }
+	&.icon-folder       { background-image: url(~/icons/icon-folder.png); }
+	&.icon-arrow        { background-image: url(~/icons/icon-arrow.png); }
+	&.icon-upload       { background-image: url(~/icons/icon-upload.png); }
 	&.icon-play         { background-image: url(~/icons/icon-play.png); }
 	&.icon-clock        { background-image: url(~/icons/icon-clock.png); }
 	&.icon-heart        { background-image: url(~/icons/icon-heart.png); }

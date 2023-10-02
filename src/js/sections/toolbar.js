@@ -90,11 +90,13 @@
 				break;
 			// custom events
 			case "reset-display":
-				Self.els.songTitle.html(event.name || "");
+				Self.els.songTitle.html(event.name || "Karaqu - Tunes");
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoad.css({ width: 0 });
 				Self.els.progPlayed.css({ width: 0 });
+				// if it is only "reset"
+				if (!event.path) return APP.content.dispatch({ type: "no-active" });
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
 
@@ -145,15 +147,25 @@
 				Self.dispatch({ type: "play-list", index: Self.playIndex - 1 });
 				break;
 			case "play-next":
-				Self.dispatch({ type: "play-list", index: Self.playIndex + 1 });
+				if (Self.playIndex + 1 < Self.playList.length) {
+					Self.dispatch({ type: "play-list", index: Self.playIndex + 1 });
+				} else if (APP.settings.Repeat) {
+					Self.dispatch({ type: "play-list", index: 0 });
+				} else {
+					Self.dispatch({ type: "reset-display" });
+				}
 				break;
 			case "play-random":
 				value = event.el.hasClass("active");
 				event.el.toggleClass("active", value);
+				// update settings
+				APP.settings.Random = !value;
 				break;
 			case "play-repeat":
 				value = event.el.hasClass("active");
 				event.el.toggleClass("active", value);
+				// update settings
+				APP.settings.Repeat = !value;
 				break;
 			case "set-volume":
 				// set volume of player

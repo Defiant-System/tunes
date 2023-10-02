@@ -44,6 +44,9 @@
 					target: Self.els.el,
 				});
 				break;
+			case "no-active":
+				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
+				break;
 			case "update-active":
 				el = Self.els.el.find(`.row[data-id="${event.id}"]`);
 				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
