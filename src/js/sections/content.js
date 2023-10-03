@@ -32,6 +32,10 @@
 				el = Self.els.el.find(`.playlist-info h2`);
 				if (el.text().trim() === "-") el.html(event.title);
 				break;
+			case "select-track":
+				event.el.find(".active").removeClass("active");
+				$(event.target).addClass("active");
+				break;
 			case "no-active":
 				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
 				break;

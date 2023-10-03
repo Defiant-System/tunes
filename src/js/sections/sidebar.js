@@ -39,9 +39,11 @@
 				Self.els.dnd.html("");
 				// reset original element
 				APP.content.els.el.find(".dragged").removeClass("dragged");
-				el = Self.els.el.find(".dragged").removeClass("dragged");
-
-				el.trigger("click");
+				Self.els.el.find(".dragged").removeClass("dragged");
+				// click element if no drag'n drop
+				if (!event.hasMoved && Self.dragOrigin) Self.dragOrigin.trigger("click");
+				// reset reference to dragged element
+				delete Self.dragOrigin;
 				break;
 			case "check-playlist-drag":
 				offset = event.el.offset("content");
@@ -49,7 +51,7 @@
 				x = offset.left + event.offsetX - 30;
 				title = event.el.find(".name").text();
 				// tag dragged item
-				event.el.addClass("dragged");
+				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
 				// copy of dragable element
@@ -65,7 +67,7 @@
 				if (cells.get(2).text()) title += " &#183; "+ cells.get(2).text();
 
 				// tag dragged item
-				event.el.addClass("dragged");
+				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
 				APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });

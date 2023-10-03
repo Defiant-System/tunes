@@ -72,7 +72,7 @@
 			<div class="cell">Album</div>
 			<div class="cell"><i class="icon-clock"></i></div>
 		</div>
-		<div class="table-body">
+		<div class="table-body" data-click="select-track">
 			<xsl:for-each select="./*">
 				<xsl:sort order="ascending" select="@lp"/>
 				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
