@@ -17,6 +17,7 @@
 			el;
 		// console.log(event);
 		switch (event.type) {
+			// custom events
 			case "render-playlist":
 				// set limit value
 				window.bluePrint.selectSingleNode(`//AllFiles`).setAttribute("limit", event.options.limit);

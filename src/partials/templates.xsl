@@ -29,7 +29,7 @@
 	<xsl:param name="xParent"/>
 	<ul>
 		<xsl:for-each select="$xParent/*">
-		<li>
+		<li data-ondrag="check-playlist-drag">
 			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:if test="@xpath">
 				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
@@ -72,7 +72,7 @@
 				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
 					<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
 					<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
-					<div class="row">
+					<div class="row" data-ondrag="check-track-drag">
 						<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
 						<xsl:attribute name="data-id"><xsl:value-of select="@ref | @id"/></xsl:attribute>
 						<div class="cell">

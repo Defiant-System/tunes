@@ -6,6 +6,7 @@
 		this.els = {
 			layout: window.find("content"),
 			el: window.find("sidebar .wrapper"),
+			dnd: window.find(".dnd-ux"),
 		};
 		// render tree view
 		window.render({
@@ -19,6 +20,7 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
+			dragable = false,
 			options = {},
 			title,
 			xnode,
@@ -27,6 +29,29 @@
 			el;
 		// console.log(event);
 		switch (event.type) {
+			// system events
+			case "check-folder-drop":
+			case "check-void-drop":
+				console.log(event);
+				break;
+			case "check-playlist-drag":
+				let offset = event.el.offset("content"),
+					y = offset.top,
+					x = offset.left + event.offsetX - 30,
+					name = event.el.find(".name").text();
+
+				Self.els.el.find(".list-wrapper li").data({ "drop-zone": "check-folder-drop" });
+
+				// copy of dragable element
+				dragable = Self.els.dnd.append(`<div class="dragged-playlist" style="top: ${y}px; left: ${x}px;">
+													<span>${name}</span></div>`);
+				return dragable;
+			case "check-track-drag":
+				dragable = Self.els.dnd.append(`<div class="dragged-song">
+													<span>Ayben &#183; Rap Benim</span>
+												</div>`);
+				return dragable;
+			// custom events
 			case "apply-settings":
 				if (APP.settings.Sidebar["expanded"]) {
 					window.find(`.toolbar-tool_[data-click="toggle-sidebar"]`).trigger("click");
