@@ -6,7 +6,7 @@
 			Playlists
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
-		<div class="list-wrapper" data-click="select-playlist">
+		<div class="list-wrapper user-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
 				<xsl:with-param name="xParent" select="./Playlists" />
 			</xsl:call-template>
@@ -16,7 +16,7 @@
 			System
 			<span class="btn-toggle" toggle-text="Show">Hide</span>
 		</legend>
-		<div class="list-wrapper" data-click="select-playlist">
+		<div class="list-wrapper system-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
 				<xsl:with-param name="xParent" select="./System" />
 			</xsl:call-template>

@@ -21,7 +21,9 @@
 		let APP = tunes,
 			Self = APP.sidebar,
 			dragable = false,
+			offset, x, y,
 			options = {},
+			cells,
 			title,
 			xnode,
 			xpath,
@@ -31,25 +33,42 @@
 		switch (event.type) {
 			// system events
 			case "check-folder-drop":
-			case "check-void-drop":
-				console.log(event);
+			case "check-sidebar-drop":
+			case "check-content-drop":
+				// clean up
+				event.el.remove();
+
+				Self.els.el.find(".dragged").removeClass("dragged");
 				break;
 			case "check-playlist-drag":
-				let offset = event.el.offset("content"),
-					y = offset.top,
-					x = offset.left + event.offsetX - 30,
-					name = event.el.find(".name").text();
-
-				Self.els.el.find(".list-wrapper li").data({ "drop-zone": "check-folder-drop" });
-
+				offset = event.el.offset("content");
+				y = offset.top;
+				x = offset.left + event.offsetX - 30;
+				title = event.el.find(".name").text();
+				// tag dragged item
+				event.el.addClass("dragged");
+				// tag "drop zones"
+				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
 				// copy of dragable element
 				dragable = Self.els.dnd.append(`<div class="dragged-playlist" style="top: ${y}px; left: ${x}px;">
-													<span>${name}</span></div>`);
+													<span>${title}</span></div>`);
 				return dragable;
 			case "check-track-drag":
-				dragable = Self.els.dnd.append(`<div class="dragged-song">
-													<span>Ayben &#183; Rap Benim</span>
-												</div>`);
+				offset = event.el.offset("content");
+				y = offset.top;
+				x = offset.left + event.offsetX - 30;
+
+				cells = event.el.find(".cell");
+				title = cells.get(1).text();
+				if (cells.get(2).text()) title += " &#183; "+ cells.get(2).text();
+
+				// tag dragged item
+				event.el.addClass("dragged");
+				// tag "drop zones"
+				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
+				// copy of dragable element
+				dragable = Self.els.dnd.append(`<div class="dragged-song" style="top: ${y}px; left: ${x}px;">
+													<span>${title}</span></div>`);
 				return dragable;
 			// custom events
 			case "apply-settings":

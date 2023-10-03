@@ -47,6 +47,9 @@ const tunes = {
 				break;
 			// custom events
 			case "check-track-drag":
+			case "check-folder-drop":
+			case "check-sidebar-drop":
+			case "check-content-drop":
 				// proxy event to sidebar section
 				return Self.sidebar.dispatch(event);
 			case "show-playlist":
