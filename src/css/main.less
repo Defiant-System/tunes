@@ -81,7 +81,7 @@ content {
 				ul {
 					list-style: none;
 					margin-top: 0;
-					margin-bottom: 1px;
+					margin-bottom: 2px;
 					transition: margin-top 300ms;
 					
 					li {
@@ -103,7 +103,7 @@ content {
 								top: -1px;
 								left: 0;
 								right: 1px;
-								bottom: -1px;
+								bottom: -2px;
 								border-radius: 2px;
 								border: 2px solid #f90;
 							}
@@ -452,7 +452,7 @@ content {
 				// opacity: .5;
 			}
 
-			&.drag-hover {
+			&.drag-hover:not(.dragged) {
 				&.drag-hover-before {
 					&:before {
 						content: "";
@@ -470,7 +470,7 @@ content {
 						content: "";
 						background: #f90;
 						position: absolute;
-						bottom: -1px;
+						bottom: -2px;
 						left: 0;
 						right: 1px;
 						height: 2px;
