@@ -92,7 +92,11 @@ content {
 						margin-top: 1px;
 						//color: rgba(0,0,0,0.73);
 
-						&.drag-hover {
+						&.dragged {
+							// opacity: .5;
+						}
+
+						&.drag-hover:not(.dragged) {
 							&:before {
 								content: "";
 								position: absolute;
@@ -442,6 +446,10 @@ content {
 			.icon-heart,
 			.icon-heart-full {
 				filter: grayscale(1);
+			}
+
+			&.dragged {
+				// opacity: .5;
 			}
 
 			&.drag-hover {

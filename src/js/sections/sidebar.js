@@ -20,7 +20,6 @@
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.sidebar,
-			dragable = false,
 			offset, x, y,
 			options = {},
 			cells,
@@ -28,6 +27,7 @@
 			xnode,
 			xpath,
 			isOn,
+			str,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -36,13 +36,14 @@
 			case "check-sidebar-drop":
 			case "check-content-drop":
 				// clean up
-				event.el.remove();
+				Self.els.dnd.html("");
 				// reset original element
 				Self.els.el.find(".dragged").removeClass("dragged");
+				APP.content.els.el.find(".dragged").removeClass("dragged");
 				break;
 			case "check-playlist-drag":
 				offset = event.el.offset("content");
-				y = offset.top + event.offsetY - 15;
+				y = offset.top + event.offsetY - 12;
 				x = offset.left + event.offsetX - 30;
 				title = event.el.find(".name").text();
 				// tag dragged item
@@ -50,12 +51,11 @@
 				// tag "drop zones"
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
 				// copy of dragable element
-				dragable = Self.els.dnd.append(`<div class="dragged-playlist" style="top: ${y}px; left: ${x}px;">
-													<span>${title}</span></div>`);
-				return dragable;
+				str = `<div class="dragged-playlist drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				return Self.els.dnd.append(str);
 			case "check-track-drag":
 				offset = event.el.offset("content");
-				y = offset.top + event.offsetY - 15;
+				y = offset.top + event.offsetY - 12;
 				x = offset.left + event.offsetX - 30;
 				// "build" name shown in dragged tooltip
 				cells = event.el.find(".cell");
@@ -68,9 +68,8 @@
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
 				APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });
 				// copy of dragable element
-				dragable = Self.els.dnd.append(`<div class="dragged-song" style="top: ${y}px; left: ${x}px;">
-													<span>${title}</span></div>`);
-				return dragable;
+				str = `<div class="dragged-song drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				return Self.els.dnd.append(str);
 			// custom events
 			case "apply-settings":
 				if (APP.settings.Sidebar["expanded"]) {

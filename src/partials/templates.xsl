@@ -9,6 +9,7 @@
 		<div class="list-wrapper user-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
 				<xsl:with-param name="xParent" select="./Playlists" />
+				<xsl:with-param name="drag" select="1" />
 			</xsl:call-template>
 		</div>
 
@@ -19,6 +20,7 @@
 		<div class="list-wrapper system-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
 				<xsl:with-param name="xParent" select="./System" />
+				<xsl:with-param name="drag" select="0" />
 			</xsl:call-template>
 		</div>
 	</div>
@@ -27,12 +29,16 @@
 
 <xsl:template name="render-sidebar-list">
 	<xsl:param name="xParent"/>
+	<xsl:param name="drag"/>
 	<ul>
 		<xsl:for-each select="$xParent/*">
-		<li data-ondrag="check-playlist-drag">
+		<li>
 			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:if test="@xpath">
 				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
+			</xsl:if>
+			<xsl:if test="$drag = 1">
+				<xsl:attribute name="data-ondrag">check-playlist-drag</xsl:attribute>
 			</xsl:if>
 			<i class="icon-blank" data-click="toggle-folder">
 				<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
