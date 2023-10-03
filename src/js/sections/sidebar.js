@@ -37,12 +37,12 @@
 			case "check-content-drop":
 				// clean up
 				event.el.remove();
-
+				// reset original element
 				Self.els.el.find(".dragged").removeClass("dragged");
 				break;
 			case "check-playlist-drag":
 				offset = event.el.offset("content");
-				y = offset.top;
+				y = offset.top + event.offsetY - 15;
 				x = offset.left + event.offsetX - 30;
 				title = event.el.find(".name").text();
 				// tag dragged item
@@ -55,9 +55,9 @@
 				return dragable;
 			case "check-track-drag":
 				offset = event.el.offset("content");
-				y = offset.top;
+				y = offset.top + event.offsetY - 15;
 				x = offset.left + event.offsetX - 30;
-
+				// "build" name shown in dragged tooltip
 				cells = event.el.find(".cell");
 				title = cells.get(1).text();
 				if (cells.get(2).text()) title += " &#183; "+ cells.get(2).text();
@@ -66,6 +66,7 @@
 				event.el.addClass("dragged");
 				// tag "drop zones"
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
+				APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });
 				// copy of dragable element
 				dragable = Self.els.dnd.append(`<div class="dragged-song" style="top: ${y}px; left: ${x}px;">
 													<span>${title}</span></div>`);

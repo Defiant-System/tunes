@@ -103,6 +103,24 @@ content {
 								border-radius: 2px;
 								border: 2px solid #f90;
 							}
+
+							&.drag-hover-before {
+								&:before {
+									background: #f90;
+									height: 2px;
+									bottom: auto;
+									border: 0;
+								}
+							}
+
+							&.drag-hover-after {
+								&:before {
+									background: #f90;
+									height: 2px;
+									top: auto;
+									border: 0;
+								}
+							}
 						}
 
 						&.active {
@@ -310,6 +328,7 @@ content {
 		}
 
 		.row {
+			position: relative;
 			display: flex;
 			margin: 0 19px;
 			border-bottom: 1px solid #66666640;
@@ -423,6 +442,32 @@ content {
 			.icon-heart,
 			.icon-heart-full {
 				filter: grayscale(1);
+			}
+
+			&.drag-hover {
+				&.drag-hover-before {
+					&:before {
+						content: "";
+						background: #f90;
+						position: absolute;
+						top: -1px;
+						left: 0;
+						right: 1px;
+						height: 2px;
+					}
+				}
+
+				&.drag-hover-after {
+					&:before {
+						content: "";
+						background: #f90;
+						position: absolute;
+						bottom: -1px;
+						left: 0;
+						right: 1px;
+						height: 2px;
+					}
+				}
 			}
 		}
 
