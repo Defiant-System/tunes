@@ -38,8 +38,10 @@
 				// clean up
 				Self.els.dnd.html("");
 				// reset original element
-				Self.els.el.find(".dragged").removeClass("dragged");
 				APP.content.els.el.find(".dragged").removeClass("dragged");
+				el = Self.els.el.find(".dragged").removeClass("dragged");
+
+				el.trigger("click");
 				break;
 			case "check-playlist-drag":
 				offset = event.el.offset("content");
