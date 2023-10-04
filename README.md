@@ -5,5 +5,6 @@ TODO:
 - [ ] drag'n drop tracks / folders
 - [ ] info header; album / artist
 - [ ] info duration sum
+- [ ] repeat single song
 - [ ] 
 

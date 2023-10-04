@@ -22,6 +22,7 @@
 			Self = APP.sidebar,
 			offset, x, y,
 			options = {},
+			table,
 			cells,
 			title,
 			xnode,
@@ -58,6 +59,7 @@
 				str = `<div class="dragged-playlist drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 			case "check-track-drag":
+				table = event.el.parents(".table:first");
 				offset = event.el.offset("content");
 				y = offset.top + event.offsetY - 12;
 				x = offset.left + event.offsetX - 30;
@@ -70,7 +72,10 @@
 				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
 				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
-				APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });
+				// track not draggable if it is a "system list"
+				if (!table.hasClass("enum")) {
+					APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });
+				}
 				// copy of dragable element
 				str = `<div class="dragged-song drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
@@ -90,9 +95,19 @@
 				APP.settings.Sidebar["expanded"] = !isOn;
 
 				return !isOn;
+			case "toggle-block":
+				el = event.el.parent().nextAll(".list-wrapper:first");
+				el.toggleClass("collapsed", el.hasClass("collapsed"));
+				// toggle "button" text
+				str = event.el.html();
+				event.el.html(event.el.attr("toggle-text"));
+				event.el.attr("toggle-text", str);
+				break;
 			case "toggle-folder":
 				isOn = event.el.hasClass("down");
 				event.el.toggleClass("down", isOn);
+
+				// event.el.parent().addClass("active");
 				break;
 			case "select-playlist":
 				el = $(event.target);

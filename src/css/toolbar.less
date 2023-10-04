@@ -41,6 +41,27 @@
 		background: transparent;
 		box-shadow: 0 0 0;
 		border: 0;
+
+		&.start-view {
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 2px;
+				background: url(~/icons/karaqu-logo.png) 50% 50% no-repeat;
+				background-size: auto 20px;
+				opacity: .35;
+			}
+
+			.song-name,
+			.progress,
+			.icon-random,
+			.icon-repeat {
+				display: none;
+			}
+		}
 	}
 
 	.toolbar-canvas_ {

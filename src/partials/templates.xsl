@@ -4,7 +4,7 @@
 	<div>
 		<legend>
 			Playlists
-			<span class="btn-toggle" toggle-text="Show">Hide</span>
+			<span class="btn-toggle" data-click="toggle-block" toggle-text="Show">Hide</span>
 		</legend>
 		<div class="list-wrapper user-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
@@ -15,7 +15,7 @@
 
 		<legend>
 			System
-			<span class="btn-toggle" toggle-text="Show">Hide</span>
+			<span class="btn-toggle" data-click="toggle-block" toggle-text="Show">Hide</span>
 		</legend>
 		<div class="list-wrapper system-list" data-click="select-playlist">
 			<xsl:call-template name="render-sidebar-list">
@@ -40,13 +40,16 @@
 			<xsl:if test="$drag = 1">
 				<xsl:attribute name="data-ondrag">check-playlist-drag</xsl:attribute>
 			</xsl:if>
-			<i class="icon-blank" data-click="toggle-folder">
-				<xsl:if test="count(./*[@album])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
-			</i>
-			<i class="icon-folder">
-				<xsl:if test="@icon"><xsl:attribute name="class">icon-<xsl:value-of select="@icon"/></xsl:attribute></xsl:if>
-			</i>
-			<span class="name"><xsl:value-of select="@name"/></span>
+			<div class="leaf">
+				<i class="icon-blank" data-click="toggle-folder">
+					<xsl:if test="count(./i[@name])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
+				</i>
+				<i class="icon-folder">
+					<xsl:if test="@icon"><xsl:attribute name="class">icon-<xsl:value-of select="@icon"/></xsl:attribute></xsl:if>
+				</i>
+				<span class="name"><xsl:value-of select="@name"/></span>
+			</div>
+			<div class="children">dsfsdf</div>
 		</li>
 		</xsl:for-each>
 	</ul>
@@ -57,14 +60,18 @@
 	<div class="playlist-info">
 		<h2><xsl:value-of select="@artist"/> - <xsl:value-of select="@album"/></h2>
 		<ul class="details">
-			<li><xsl:value-of select="//Settings/User/@name"/></li>
+			<li><xsl:choose>
+				<xsl:when test="@owner = 'me'"><xsl:value-of select="//Settings/User/@name"/></xsl:when>
+				<xsl:otherwise>System</xsl:otherwise>
+			</xsl:choose></li>
 			<li><xsl:value-of select="count(.//*)"/> songs</li>
 			<li><xsl:call-template name="summarize-duration">
 					<xsl:with-param name="ms" select="sum(.//@dur)" />
 				</xsl:call-template></li>
 		</ul>
 	</div>
-	<div class="table enum">
+	<div class="table">
+		<xsl:if test="not(@owner)"><xsl:attribute name="class">table enum</xsl:attribute></xsl:if>
 		<div class="row head">
 			<div class="cell"></div>
 			<div class="cell sort-asc">Title</div>

@@ -128,16 +128,27 @@ content {
 						}
 
 						&.active {
-							background: #36b;
+							// background: #36b;
 							font-weight: 600;
 
-							.name {
-								color: #fff;
+							&:after {
+								content: "";
+								position: absolute;
+								top: 9px;
+								right: 7px;
+								width: 5px;
+								height: 5px;
+								border-radius: 50%;
+								background: #aaa;
 							}
 
-							i[class^="icon-"] {
-								filter: invert(1) brightness(2);
-							}
+							// .name {
+							// 	color: #fff;
+							// }
+
+							// i[class^="icon-"] {
+							// 	filter: invert(1) brightness(2);
+							// }
 						}
 
 						span {
@@ -272,62 +283,37 @@ content {
 			}
 		}
 
-		&.enum {
-			.row .cell:nth-child(1) {
-				width: 67px;
-			}
-
-			.table-body {
-				counter-reset: row-num;
-
-				.row {
-					counter-increment: row-num;
-
-					&:hover .cell:nth-child(1) {
-						.icon-play { display: inline-block; }
-
-						&:before { display: none; }
-					}
-
-					&.track-playing {
-						.cell:nth-child(1) {
-							// &:before { display: none; }
-						}
-					}
-
-					.cell:nth-child(1) {
-						position: relative;
-
-						.icon-play {
-							// display: none;
-							position: absolute;
-							top: 10px;
-							left: 17px;
-							cursor: pointer;
-						}
-
-						&:before {
-							content: counter(row-num);
-							display: inline-block;
-							position: relative;
-							top: -4px;
-							left: -11px;
-							text-align: right;
-							opacity: .65;
-						}
-					}
-				}
-			}
-		}
-
 		.table-body {
 			position: relative;
 			overflow-y: auto;
 			flex: 1;
 			padding-bottom: 21px;
+			counter-reset: row-num;
 
-			.row:last-child {
-				border-bottom-color: transparent;
+			.row {
+				&:last-child { border-bottom-color: transparent; }
+
+				.cell:nth-child(1) {
+					position: relative;
+
+					.icon-play {
+						// display: none;
+						position: absolute;
+						top: 10px;
+						left: 17px;
+						cursor: pointer;
+					}
+
+					&:before {
+						content: counter(row-num);
+						display: inline-block;
+						position: relative;
+						top: -4px;
+						left: -11px;
+						text-align: right;
+						opacity: .65;
+					}
+				}
 			}
 		}
 
@@ -336,6 +322,11 @@ content {
 			display: flex;
 			margin: 0 19px;
 			border-bottom: 1px solid #66666640;
+			counter-increment: row-num;
+
+			.cell:nth-child(1) {
+				width: 67px;
+			}
 
 			&.head {
 				height: 31px;
@@ -386,8 +377,13 @@ content {
 			}
 
 			&:hover {
-				.icon-play {
-					opacity: .5;
+				.cell:nth-child(1) {
+					.icon-play {
+						display: inline-block;
+						opacity: .5;
+					}
+
+					&:before { display: none; }
 				}
 			}
 

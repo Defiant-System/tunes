@@ -1,6 +1,6 @@
 <Data>
 	<Playlists>
-		<i name="Hiphop">
+		<i owner="me" name="Hiphop">
 			<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
 			<i ref="18eea04e31813f6a294f920be15d727ae92c8aaa"/>
 			<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
@@ -11,19 +11,26 @@
 			<i ref="831b87865520e513805e033568a7cdc90bff4881"/>
 			<i ref="4434a582d688eb895f53bfafca20199468785c43"/>
 		</i>
-		<i name="Chillout"/>
-		<i name="Classic">
+		<i owner="me" name="Chillout"/>
+		<i owner="me" name="Classic">
 			<i ref="a884a5ae543073430d2a0d01e8186707d06e276f"/>
 		</i>
-		<i name="Rock"/>
-		<i name="Oldies">
-			<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
+		<i owner="me" name="Rock">
+			<i owner="me" name="Oldies">
+				<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
+			</i>
 		</i>
-		<i name="Albums">
-			<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
-			<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
-			<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
-			<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
+		<i owner="me" name="Albums">
+			<i name="Boney M" album="Gold">
+				<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
+				<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+				<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+				<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
+			</i>
+			<i name="Enigma" album="MCMXC a.D.">
+				<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+				<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+			</i>
 		</i>
 	</Playlists>
 	<System>
