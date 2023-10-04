@@ -85,7 +85,18 @@ content {
 					transition: margin-top 300ms;
 					
 					li {
+						position: relative;
 						//color: rgba(0,0,0,0.73);
+
+						&.expanded {
+							> .children {
+								height: 30px;
+							}
+						}
+
+						&.has-children {
+
+						}
 
 						.leaf {
 							position: relative;
@@ -96,8 +107,10 @@ content {
 						}
 
 						.children {
+							background: red;
 							height: 0;
 							overflow: hidden;
+							transition: height 150ms ease-in-out;
 						}
 
 						&.dragged {
@@ -142,12 +155,13 @@ content {
 							&:after {
 								content: "";
 								position: absolute;
-								top: 9px;
-								right: 7px;
-								width: 5px;
-								height: 5px;
-								border-radius: 50%;
-								background: #aaa;
+								top: 5px;
+								right: 1px;
+								width: 13px;
+								height: 13px;
+								opacity: .35;
+								background: url(~/icons/icon-chevron-right.png) 50% 50% no-repeat;
+								background-size: 11px 11px;
 							}
 
 							// .name {

@@ -107,7 +107,15 @@
 				isOn = event.el.hasClass("down");
 				event.el.toggleClass("down", isOn);
 
-				// event.el.parent().addClass("active");
+				el = event.el.parents("li:first");
+				if (el.hasClass("has-children") && !el.hasClass("expanded")) {
+					if (!el.nextAll(".children > *").length) {
+						el.nextAll(".children").html("<div>Children</div>");
+					}
+					el.addClass("expanded");
+				} else {
+					el.removeClass("expanded");
+				}
 				break;
 			case "select-playlist":
 				el = $(event.target);

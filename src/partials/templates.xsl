@@ -34,6 +34,7 @@
 		<xsl:for-each select="$xParent/*">
 		<li>
 			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
+			<xsl:if test="count(./i[@name])"><xsl:attribute name="class">has-children</xsl:attribute></xsl:if>
 			<xsl:if test="@xpath">
 				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
 			</xsl:if>
@@ -49,7 +50,7 @@
 				</i>
 				<span class="name"><xsl:value-of select="@name"/></span>
 			</div>
-			<div class="children">dsfsdf</div>
+			<div class="children"></div>
 		</li>
 		</xsl:for-each>
 	</ul>
