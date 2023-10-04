@@ -102,7 +102,7 @@
 				break;
 			// custom events
 			case "reset-display":
-				Self.els.display.toggleClass("blank-view", !!event.name);
+				Self.els.display.toggleClass("blank-display", !!event.name);
 				Self.els.songTitle.html(event.name);
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);

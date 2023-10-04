@@ -109,8 +109,14 @@
 
 				el = event.el.parents("li:first");
 				if (el.hasClass("has-children") && !el.hasClass("expanded")) {
-					if (!el.nextAll(".children > *").length) {
-						el.nextAll(".children").html("<div>Children</div>");
+					if (!el.find("> .children > *").length) {
+						// console.log( window.bluePrint.selectSingleNode(`//Data//*[@_id="${el.data("_id")}"]`).xml );
+						window.render({
+							template: "render-sidebar-leaf",
+							match: `//Data//*[@_id="${el.data("_id")}"]`,
+							target: el.find("> .children"),
+						});
+						// console.log( el.find("> .children").length );
 					}
 					el.addClass("expanded");
 				} else {

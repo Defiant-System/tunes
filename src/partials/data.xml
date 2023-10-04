@@ -16,9 +16,13 @@
 			<i ref="a884a5ae543073430d2a0d01e8186707d06e276f"/>
 		</i>
 		<i owner="me" name="Rock">
-			<i owner="me" name="Oldies">
-				<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
-			</i>
+			<i owner="me" name="70's"/>
+			<i owner="me" name="80's"/>
+			<i owner="me" name="90's"/>
+			<i owner="me" name="Death Metal"/>
+		</i>
+		<i owner="me" name="Oldies">
+			<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
 		</i>
 		<i owner="me" name="Albums">
 			<i name="Boney M" album="Gold">

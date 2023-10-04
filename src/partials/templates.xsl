@@ -27,6 +27,14 @@
 </xsl:template>
 
 
+<xsl:template name="render-sidebar-leaf">
+	<xsl:call-template name="render-sidebar-list">
+		<xsl:with-param name="xParent" select="." />
+		<xsl:with-param name="drag" select="1" />
+	</xsl:call-template>
+</xsl:template>
+
+
 <xsl:template name="render-sidebar-list">
 	<xsl:param name="xParent"/>
 	<xsl:param name="drag"/>
