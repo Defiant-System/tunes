@@ -7,6 +7,7 @@
 		this.els = {
 			doc: $(document),
 			content: window.find(`content`),
+			display: window.find(`.display .toolbar-field_`),
 			btnPlay: window.find(`.toolbar-tool_[data-click="play-toggle"]`),
 			btnPrev: window.find(`.toolbar-tool_[data-click="play-prev"]`),
 			btnNext: window.find(`.toolbar-tool_[data-click="play-next"]`),
@@ -101,7 +102,8 @@
 				break;
 			// custom events
 			case "reset-display":
-				Self.els.songTitle.html(event.name || "Karaqu - Tunes");
+				Self.els.display.toggleClass("blank-view", !!event.name);
+				Self.els.songTitle.html(event.name);
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoad.css({ width: 0 });

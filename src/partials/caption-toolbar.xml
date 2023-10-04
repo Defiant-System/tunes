@@ -10,7 +10,7 @@
 		</Options>
 	</Group>
 	<Group class="display">
-		<Field class="start-view">
+		<Field class="blank-view">
 			<!-- song title -->
 			<div class="song-name">Karaqu - Tunes</div>
 			<!-- progress bar -->

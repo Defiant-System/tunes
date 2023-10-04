@@ -85,12 +85,20 @@ content {
 					transition: margin-top 300ms;
 					
 					li {
-						position: relative;
-						display: flex;
-						height: 23px;
-						padding-left: 5px;
-						margin-top: 1px;
 						//color: rgba(0,0,0,0.73);
+
+						.leaf {
+							position: relative;
+							display: flex;
+							height: 23px;
+							padding-left: 5px;
+							margin-top: 1px;
+						}
+
+						.children {
+							height: 0;
+							overflow: hidden;
+						}
 
 						&.dragged {
 							// opacity: .5;
