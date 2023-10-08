@@ -36,10 +36,9 @@
 			case "drop-track-before":
 			case "drop-track-after":
 			case "drop-track-in":
+				console.log(event.el.data("id"), event.dropType);
 				// clean up
 				Self.els.dnd.html("");
-				
-				console.log(event.dropType, event.target[0]);
 				break;
 
 			case "check-track-drag":
@@ -66,7 +65,7 @@
 						});
 				}
 				// copy of dragable element
-				str = `<div class="dragged-song drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				str = `<div class="dragged-song drag-clone" data-id="${event.el.data("id")}" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 
 			// custom events
