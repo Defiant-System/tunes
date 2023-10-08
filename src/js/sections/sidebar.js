@@ -33,31 +33,15 @@
 		// console.log(event);
 		switch (event.type) {
 			// system events
-			case "check-folder-drop":
-			case "check-sidebar-drop":
-			case "check-content-drop":
+			case "drop-track-before":
+			case "drop-track-after":
+			case "drop-track-in":
 				// clean up
 				Self.els.dnd.html("");
-				// reset original element
-				APP.content.els.el.find(".dragged").removeClass("dragged");
-				Self.els.el.find(".dragged").removeClass("dragged");
-				// click element if no drag'n drop
-				if (!event.hasMoved && Self.dragOrigin) Self.dragOrigin.trigger("click");
-				// reset reference to dragged element
-				delete Self.dragOrigin;
+				
+				console.log(event);
 				break;
-			case "check-playlist-drag":
-				offset = event.el.offset("content");
-				y = offset.top + event.offsetY - 12;
-				x = offset.left + event.offsetX - 30;
-				title = event.el.find(".name").text();
-				// tag dragged item
-				Self.dragOrigin = event.el.addClass("dragged");
-				// tag "drop zones"
-				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
-				// copy of dragable element
-				str = `<div class="dragged-playlist drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
-				return Self.els.dnd.append(str);
+
 			case "check-track-drag":
 				table = event.el.parents(".table:first");
 				offset = event.el.offset("content");
@@ -71,14 +55,20 @@
 				// tag dragged item
 				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
-				Self.els.el.find(".user-list li:not(.dragged)").data({ "drop-zone": "check-folder-drop" });
+				Self.els.el.find(".user-list li .leaf")
+					.data({ "drop-zone": "drop-track-in" });
 				// track not draggable if it is a "system list"
 				if (!table.hasClass("enum")) {
-					APP.content.els.el.find(".table .row:not(.head, .dragged)").data({ "drop-zone": "check-content-drop" });
+					APP.content.els.el.find(".table .row:not(.head, .dragged)")
+						.data({
+							"drop-zone-before": "drop-track-before",
+							"drop-zone-after": "drop-track-after",
+						});
 				}
 				// copy of dragable element
 				str = `<div class="dragged-song drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
+
 			// custom events
 			case "apply-settings":
 				if (APP.settings.Sidebar["expanded"]) {
