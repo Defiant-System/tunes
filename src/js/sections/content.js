@@ -6,17 +6,73 @@
 		this.els = {
 			layout: window.find("content"),
 			el: window.find("list .wrapper"),
+			dnd: window.find(".dnd-ux"),
 		};
 	},
 	dispatch(event) {
 		let APP = tunes,
 			Self = APP.content,
+			offset, x, y,
+			table,
+			cells,
+			title,
 			xpath,
 			list,
 			row,
+			str,
 			el;
 		// console.log(event);
 		switch (event.type) {
+			// system events
+			case "drop-track-before":
+			case "drop-track-after":
+			case "drop-track-in-folder":
+				// console.log(event.el.data("_id"), event.type.split("-")[2]);
+				// clean up
+				Self.els.dnd.html("");
+				// reset zones
+				window.find(`[data-drop-zone-before], [data-drop-zone-after], [data-drop-zone], [drop-outside]`)
+					.removeAttr("data-drop-zone-before data-drop-zone-after data-drop-zone data-drop-outside");
+				// click element if no drag'n drop
+				if (!event.hasMoved && Self.dragOrigin) Self.dragOrigin.trigger("click");
+				// reset reference to dragged element
+				Self.dragOrigin.removeClass("dragged");
+				delete Self.dragOrigin.removeClass("dragged");
+				break;
+
+			case "check-track-drag":
+				table = event.el.parents(".table:first");
+				offset = event.el.offset("content");
+				y = offset.top + event.offsetY - 12;
+				x = offset.left + event.offsetX - 30;
+				// "build" name shown in dragged tooltip
+				cells = event.el.find(".cell");
+				title = cells.get(1).text();
+				if (cells.get(2).text()) title += " &#183; "+ cells.get(2).text();
+
+				// for correct event proxying
+				Self.els.dnd.data({ area: "content" });
+				// tag dragged item
+				Self.dragOrigin = event.el.addClass("dragged");
+				// tag "drop zones"
+				Self.els.el.find(".user-list li .leaf")
+					.data({
+						"drop-zone": "drop-track-in-folder",
+						"drop-outside": "drop-track-outside",
+					});
+				// track not draggable if it is a "system list"
+				if (!table.hasClass("enum")) {
+					APP.content.els.el.find(".table .row:not(.head, .dragged)")
+						.data({
+							"drop-zone-before": "drop-track-before",
+							"drop-zone-after": "drop-track-after",
+							"drop-outside": "drop-track-outside",
+						});
+				}
+				// copy of dragable element
+				str = `<div class="dragged-track drag-clone" data-id="${event.el.data("_id")}" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				return Self.els.dnd.append(str);
+
 			// custom events
 			case "render-playlist":
 				// set limit value

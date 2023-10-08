@@ -46,12 +46,6 @@ const tunes = {
 				Self.toolbar.dispatch({ ...event, type: "reset-display" });
 				break;
 			// custom events
-			case "check-track-drag":
-			case "check-folder-drop":
-			case "check-sidebar-drop":
-			case "check-content-drop":
-				// proxy event to sidebar section
-				return Self.sidebar.dispatch(event);
 			case "show-playlist":
 				el = window.find(`sidebar .name:contains("${event.name}")`);
 				if (el.length) el.parent().trigger("click");
