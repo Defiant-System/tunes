@@ -187,7 +187,7 @@
 				// set volume of player
 				Self.player.volume = event.value / 100;
 				// auto update settings
-				APP.settings.Volume = event.value;
+				APP.settings.Volume = Self.player.volume;
 				break;
 		}
 	},
