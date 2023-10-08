@@ -31,11 +31,13 @@
 		// console.log(event);
 		switch (event.type) {
 			// system events
-			case "drop-playlist-outside":
-			case "drop-playlist-before":
-			case "drop-playlist-after":
-			case "drop-playlist-in-folder":
+			case "drop-playlist-before": Self.dispatch({ type: "reset-drag-drop" }); break;
+			case "drop-playlist-after": Self.dispatch({ type: "reset-drag-drop" }); break;
+			case "drop-playlist-in-folder": Self.dispatch({ type: "reset-drag-drop" }); break;
 				// console.log(event.el.data("_id"), event.type.split("-")[2]);
+			case "drop-playlist-outside":
+				/* falls through */
+			case "reset-drag-drop":
 				// clean up
 				Self.els.dnd.html("");
 				// reset zones

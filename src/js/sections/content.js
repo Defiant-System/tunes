@@ -24,10 +24,15 @@
 		// console.log(event);
 		switch (event.type) {
 			// system events
-			case "drop-track-before":
-			case "drop-track-after":
+			case "drop-track-before": Self.dispatch({ type: "reset-drag-drop" }); break;
+			case "drop-track-after": Self.dispatch({ type: "reset-drag-drop" }); break;
 			case "drop-track-in-folder":
 				// console.log(event.el.data("_id"), event.type.split("-")[2]);
+				console.log( event );
+				break;
+			case "drop-track-outside":
+				/* falls through */
+			case "reset-drag-drop":
 				// clean up
 				Self.els.dnd.html("");
 				// reset zones
@@ -55,7 +60,7 @@
 				// tag dragged item
 				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
-				Self.els.el.find(".user-list li .leaf")
+				APP.sidebar.els.el.find(".user-list li .leaf")
 					.data({
 						"drop-zone": "drop-track-in-folder",
 						"drop-outside": "drop-track-outside",
