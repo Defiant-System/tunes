@@ -39,7 +39,7 @@
 				// clean up
 				Self.els.dnd.html("");
 				
-				console.log(event);
+				console.log(event.dropType, event.target[0]);
 				break;
 
 			case "check-track-drag":

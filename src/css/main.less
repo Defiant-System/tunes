@@ -104,6 +104,43 @@ content {
 							height: 23px;
 							padding-left: 5px;
 							margin-top: 1px;
+
+							&.drag-hover:not(.dragged) {
+								&:before {
+									content: "";
+									position: absolute;
+									top: -1px;
+									left: 0;
+									right: 1px;
+									bottom: -1px;
+									border-radius: 2px;
+									border: 2px solid #f90;
+								}
+							}
+
+							&.drag-hover-before {
+								&:before {
+									content: "";
+									position: absolute;
+									top: -1px;
+									right: 1px;
+									left: 0;
+									height: 0;
+									border: 1px solid #f90;
+								}
+							}
+
+							&.drag-hover-after {
+								&:before {
+									content: "";
+									position: absolute;
+									bottom: -1px;
+									right: 1px;
+									left: 0;
+									height: 0;
+									border: 1px solid #f90;
+								}
+							}
 						}
 
 						.children {
@@ -116,37 +153,6 @@ content {
 
 						&.dragged {
 							// opacity: .5;
-						}
-
-						&.drag-hover:not(.dragged) {
-							&:before {
-								content: "";
-								position: absolute;
-								top: -1px;
-								left: 0;
-								right: 1px;
-								bottom: -2px;
-								border-radius: 2px;
-								border: 2px solid #f90;
-							}
-
-							&.drag-hover-before {
-								&:before {
-									background: #f90;
-									height: 2px;
-									bottom: auto;
-									border: 0;
-								}
-							}
-
-							&.drag-hover-after {
-								&:before {
-									background: #f90;
-									height: 2px;
-									top: auto;
-									border: 0;
-								}
-							}
 						}
 
 						&.active {
@@ -471,7 +477,7 @@ content {
 				// opacity: .5;
 			}
 
-			&.drag-hover:not(.dragged) {
+			&:not(.dragged) {
 				&.drag-hover-before {
 					&:before {
 						content: "";
@@ -479,7 +485,7 @@ content {
 						position: absolute;
 						top: -1px;
 						left: 0;
-						right: 1px;
+						right: 0;
 						height: 2px;
 					}
 				}
@@ -491,7 +497,7 @@ content {
 						position: absolute;
 						bottom: -2px;
 						left: 0;
-						right: 1px;
+						right: 0;
 						height: 2px;
 					}
 				}
