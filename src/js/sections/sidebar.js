@@ -23,6 +23,7 @@
 			offset, x, y,
 			options = {},
 			title,
+			xSrc,
 			xnode,
 			xpath,
 			isOn,
@@ -31,10 +32,29 @@
 		// console.log(event);
 		switch (event.type) {
 			// system events
-			case "drop-playlist-before": Self.dispatch({ type: "reset-drag-drop" }); break;
-			case "drop-playlist-after": Self.dispatch({ type: "reset-drag-drop" }); break;
-			case "drop-playlist-in-folder": Self.dispatch({ type: "reset-drag-drop" }); break;
-				// console.log(event.el.data("_id"), event.type.split("-")[2]);
+			case "drop-playlist-before":
+				// console.log( "before", window.bluePrint.selectSingleNode(`//Playlists`).xml );
+				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
+				xnode.parentNode.insertBefore(xSrc, xnode);
+				// reset drag / drop
+				Self.dispatch({ type: "reset-drag-drop" });
+				break;
+			case "drop-playlist-after":
+				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
+				xnode.parentNode.insertBefore(xSrc, xnode.nextSibling);
+				// reset drag / drop
+				Self.dispatch({ type: "reset-drag-drop" });
+				break;
+			case "drop-playlist-in-folder":
+				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
+				// move dragged node in to drop target
+				xnode.appendChild(xSrc);
+				// reset drag / drop
+				Self.dispatch({ type: "reset-drag-drop" });
+				break;
 			case "drop-playlist-outside":
 				/* falls through */
 			case "reset-drag-drop":
@@ -63,7 +83,7 @@
 				// tag dragged item
 				Self.dragOrigin = el.addClass("dragged");
 				// tag "drop zones"
-				Self.els.el.find(".user-list li:not(.dragged) > .leaf")
+				Self.els.el.find(".user-list li > .leaf:not(.dragged)")
 					.data({
 						"drop-zone-before": "drop-playlist-before",
 						"drop-zone-after": "drop-playlist-after",
@@ -71,7 +91,7 @@
 						"drop-outside": "drop-playlist-outside",
 					});
 				// copy of dragable element
-				str = `<div class="dragged-playlist drag-clone" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				str = `<div class="dragged-playlist drag-clone" data-_id="${el.parent().data("_id")}" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 
 			// custom events

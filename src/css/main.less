@@ -144,11 +144,20 @@ content {
 						}
 
 						.children {
-							padding-left: 17px;
 							display: block;
 							max-height: 0;
 							overflow: hidden;
 							transition: max-height 200ms linear;
+
+							> ul > li {
+								> .leaf { padding-left: 17px; }
+								> .children > ul > li {
+									> .leaf { padding-left: 34px; }
+									> .children > ul > li {
+										> .leaf { padding-left: 51px; }
+									}
+								}
+							}
 						}
 
 						&.dragged {
