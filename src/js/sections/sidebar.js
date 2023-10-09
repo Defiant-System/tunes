@@ -211,6 +211,7 @@
 				// apply style + field value
 				Self.els.swap
 					.find(".rename-field")
+					.data({ id: el.data("_id") })
 					.css(el.find("> .leaf .name").offset("sidebar"))
 					.find("input")
 					.val(event.origin.el.find(`> .leaf .name`).text())
@@ -219,7 +220,12 @@
 			// case "window.keystroke":
 			case "window.keyup":
 				if (event.char === "return") {
-					console.log("blur field");
+					let id = Self.els.swap.find(".rename-field").data("id"),
+						name = Self.els.swap.find("input").val();
+					// delete field
+					Self.els.swap.html("");
+					// update leaf
+					Self.els.el.find(`li[data-_id="${id}"] > .leaf .name`).text(name);
 				}
 				break;
 		}
