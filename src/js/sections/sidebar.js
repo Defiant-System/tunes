@@ -152,8 +152,13 @@
 				}
 				break;
 			case "select-playlist":
+				if (event.button === 2) return;
+				
 				el = $(event.target);
 				if (el.nodeName() !== "li") el = el.parents("li:first");
+				if (el.hasClass("has-children")) {
+					return el.find("> .leaf .icon-arrow").trigger("click");
+				}
 
 				Self.els.el.find(".active").removeClass("active");
 				el.addClass("active");

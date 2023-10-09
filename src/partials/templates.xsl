@@ -48,6 +48,7 @@
 			</xsl:if>
 			<xsl:if test="$drag = 1">
 				<xsl:attribute name="data-ondrag">check-playlist-drag</xsl:attribute>
+				<xsl:attribute name="data-context">user-playlist</xsl:attribute>
 			</xsl:if>
 			<div class="leaf">
 				<i class="icon-blank" data-click="toggle-folder">
@@ -95,7 +96,7 @@
 				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
 					<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
 					<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
-					<div class="row" data-ondrag="check-track-drag">
+					<div class="row" data-ondrag="check-track-drag" data-context="playlist-track">
 						<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
 						<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 						<div class="cell">

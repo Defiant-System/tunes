@@ -22,4 +22,17 @@
 		<Menu type="divider"/>
 		<Menu name="License"/>
 	</Menu>
+
+	<Menu for="user-playlist">
+		<Menu name="Play" click="play-playlist"/>
+		<Menu type="divider"/>
+		<Menu name="Rename" click="rename-playlist"/>
+		<Menu name="Delete" click="delete-playlist"/>
+	</Menu>
+
+	<Menu for="playlist-track">
+		<Menu name="Play" click="play-track"/>
+		<Menu type="divider"/>
+		<Menu name="Delete" click="delete-playlist-track"/>
+	</Menu>
 </MenuBar>

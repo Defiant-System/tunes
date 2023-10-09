@@ -29,8 +29,8 @@
 			// system events
 			case "drop-track-before":
 				// restructure nodes
-				xSrc = window.bluePrint.selectSingleNode(`//[@_id="${event.el.data("_id")}"]`);
-				xnode = window.bluePrint.selectSingleNode(`//[@_id="${event.target.data("_id")}"]`);
+				xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${event.target.data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode);
 
 				// UI update / move dragged html element
@@ -42,8 +42,8 @@
 				break;
 			case "drop-track-after":
 				// restructure nodes
-				xSrc = window.bluePrint.selectSingleNode(`//[@_id="${event.el.data("_id")}"]`);
-				xnode = window.bluePrint.selectSingleNode(`//[@_id="${event.target.data("_id")}"]`);
+				xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${event.target.data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode.nextSibling);
 
 				// UI update / move dragged html element
