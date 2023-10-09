@@ -97,7 +97,7 @@
 					<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>
 					<div class="row" data-ondrag="check-track-drag">
 						<xsl:attribute name="data-pos"><xsl:value-of select="position()"/></xsl:attribute>
-						<xsl:attribute name="data-_id"><xsl:value-of select="@ref | @id"/></xsl:attribute>
+						<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 						<div class="cell">
 							<i class="icon-play" data-click="play-song"></i>
 							<i class="icon-heart" data-click="toggle-heart">

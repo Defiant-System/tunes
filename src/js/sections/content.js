@@ -29,9 +29,8 @@
 			// system events
 			case "drop-track-before":
 				// restructure nodes
-				pId = event.target.parent().data("_id");
-				xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]/*[@ref="${event.el.data("_id")}"]`);
-				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]/*[@ref="${event.target.data("_id")}"]`);
+				xSrc = window.bluePrint.selectSingleNode(`//[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`//[@_id="${event.target.data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode);
 
 				// UI update / move dragged html element
@@ -43,9 +42,8 @@
 				break;
 			case "drop-track-after":
 				// restructure nodes
-				pId = event.target.parent().data("_id");
-				xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]/*[@ref="${event.el.data("_id")}"]`);
-				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]/*[@ref="${event.target.data("_id")}"]`);
+				xSrc = window.bluePrint.selectSingleNode(`//[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`//[@_id="${event.target.data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode.nextSibling);
 
 				// UI update / move dragged html element
@@ -56,8 +54,16 @@
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
 			case "drop-track-in-folder":
-				console.log( event.el.data("_id") );
-				console.log( event.target.parent().data("_id") );
+				pId = event.target.parent().data("_id");
+				if (event.el.data("_pId") !== pId) {
+					xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${event.el.data("_id")}"]`);
+					xnode = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]`);
+					xnode.appendChild(xSrc);
+					// UI update / remove dragged html element
+					Self.els.el.find(`.row[data-_id="${event.el.data("_id")}"]`).remove();
+				}
+				// reset drag / drop
+				Self.dispatch({ type: "reset-drag-drop" });
 				break;
 			case "drop-track-outside":
 				/* falls through */
@@ -104,7 +110,7 @@
 						});
 				}
 				// copy of dragable element
-				str = `<div class="dragged-track drag-clone" data-_id="${event.el.data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				str = `<div class="dragged-track drag-clone" data-_id="${event.el.data("_id")}" data-_pId="${event.el.parent().data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 
 			// custom events
