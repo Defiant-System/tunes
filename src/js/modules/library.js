@@ -5,7 +5,11 @@
 	init() {
 		// auto tag all nodes with id's
 		let now = Date.now();
-		window.bluePrint.selectNodes(`//*`).map((x, i) => x.setAttribute("_id", now + i));
+		window.bluePrint.selectNodes(`//*[not(@_id)]`).map((x, i) => x.setAttribute("_id", now + i));
+		window.bluePrint.selectNodes(`//*[@ref][not(@dur)]`).map(x => {
+			let node = window.bluePrint.selectSingleNode(`//*[@id="${x.getAttribute("ref")}"]`);
+			if (node) x.setAttribute("dur", node.getAttribute("dur"));
+		})
 		// get all mp3 files from filesystem
 		karaqu.shell(`fs -k mp3`)
 			.then(res => this.dispatch({ type: "parse-music-files", list: res.result }));

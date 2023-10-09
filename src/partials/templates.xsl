@@ -75,8 +75,8 @@
 			</xsl:choose></li>
 			<li><xsl:value-of select="count(.//*)"/> songs</li>
 			<li><xsl:call-template name="summarize-duration">
-					<xsl:with-param name="ms" select="sum(.//@dur)" />
-				</xsl:call-template></li>
+				<xsl:with-param name="ms" select="sum(.//@dur)"/>
+			</xsl:call-template></li>
 		</ul>
 	</div>
 	<div class="table">
