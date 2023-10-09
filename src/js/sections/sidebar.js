@@ -33,10 +33,11 @@
 		switch (event.type) {
 			// system events
 			case "drop-playlist-before":
-				// console.log( "before", window.bluePrint.selectSingleNode(`//Playlists`).xml );
+				// restructure nodes
 				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode);
+				// console.log( "before", window.bluePrint.selectSingleNode(`//Playlists`).xml );
 
 				// UI update / move dragged html element
 				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
@@ -46,6 +47,7 @@
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
 			case "drop-playlist-after":
+				// restructure nodes
 				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode.nextSibling);
@@ -58,6 +60,7 @@
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
 			case "drop-playlist-in-folder":
+				// restructure nodes
 				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
 				// move dragged node in to drop target

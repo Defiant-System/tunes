@@ -89,6 +89,7 @@
 			<div class="cell"><i class="icon-clock"></i></div>
 		</div>
 		<div class="table-body" data-click="select-track">
+			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:for-each select="./*">
 				<xsl:sort order="ascending" select="@lp"/>
 				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
