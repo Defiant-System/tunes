@@ -101,7 +101,7 @@
 						"drop-outside": "drop-playlist-outside",
 					});
 				// copy of dragable element
-				str = `<div class="dragged-playlist drag-clone" data-_id="${el.parent().data("_id")}" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				str = `<div class="dragged-playlist drag-clone" data-_id="${el.parent().data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 
 			// custom events
@@ -150,7 +150,7 @@
 				break;
 			case "select-playlist":
 				el = $(event.target);
-				if (el.nodeName() !== "li") return;
+				if (el.nodeName() !== "li") el = el.parents("li:first");
 
 				Self.els.el.find(".active").removeClass("active");
 				el.addClass("active");

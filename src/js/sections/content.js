@@ -76,7 +76,7 @@
 						});
 				}
 				// copy of dragable element
-				str = `<div class="dragged-track drag-clone" data-id="${event.el.data("_id")}" style="top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
+				str = `<div class="dragged-track drag-clone" data-id="${event.el.data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
 				return Self.els.dnd.append(str);
 
 			// custom events
