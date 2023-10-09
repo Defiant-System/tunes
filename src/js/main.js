@@ -62,6 +62,7 @@ const tunes = {
 			default:
 				el = event.el;
 				if (event.origin) el = event.origin.el;
+				if (!el && event.target) el = $(event.target);
 				if (el) {
 					pEl = el.data("area") ? el : el.parents(`[data-area]`);
 					if (pEl.length) {

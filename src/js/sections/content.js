@@ -114,6 +114,9 @@
 				return Self.els.swap.append(str);
 
 			// custom events
+			case "handle-dbl-click":
+				console.log(event);
+				break;
 			case "render-playlist":
 				// set limit value
 				window.bluePrint.selectSingleNode(`//AllFiles`).setAttribute("limit", event.options.limit);

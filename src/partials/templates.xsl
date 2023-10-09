@@ -66,6 +66,13 @@
 </xsl:template>
 
 
+<xsl:template name="playlist-rename">
+	<div class="rename-field">
+		<input type="text" name="playlist-rename" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+	</div>
+</xsl:template>
+
+
 <xsl:template name="content-list">
 	<div class="playlist-info">
 		<h2><xsl:value-of select="@artist"/> - <xsl:value-of select="@album"/></h2>
@@ -89,7 +96,7 @@
 			<div class="cell">Album</div>
 			<div class="cell"><i class="icon-clock"></i></div>
 		</div>
-		<div class="table-body" data-click="select-track">
+		<div class="table-body" data-click="select-track" data-dbl-click="handle-dbl-click">
 			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:for-each select="./*">
 				<xsl:sort order="ascending" select="@lp"/>

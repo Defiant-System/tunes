@@ -194,21 +194,33 @@
 					index: 0,
 				});
 				break;
-			case "rename-playlist":
-				el = event.origin.el;
-				offset = el.offset("sidebar");
-				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
-				
-				title = event.origin.el.find(`> .leaf .name`).text();
-				str = `<div class="rename-field"><input type="text" name="playlist-rename" value="${title}"/></div>`;
-				Self.els.swap.append(str).css(offset);
-				break;
 			case "delete-playlist":
 				// remove from XML data
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
 				xnode.parentNode.removeChild(xnode);
 				// UI remove
 				event.origin.el.remove();
+				break;
+			case "rename-playlist":
+				el = event.origin.el;
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
+				// render html
+				window.render({ template: "playlist-rename", target: Self.els.swap });
+				// for correct event proxying
+				Self.els.swap.data({ area: "sidebar" });
+				// apply style + field value
+				Self.els.swap
+					.find(".rename-field")
+					.css(el.find("> .leaf .name").offset("sidebar"))
+					.find("input")
+					.val(event.origin.el.find(`> .leaf .name`).text())
+					.select();
+				break;
+			// case "window.keystroke":
+			case "window.keyup":
+				if (event.char === "return") {
+					console.log("blur field");
+				}
 				break;
 		}
 	}
