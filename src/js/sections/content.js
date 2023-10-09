@@ -6,7 +6,7 @@
 		this.els = {
 			layout: window.find("content"),
 			el: window.find("list .wrapper"),
-			dnd: window.find(".dnd-ux"),
+			swap: window.find(".ux-swap"),
 		};
 	},
 	dispatch(event) {
@@ -69,7 +69,7 @@
 				/* falls through */
 			case "reset-drag-drop":
 				// clean up
-				Self.els.dnd.html("");
+				Self.els.swap.html("");
 				// reset zones
 				window.find(`[data-drop-zone-before], [data-drop-zone-after], [data-drop-zone], [drop-outside]`)
 					.removeAttr("data-drop-zone-before data-drop-zone-after data-drop-zone data-drop-outside");
@@ -91,7 +91,7 @@
 				if (cells.get(2).text()) title += " &#183; "+ cells.get(2).text();
 
 				// for correct event proxying
-				Self.els.dnd.data({ area: "content" });
+				Self.els.swap.data({ area: "content" });
 				// tag dragged item
 				Self.dragOrigin = event.el.addClass("dragged");
 				// tag "drop zones"
@@ -111,7 +111,7 @@
 				}
 				// copy of dragable element
 				str = `<div class="dragged-track drag-clone" data-_id="${event.el.data("_id")}" data-_pId="${event.el.parent().data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
-				return Self.els.dnd.append(str);
+				return Self.els.swap.append(str);
 
 			// custom events
 			case "render-playlist":

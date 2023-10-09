@@ -6,7 +6,7 @@
 		this.els = {
 			layout: window.find("content"),
 			el: window.find("sidebar .wrapper"),
-			dnd: window.find(".dnd-ux"),
+			swap: window.find(".ux-swap"),
 		};
 		// render tree view
 		window.render({
@@ -72,7 +72,7 @@
 				/* falls through */
 			case "reset-drag-drop":
 				// clean up
-				Self.els.dnd.html("");
+				Self.els.swap.html("");
 				// reset zones
 				window.find(`[data-drop-zone-before], [data-drop-zone-after], [data-drop-zone], [drop-outside]`)
 					.removeAttr("data-drop-zone-before data-drop-zone-after data-drop-zone data-drop-outside");
@@ -92,7 +92,7 @@
 				title = el.find(".name").text();
 
 				// for correct event proxying
-				Self.els.dnd.data({ area: "sidebar" });
+				Self.els.swap.data({ area: "sidebar" });
 				// tag dragged item
 				Self.dragOrigin = el.addClass("dragged");
 				// tag "drop zones"
@@ -105,7 +105,7 @@
 					});
 				// copy of dragable element
 				str = `<div class="dragged-playlist drag-clone" data-_id="${el.parent().data("_id")}" style="opacity: 0; top: ${y}px; left: ${x}px;"><span>${title}</span></div>`;
-				return Self.els.dnd.append(str);
+				return Self.els.swap.append(str);
 
 			// custom events
 			case "apply-settings":
@@ -195,7 +195,13 @@
 				});
 				break;
 			case "rename-playlist":
-				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
+				el = event.origin.el;
+				offset = el.offset("sidebar");
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
+				
+				title = event.origin.el.find(`> .leaf .name`).text();
+				str = `<div class="rename-field"><input type="text" name="playlist-rename" value="${title}"/></div>`;
+				Self.els.swap.append(str).css(offset);
 				break;
 			case "delete-playlist":
 				// remove from XML data

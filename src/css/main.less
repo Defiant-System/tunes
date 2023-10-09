@@ -541,11 +541,27 @@ content {
 		}
 	}
 
-	.dnd-ux {
+	.ux-swap {
 		position: relative;
 		z-index: 99;
 		width: 0;
 		height: 0;
+
+		.rename-field {
+			position: absolute;
+			// top: 100px;
+			// left: 50px;
+			// width: 90px;
+			// height: 21px;
+			box-shadow: 0 0 0 1px #333;
+			background: red;
+
+			input {
+				background: transparent;
+				box-shadow: none;
+				border: 0;
+			}
+		}
 
 		// drag and drop UI
 		.dragged-track,
