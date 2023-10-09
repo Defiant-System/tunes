@@ -105,6 +105,10 @@ content {
 							padding-left: 5px;
 							margin-top: 1px;
 
+							&.dragged {
+								opacity: .5;
+							}
+
 							&.drag-hover:not(.dragged) {
 								&:before {
 									content: "";
@@ -160,10 +164,6 @@ content {
 							}
 						}
 
-						&.dragged {
-							opacity: .5;
-						}
-
 						&.active {
 							// background: #36b;
 							font-weight: 600;
@@ -192,7 +192,7 @@ content {
 						span {
 							display: inline-block;
 							vertical-align: top;
-							pointer-events: none;
+							// pointer-events: none;
 						}
 					}
 

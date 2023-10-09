@@ -17,6 +17,7 @@
 			cells,
 			title,
 			xpath,
+			xnode,
 			list,
 			row,
 			str,
@@ -102,18 +103,18 @@
 				break;
 			case "update-active":
 				// ui update
-				el = Self.els.el.find(`.row[data-id="${event.id}"]`);
+				el = Self.els.el.find(`.row[data-_id="${event.id}"]`);
 				Self.els.el.find(".track-playing, .active").removeClass("track-playing active");
 				el.addClass("track-playing").toggleClass("paused", event.playing);
 				break;
 			case "update-song-duration":
 				// ui update
-				Self.els.el.find(`.row[data-id="${event.id}"] .cell:nth(4)`).html(event.time);
+				Self.els.el.find(`.row[data-_id="${event.id}"] .cell:nth(4)`).html(event.time);
 				// update xml node
 				APP.toolbar.playNode.setAttribute("dur", event.duration);
 				break;
 			case "get-song-list":
-				return Self.els.el.find(".row[data-id]").map(r => r.getAttribute("data-id"));
+				return Self.els.el.find(".row[data-_id]").map(r => r.getAttribute("data-_id"));
 			case "play-song":
 				row = event.el.parents(".row");
 				if (row.hasClass("track-playing")) {

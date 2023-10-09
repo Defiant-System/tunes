@@ -17,9 +17,12 @@ let Pref = {
 
 const tunes = {
 	async init() {
+		// if "Playlists" root node already exists, remove first one
+		let xSet = window.settings.getItem("playlists"),
+			xDef = window.bluePrint.selectSingleNode(`.//Data/Playlists`);
+		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };
-
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
@@ -31,6 +34,7 @@ const tunes = {
 	},
 	async dispatch(event) {
 		let Self = tunes,
+			xnode,
 			name,
 			value,
 			pEl,
@@ -39,6 +43,9 @@ const tunes = {
 		switch (event.type) {
 			// system events
 			case "window.close":
+				//save playlists node
+				xnode = window.bluePrint.selectSingleNode(`.//Playlists`);
+				window.settings.setItem("playlists", xnode);
 				// save settings
 				window.settings.setItem("settings", Self.settings);
 				break;

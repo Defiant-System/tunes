@@ -37,6 +37,11 @@
 				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode);
+
+				// UI update / move dragged html element
+				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
+				event.target.parent().before(el[0]);
+
 				// reset drag / drop
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
@@ -44,6 +49,11 @@
 				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
 				xnode.parentNode.insertBefore(xSrc, xnode.nextSibling);
+
+				// UI update / move dragged html element
+				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
+				event.target.parent().after(el[0]);
+
 				// reset drag / drop
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
