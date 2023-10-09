@@ -153,7 +153,7 @@
 				break;
 			case "select-playlist":
 				if (event.button === 2) return;
-				
+
 				el = $(event.target);
 				if (el.nodeName() !== "li") el = el.parents("li:first");
 				if (el.hasClass("has-children")) {
@@ -183,6 +183,26 @@
 				title = el.find(".name").html();
 				xpath = el.data("xpath") || `//*[@name = "${el.find(".name").text()}"]`;
 				APP.content.dispatch({ type: "render-playlist", xpath, title, options });
+				break;
+			// menu events
+			case "play-playlist":
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
+				// create list and play songs
+				APP.toolbar.dispatch({
+					type: "play-list",
+					list: xnode.selectNodes(`.//*[@_id]`).map(x => x.getAttribute("_id")),
+					index: 0,
+				});
+				break;
+			case "rename-playlist":
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
+				break;
+			case "delete-playlist":
+				// remove from XML data
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
+				xnode.parentNode.removeChild(xnode);
+				// UI remove
+				event.origin.el.remove();
 				break;
 		}
 	}

@@ -60,8 +60,10 @@ const tunes = {
 				if (el.length) el.parent().trigger("click");
 				break;
 			default:
-				if (event.el) {
-					pEl = event.el.data("area") ? event.el : event.el.parents(`[data-area]`);
+				el = event.el;
+				if (event.origin) el = event.origin.el;
+				if (el) {
+					pEl = el.data("area") ? el : el.parents(`[data-area]`);
 					if (pEl.length) {
 						name = pEl.data("area");
 						return Self[name].dispatch(event);
