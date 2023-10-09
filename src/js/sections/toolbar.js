@@ -124,7 +124,7 @@
 				Self.playList = event.list || APP.content.dispatch({ type: "get-song-list" });
 				Self.playTrack = Self.playList[Self.playIndex];
 				
-				xpath = `//AllFiles//i[@id="${Self.playTrack}"]`;
+				xpath = `//AllFiles//i[@id = //Playlists//*[@_id="${Self.playTrack}"]/@ref]`;
 				Self.playNode = window.bluePrint.selectSingleNode(xpath);
 
 				Self.dispatch({
