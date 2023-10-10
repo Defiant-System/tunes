@@ -127,6 +127,14 @@
 			C14.5,5,15,5.5,15,6.5z"/>
 	</svg>
 
+	<svg id="icon-plus" viewBox="0 0 17 17">
+		<style type="text/css">
+			.st0{fill:#333;}
+		</style>
+		<rect class="st0" x="8" y="4" width="1" height="9"/>
+		<rect class="st0" x="4" y="8" width="9" height="1"/>
+	</svg>
+
 	<svg id="icon-arrow" viewBox="0 0 13 13">
 		<style type="text/css">
 			.st0{fill:#333;}

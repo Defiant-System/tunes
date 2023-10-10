@@ -185,6 +185,9 @@
 				APP.content.dispatch({ type: "render-playlist", xpath, title, options });
 				break;
 			// menu events
+			case "add-new-folder":
+				console.log(event);
+				break;
 			case "play-playlist":
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
 				// create list and play songs

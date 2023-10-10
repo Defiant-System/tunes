@@ -187,14 +187,6 @@ content {
 								border-radius: 50%;
 								background: #aaa;
 							}
-
-							// .name {
-							// 	color: #fff;
-							// }
-
-							// i[class^="icon-"] {
-							// 	filter: invert(1) brightness(2);
-							// }
 						}
 
 						span {
@@ -203,44 +195,63 @@ content {
 							// pointer-events: none;
 						}
 					}
+				}
 
-					.name {
-						padding: 6px 0 0 0;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						flex: 1;
-						color: #888;
+				.new-playlist {
+					// background: rgba(#000,.1);
+					position: relative;
+					top: -3px;
+					display: flex;
+					height: 23px;
+					padding-left: 5px;
+					cursor: pointer;
+					opacity: .75;
+
+					&:hover {
+						opacity: 1;
 					}
-					
-					i[class^="icon-"] {
-						background-position: 50% 50%;
-						background-size: 100%;
-						background-repeat: no-repeat;
-						display: inline-block;
-						vertical-align: top;
-						position: relative;
-						top: 3px;
-						// width: 17px;
-						// height: 17px;
-						opacity: 0.5;
-						margin: 0 2px 0 0;
 
-						&:first-child {
-							top: 5px;
-							left: 1px;
-							width: 13px;
-							height: 13px;
-						}
+					i.icon-plus {
+						background-image: url(~/icons/icon-plus.png);
+					}
+				}
 
-						&.icon-arrow {
-							pointer-events: all;
-							transition: transform 120ms ease-in-out;
+				.name {
+					padding: 6px 0 0 0;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					flex: 1;
+					color: #888;
+				}
+				
+				i[class^="icon-"] {
+					background-position: 50% 50%;
+					background-size: 100%;
+					background-repeat: no-repeat;
+					display: inline-block;
+					vertical-align: top;
+					position: relative;
+					top: 3px;
+					// width: 17px;
+					// height: 17px;
+					opacity: 0.5;
+					margin: 0 2px 0 0;
 
-							&.down {
-								transform-origin: 50% 50%;
-								transform: rotate(90deg);
-							}
+					&:first-child {
+						top: 5px;
+						left: 1px;
+						width: 13px;
+						height: 13px;
+					}
+
+					&.icon-arrow {
+						pointer-events: all;
+						transition: transform 120ms ease-in-out;
+
+						&.down {
+							transform-origin: 50% 50%;
+							transform: rotate(90deg);
 						}
 					}
 				}
