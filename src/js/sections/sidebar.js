@@ -170,7 +170,7 @@
 					changeSelect: `./*`,
 					sortNodeXpath: `//xsl:for-each/xsl:sort`,
 					sortSelect: `@lp`,
-					sortOrder: `ascending`,
+					sortOrder: `descending`,
 					sortType: `text`,
 					limit: 999,
 				};

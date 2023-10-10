@@ -39,7 +39,7 @@
 	</Playlists>
 	<System>
 		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
-		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" limit="10"/>
+		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" order="descending" limit="10"/>
 		<i name="Recently Uploaded" icon="upload" xpath="//AllFiles" sort="@date" limit="10"/>
 	</System>
 	<AllFiles limit="999">
