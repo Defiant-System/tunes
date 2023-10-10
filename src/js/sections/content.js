@@ -115,7 +115,8 @@
 
 			// custom events
 			case "handle-dbl-click":
-				console.log(event);
+				el = $(event.target).parents("?.row");
+				el.find(".cell .icon-play").trigger("click");
 				break;
 			case "render-playlist":
 				// set limit value
