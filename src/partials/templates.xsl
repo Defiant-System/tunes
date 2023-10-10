@@ -75,6 +75,7 @@
 
 <xsl:template name="content-list">
 	<div class="playlist-info">
+		<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 		<h2><xsl:value-of select="@artist"/> - <xsl:value-of select="@album"/></h2>
 		<ul class="details">
 			<li><xsl:choose>

@@ -20,8 +20,8 @@ const tunes = {
 		// if "Playlists" root node already exists, remove first one
 		let xSet = window.settings.getItem("playlists"),
 			xDef = window.bluePrint.selectSingleNode(`.//Data/Playlists`);
-		// if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
-		xSet.parentNode.removeChild(xSet);
+		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
+		// if (xSet) xSet.parentNode.removeChild(xSet);
 
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };

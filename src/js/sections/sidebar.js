@@ -216,17 +216,30 @@
 					.find("input")
 					.val(event.origin.el.find(`> .leaf .name`).text())
 					.select();
+				// save reference to field
+				Self.renameField = Self.els.swap.find(`.rename-field input`);
 				break;
 			// case "window.keystroke":
 			case "window.keyup":
-				if (event.char === "return") {
-					let id = Self.els.swap.find(".rename-field").data("id"),
-						name = Self.els.swap.find("input").val();
-					// delete field
-					Self.els.swap.html("");
-					// update leaf
-					Self.els.el.find(`li[data-_id="${id}"] > .leaf .name`).text(name);
+				if (Self.renameField) {
+					let val = Self.renameField.val(),
+						pId = Self.renameField.parent().data("id");
+					APP.content.els.el.find(`.playlist-info[data-_id="${pId}"] h2`).html(val);
 				}
+				if (event.char === "return") {
+					Self.dispatch({ type: "window.input-blur" });
+				}
+				break;
+			// case "window.input-focus":
+			case "window.input-blur":
+				let rId = Self.els.swap.find(".rename-field").data("id"),
+					rName = Self.els.swap.find("input").val();
+				// delete field
+				Self.els.swap.html("");
+				// update leaf
+				Self.els.el.find(`li[data-_id="${rId}"] > .leaf .name`).text(rName);
+				// delete reference
+				delete Self.renameField;
 				break;
 		}
 	}
