@@ -92,7 +92,7 @@
 		<xsl:if test="not(@owner)"><xsl:attribute name="class">table enum</xsl:attribute></xsl:if>
 		<div class="row head">
 			<div class="cell"></div>
-			<div class="cell sort-asc">Title</div>
+			<div class="cell sort-asc1">Title</div>
 			<div class="cell">Artist</div>
 			<div class="cell">Album</div>
 			<div class="cell"><i class="icon-clock"></i></div>
@@ -100,7 +100,7 @@
 		<div class="table-body" data-click="select-track" data-dbl-click="handle-dbl-click">
 			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 			<xsl:for-each select="./*">
-				<xsl:sort order="ascending" select="@lp"/>
+				<xsl:sort order="descending" select="@lp"/>
 				<xsl:if test="position() &lt;= //Data/AllFiles/@limit">
 					<xsl:variable name="currId" select="current()/@ref | current()/@id"/>
 					<xsl:variable name="song" select="//Data/AllFiles/*[@id = $currId]"/>

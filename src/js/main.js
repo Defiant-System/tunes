@@ -23,6 +23,10 @@ const tunes = {
 		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
 		// if (xSet) xSet.parentNode.removeChild(xSet);
 
+		xSet = window.settings.getItem("allfiles");
+		xDef = window.bluePrint.selectSingleNode(`.//Data/AllFiles`);
+		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
+
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };
 		// init all sub-objects
@@ -48,6 +52,10 @@ const tunes = {
 				//save playlists node
 				xnode = window.bluePrint.selectSingleNode(`.//Playlists`);
 				window.settings.setItem("playlists", xnode);
+				//save all-files node
+				Self.library.dispatch({ type: "clean-allfiles-nodes" })
+				xnode = window.bluePrint.selectSingleNode(`.//AllFiles`);
+				window.settings.setItem("allfiles", xnode);
 				// save settings
 				window.settings.setItem("settings", Self.settings);
 				break;

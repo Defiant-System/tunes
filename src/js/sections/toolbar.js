@@ -110,6 +110,11 @@
 				Self.els.progPlayed.css({ width: 0 });
 				// if it is only "reset"
 				if (!event.path) return APP.content.dispatch({ type: "no-active" });
+
+				// update "last played" attribute
+				xnode = window.bluePrint.selectSingleNode(`.//*[@id="${event.path.sha1()}"]`);
+				xnode.setAttribute("lp", Date.now());
+
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
 
@@ -124,8 +129,10 @@
 				Self.playList = event.list || APP.content.dispatch({ type: "get-song-list" });
 				Self.playTrack = Self.playList[Self.playIndex];
 				
-				xpath = `//AllFiles//i[@id = //Playlists//*[@_id="${Self.playTrack}"]/@ref]`;
-				Self.playNode = window.bluePrint.selectSingleNode(xpath);
+				Self.playNode = window.bluePrint.selectSingleNode(`//*[@_id="${Self.playTrack}"]`);
+				if (Self.playNode.getAttribute("ref")) {
+					Self.playNode = window.bluePrint.selectSingleNode(`//AllFiles//i[@id = //Playlists//*[@_id="${Self.playTrack}"]/@ref]`);
+				}
 
 				Self.dispatch({
 					type: "reset-display",

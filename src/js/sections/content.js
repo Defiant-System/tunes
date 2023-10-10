@@ -115,8 +115,8 @@
 
 			// custom events
 			case "handle-dbl-click":
-				el = $(event.target).parents("?.row");
-				el.find(".cell .icon-play").trigger("click");
+				row = $(event.target).parents("?.row");
+				row.find(".cell .icon-play").trigger("click");
 				break;
 			case "render-playlist":
 				// set limit value
@@ -178,11 +178,17 @@
 				break;
 			case "toggle-heart":
 				row = event.el.parents(".row");
+				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${row.data("_id")}"]`);
+				if (xnode.getAttribute("ref")) {
+					xnode = window.bluePrint.selectSingleNode(`//*[@id="${xnode.getAttribute("ref")}"]`);
+				}
 
 				if (event.el.hasClass("icon-heart")) {
 					event.el.prop({ className: "icon-heart-full" });
+					xnode.setAttribute("fav", 1);
 				} else {
 					event.el.prop({ className: "icon-heart" });
+					xnode.removeAttribute("fav");
 				}
 				break;
 		}

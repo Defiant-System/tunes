@@ -39,13 +39,12 @@
 	</Playlists>
 	<System>
 		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
-		<i name="History" icon="upload" xpath="//AllFiles" sort="@lp" limit="20"/>
-		<i name="Recently Uploaded" icon="clock" xpath="//AllFiles" sort="@date" limit="10"/>
+		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" limit="10"/>
+		<i name="Recently Uploaded" icon="upload" xpath="//AllFiles" sort="@date" limit="10"/>
 	</System>
 	<AllFiles limit="999">
-		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696245119460" dur="311209"/>
-		<i id="87ee181bf9f493e82f7829b8f8aeef811c61981f" lp="1696245119460" dur="311209"/>
-		
+		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696241119460" dur="311209"/>
+		<i id="87ee181bf9f493e82f7829b8f8aeef811c61981f" lp="1696242119460" dur="311209"/>
 		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" lp="1696245119460" dur="311209"/>
 		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" lp="1696245219460" dur="312536"/>
 		<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" lp="1696245319460" dur="122146"/>

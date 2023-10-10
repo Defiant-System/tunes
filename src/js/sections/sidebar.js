@@ -163,8 +163,8 @@
 				Self.els.el.find(".active").removeClass("active");
 				el.addClass("active");
 				// save to settings
-				APP.settings.Sidebar["active-li"] = el.index();
-
+				APP.settings.Sidebar["active-li"] = Self.els.el.find("li").findIndex(e => e === el[0]);
+				
 				options = {
 					changePath: `//xsl:for-each`,
 					changeSelect: `./*`,

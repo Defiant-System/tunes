@@ -15,5 +15,7 @@ let Test = {
 		// 	});
 		// }, 200);
 
+		// setTimeout(() => APP.library.dispatch({ type: "minify-all-files" }), 500);
+
 	}
 };

@@ -53,6 +53,13 @@
 
 				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
+			case "clean-allfiles-nodes":
+				xRoot = window.bluePrint.selectSingleNode(`//AllFiles`);
+				xRoot.selectNodes(`.//*[@id]`).map(xNode =>
+					[...xNode.attributes].map(x =>
+						["id", "lp", "fav", "dur"].includes(x.name) ? null : xNode.removeAttribute(x.name)));
+				// console.log(xRoot.xml);
+				break;
 		}
 	}
 }
