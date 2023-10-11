@@ -38,10 +38,21 @@
 		</i>
 	</Playlists>
 	<System>
+		<i name="Samples" icon="folder">
+			
+		</i>
 		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
 		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" order="descending" limit="10"/>
 		<i name="All Files" icon="upload" xpath="//AllFiles" sort="@date" limit="999"/>
 	</System>
+	<Cdn>
+		<i name="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
+		<i name="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
+		<i name="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
+		<i name="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
+		<i name="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
+		<i name="/cdn/mp3/Theme - Family Business.mp3" dur="172"/>
+	</Cdn>
 	<AllFiles limit="999">
 		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696241119460" dur="311209"/>
 		<i id="87ee181bf9f493e82f7829b8f8aeef811c61981f" lp="1696242119460" dur="311209"/>
