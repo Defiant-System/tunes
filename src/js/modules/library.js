@@ -18,6 +18,7 @@
 		let APP = tunes,
 			Self = APP.library,
 			xRoot,
+			xNode,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -53,6 +54,10 @@
 
 				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
+			case "create-new-playlist":
+				xRoot = window.bluePrint.selectSingleNode(`//Playlists`);
+				xNode = $.nodeFromString(`<i _id="${Date.now()}" owner="me" name="New Playlist"/>`);
+				return xRoot.appendChild(xNode);
 			case "clean-allfiles-nodes":
 				xRoot = window.bluePrint.selectSingleNode(`//AllFiles`);
 				xRoot.selectNodes(`.//*[@id]`).map(xNode =>

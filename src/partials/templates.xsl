@@ -53,7 +53,7 @@
 
 
 <xsl:template name="render-sidebar-item">
-	<xsl:param name="drag"/>
+	<xsl:param name="drag" select="1"/>
 	<li>
 		<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 		<xsl:if test="count(./i[@name])"><xsl:attribute name="class">has-children</xsl:attribute></xsl:if>

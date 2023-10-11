@@ -220,17 +220,20 @@
 				});
 				break;
 			case "add-new-playlist":
-				console.log(event);
-
-				let tmp = Self.els.el.find(`ul li:nth(1)`).data("_id");
+				// creaate xml node via library module
+				xnode = APP.library.dispatch({ type: "create-new-playlist" });
+				str = xnode.getAttribute("_id");
 				// render tree view
-				el = window.render({
+				window.render({
 					template: "render-sidebar-item",
-					match: `//Data//*[@_id="${tmp}"]`,
-					vdom: true
+					match: `//Data//*[@_id="${str}"]`,
+					append: Self.els.el.find(`.user-list > ul`),
 				});
-
-				console.log(el.html());
+				// auto rename playlist
+				Self.dispatch({
+					type: "rename-playlist",
+					el: Self.els.el.find(`li[data-_id="${str}"]`),
+				});
 				break;
 			case "delete-playlist":
 				el = event.origin.el;
@@ -243,7 +246,7 @@
 				el.remove();
 				break;
 			case "rename-playlist":
-				el = event.origin.el;
+				el = event.el || event.origin.el;
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
 				// render html
 				window.render({ template: "playlist-rename", target: Self.els.swap });
@@ -255,7 +258,7 @@
 					.data({ id: el.data("_id") })
 					.css(el.find("> .leaf .name").offset("sidebar"))
 					.find("input")
-					.val(event.origin.el.find(`> .leaf .name`).text())
+					.val(el.find(`> .leaf .name`).text())
 					.select();
 				// save reference to field
 				Self.renameField = Self.els.swap.find(`.rename-field input`);
