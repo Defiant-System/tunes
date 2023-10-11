@@ -28,6 +28,7 @@
 			xpath,
 			isOn,
 			str,
+			pEl,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -41,6 +42,13 @@
 
 				// UI update / move dragged html element
 				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
+				// clean up, if needed
+				if (el[0].parentNode.childNodes.length === 1) {
+					pEl = el.parents("li:first");
+					pEl.removeClass("has-children expanded");
+					pEl.find("> .leaf > .icon-arrow").removeClass("icon-arrow down").addClass("icon-blank");
+				}
+				// insert dragged element in to dropped target
 				event.target.parent().before(el[0]);
 
 				// reset drag / drop
@@ -54,6 +62,13 @@
 
 				// UI update / move dragged html element
 				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
+				// clean up, if needed
+				if (el[0].parentNode.childNodes.length === 1) {
+					pEl = el.parents("li:first");
+					pEl.removeClass("has-children expanded");
+					pEl.find("> .leaf > .icon-arrow").removeClass("icon-arrow down").addClass("icon-blank");
+				}
+				// insert dragged element in to dropped target
 				event.target.parent().after(el[0]);
 
 				// reset drag / drop
@@ -61,16 +76,18 @@
 				break;
 			case "drop-playlist-in-folder":
 				// restructure nodes
-				// xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
-				// xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
-				// // move dragged node in to drop target
-				// xnode.appendChild(xSrc);
+				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
+				// move dragged node in to drop target
+				xnode.appendChild(xSrc);
 
-				el = event.target.nextAll(`.children:first`);
-				if (el.hasClass("expanded")) {
-
+				el = Self.els.el.find(`li[data-_id="${event.el.data("_id")}"]`);
+				pEl = event.target.parent();
+				if (pEl.hasClass("expanded")) {
+					el.find(".dragged").removeClass("dragged");
+					pEl.find(".children > ul").append(el);
 				} else {
-					
+					el.remove();
 				}
 
 				// reset drag / drop
@@ -104,7 +121,7 @@
 				// tag dragged item
 				Self.dragOrigin = el.addClass("dragged");
 				// tag "drop zones"
-				Self.els.el.find(".user-list li > .leaf:not(.dragged)")
+				Self.els.el.find(".user-list li:not(.expanded) > .leaf:not(.dragged)")
 					.data({
 						"drop-zone-before": "drop-playlist-before",
 						"drop-zone-after": "drop-playlist-after",
