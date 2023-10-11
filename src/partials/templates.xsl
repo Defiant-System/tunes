@@ -44,29 +44,37 @@
 	<xsl:param name="drag"/>
 	<ul>
 		<xsl:for-each select="$xParent/*">
-		<li>
-			<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
-			<xsl:if test="count(./i[@name])"><xsl:attribute name="class">has-children</xsl:attribute></xsl:if>
-			<xsl:if test="@xpath">
-				<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
-			</xsl:if>
-			<xsl:if test="$drag = 1">
-				<xsl:attribute name="data-ondrag">check-playlist-drag</xsl:attribute>
-				<xsl:attribute name="data-context">user-playlist</xsl:attribute>
-			</xsl:if>
-			<div class="leaf">
-				<i class="icon-blank" data-click="toggle-folder">
-					<xsl:if test="count(./i[@name])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
-				</i>
-				<i class="icon-folder">
-					<xsl:if test="@icon"><xsl:attribute name="class">icon-<xsl:value-of select="@icon"/></xsl:attribute></xsl:if>
-				</i>
-				<span class="name"><xsl:value-of select="@name"/></span>
-			</div>
-			<div class="children"></div>
-		</li>
+			<xsl:call-template name="render-sidebar-item">
+				<xsl:with-param name="drag" select="$drag" />
+			</xsl:call-template>
 		</xsl:for-each>
 	</ul>
+</xsl:template>
+
+
+<xsl:template name="render-sidebar-item">
+	<xsl:param name="drag"/>
+	<li>
+		<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
+		<xsl:if test="count(./i[@name])"><xsl:attribute name="class">has-children</xsl:attribute></xsl:if>
+		<xsl:if test="@xpath">
+			<xsl:attribute name="data-xpath"><xsl:value-of select="@xpath"/></xsl:attribute>
+		</xsl:if>
+		<xsl:if test="$drag = 1">
+			<xsl:attribute name="data-ondrag">check-playlist-drag</xsl:attribute>
+			<xsl:attribute name="data-context">user-playlist</xsl:attribute>
+		</xsl:if>
+		<div class="leaf">
+			<i class="icon-blank" data-click="toggle-folder">
+				<xsl:if test="count(./i[@name])"><xsl:attribute name="class">icon-arrow</xsl:attribute></xsl:if>
+			</i>
+			<i class="icon-folder">
+				<xsl:if test="@icon"><xsl:attribute name="class">icon-<xsl:value-of select="@icon"/></xsl:attribute></xsl:if>
+			</i>
+			<span class="name"><xsl:value-of select="@name"/></span>
+		</div>
+		<div class="children"></div>
+	</li>
 </xsl:template>
 
 

@@ -221,11 +221,23 @@
 				break;
 			case "add-new-playlist":
 				console.log(event);
+
+				let tmp = Self.els.el.find(`ul li:nth(1)`).data("_id");
+				// render tree view
+				el = window.render({
+					template: "render-sidebar-item",
+					match: `//Data//*[@_id="${tmp}"]`,
+					vdom: true
+				});
+
+				console.log(el.html());
 				break;
 			case "delete-playlist":
 				el = event.origin.el;
 				// remove from XML data
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
+				// at least one playlist must exist
+				if (window.bluePrint.selectNodes(`//Playlists//*`).length === 1) return;
 				xnode.parentNode.removeChild(xnode);
 				// UI remove
 				el.remove();
