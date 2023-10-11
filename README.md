@@ -1,10 +1,10 @@
 # tunes
 
 TODO:
-- [ ] add / remove / rename folder
-- [ ] drag'n drop tracks / folders
-- [ ] info header; album / artist
-- [ ] info duration sum
-- [ ] repeat single song
-- [ ] 
+- [x] drag'n drop tracks / folders
+- [x] info header; album / artist
+- [x] info duration sum
+- [x] repeat single song
+- [ ] add playlist
+- [ ] delete playlist
 
