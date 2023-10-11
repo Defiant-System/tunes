@@ -61,10 +61,18 @@
 				break;
 			case "drop-playlist-in-folder":
 				// restructure nodes
-				xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
-				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
-				// move dragged node in to drop target
-				xnode.appendChild(xSrc);
+				// xSrc = window.bluePrint.selectSingleNode(`.//*[@_id="${event.el.data("_id")}"]`);
+				// xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.target.parent().data("_id")}"]`);
+				// // move dragged node in to drop target
+				// xnode.appendChild(xSrc);
+
+				el = event.target.nextAll(`.children:first`);
+				if (el.hasClass("expanded")) {
+
+				} else {
+					
+				}
+
 				// reset drag / drop
 				Self.dispatch({ type: "reset-drag-drop" });
 				break;
@@ -86,7 +94,7 @@
 			case "check-playlist-drag":
 				offset = event.el.offset("content");
 				y = offset.top + event.offsetY - 12;
-				x = offset.left + event.offsetX - 30;
+				x = offset.left + event.offsetX - 3;
 				el = $(event.target);
 				if (!el.hasClass("leaf")) el = el.parents(".leaf:first");
 				title = el.find(".name").text();
@@ -185,9 +193,6 @@
 				APP.content.dispatch({ type: "render-playlist", xpath, title, options });
 				break;
 			// menu events
-			case "add-new-folder":
-				console.log(event);
-				break;
 			case "play-playlist":
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
 				// create list and play songs
@@ -197,12 +202,16 @@
 					index: 0,
 				});
 				break;
+			case "add-new-playlist":
+				console.log(event);
+				break;
 			case "delete-playlist":
+				el = event.origin.el;
 				// remove from XML data
-				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${event.origin.el.data("_id")}"]`);
+				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
 				xnode.parentNode.removeChild(xnode);
 				// UI remove
-				event.origin.el.remove();
+				el.remove();
 				break;
 			case "rename-playlist":
 				el = event.origin.el;

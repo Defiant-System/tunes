@@ -206,13 +206,15 @@ content {
 					padding-left: 5px;
 					cursor: pointer;
 					opacity: .75;
+					font-size: 10px;
 
 					&:hover {
 						opacity: 1;
 					}
 
-					i.icon-plus {
-						background-image: url(~/icons/icon-plus.png);
+					i.icon-plus:first-child {
+						top: 4px;
+						margin-right: 0;
 					}
 				}
 
@@ -233,8 +235,6 @@ content {
 					vertical-align: top;
 					position: relative;
 					top: 3px;
-					// width: 17px;
-					// height: 17px;
 					opacity: 0.5;
 					margin: 0 2px 0 0;
 
@@ -617,5 +617,7 @@ i[class^="icon-"] {
 	&.icon-clock        { background-image: url(~/icons/icon-clock.png); }
 	&.icon-heart        { background-image: url(~/icons/icon-heart.png); }
 	&.icon-heart-full   { background-image: url(~/icons/icon-heart-full.png); }
+
+	&.icon-plus         { background-image: url(~/icons/icon-plus.png); }
 }
 

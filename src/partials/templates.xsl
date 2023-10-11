@@ -11,9 +11,9 @@
 				<xsl:with-param name="xParent" select="./Playlists" />
 				<xsl:with-param name="drag" select="1" />
 			</xsl:call-template>
-			<div class="new-playlist" data-click="add-new-folder">
+			<div class="new-playlist" data-click="add-new-playlist">
 				<i class="icon-plus"></i>
-				<span class="name">New Playlist</span>
+				<span class="name">Add Playlist</span>
 			</div>
 		</div>
 
