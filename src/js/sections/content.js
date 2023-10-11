@@ -56,11 +56,14 @@
 			case "drop-track-in-folder":
 				pId = event.target.parent().data("_id");
 				if (event.el.data("_pId") !== pId) {
-					xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${event.el.data("_id")}"]`);
-					xnode = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]`);
-					xnode.appendChild(xSrc);
+					let id = event.el.data("_id"),
+						xSrc = window.bluePrint.selectSingleNode(`//*[@_id="${id}"]`),
+						xDest = window.bluePrint.selectSingleNode(`//*[@_id="${pId}"]`),
+						xId = xSrc.getAttribute("ref") || xSrc.getAttribute("id"),
+						xTrack = $.nodeFromString(`<i ref="${xId}" _id="${Date.now()}"/>`);
+					xDest.appendChild(xTrack);
 					// UI update / remove dragged html element
-					Self.els.el.find(`.row[data-_id="${event.el.data("_id")}"]`).remove();
+					// Self.els.el.find(`.row[data-_id="${id}"]`).remove();
 				}
 				// reset drag / drop
 				Self.dispatch({ type: "reset-drag-drop" });
@@ -117,6 +120,18 @@
 			case "handle-dbl-click":
 				row = $(event.target).parents("?.row");
 				row.find(".cell .icon-play").trigger("click");
+				break;
+			case "play-playlist-track":
+				row = event.el || event.origin.el;
+				row.find(".icon-play").trigger("click");
+				break;
+			case "delete-playlist-track":
+				row = event.el || event.origin.el;
+				// delete xml node
+				xnode = window.bluePrint.selectSingleNode(`//*[@_id="${row.data("_id")}"]`);
+				xnode.parentNode.removeChild(xnode);
+				// UI update
+				row.remove();
 				break;
 			case "render-playlist":
 				// set limit value

@@ -31,7 +31,7 @@
 	</Menu>
 
 	<Menu for="playlist-track">
-		<Menu name="Play" click="play-track"/>
+		<Menu name="Play" click="play-playlist-track"/>
 		<Menu type="divider"/>
 		<Menu name="Delete" click="delete-playlist-track"/>
 	</Menu>

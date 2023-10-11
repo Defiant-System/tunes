@@ -109,6 +109,8 @@
 				break;
 
 			case "check-playlist-drag":
+				if (Self.els.el.find(`.user-list li`).length <= 1) return;
+
 				offset = event.el.offset("content");
 				y = offset.top + event.offsetY - 12;
 				x = offset.left + event.offsetX - 3;
@@ -181,6 +183,7 @@
 
 				el = $(event.target);
 				if (el.nodeName() !== "li") el = el.parents("li:first");
+				if (!el.length) return;
 				if (el.hasClass("has-children")) {
 					return el.find("> .leaf .icon-arrow").trigger("click");
 				}
@@ -240,7 +243,7 @@
 				// remove from XML data
 				xnode = window.bluePrint.selectSingleNode(`.//*[@_id="${el.data("_id")}"]`);
 				// at least one playlist must exist
-				if (window.bluePrint.selectNodes(`//Playlists//*`).length === 1) return;
+				if (window.bluePrint.selectNodes(`//Playlists//*[@owner]`).length <= 1) return;
 				xnode.parentNode.removeChild(xnode);
 				// UI remove
 				el.remove();
@@ -278,6 +281,8 @@
 			case "window.input-blur":
 				let rId = Self.els.swap.find(".rename-field").data("id"),
 					rName = Self.els.swap.find("input").val();
+				// update XML data
+				window.bluePrint.selectSingleNode(`//*[@_id="${rId}"]`).setAttribute("name", rName);
 				// delete field
 				Self.els.swap.html("");
 				// update leaf
