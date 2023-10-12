@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="sample-view">
-	<div class="sample-view">
+	<div class="sample-view" data-area="sample">
 		<h2>Welcome to Tunes.</h2>
 
 		<div class="block-buttons">
@@ -46,7 +46,7 @@
 					<div class="cell"><xsl:value-of select="@artist"/></div>
 					<div class="cell">
 						<i class="icon-bars">
-							<xsl:attribute name="style">--clip: inset(0 0 0 <xsl:value-of select="31 - floor( 31 * ( @popularity div 100 ) )"/>px);</xsl:attribute>
+							<xsl:attribute name="style">--clip: inset(0 0 0 <xsl:value-of select="floor( 31 * ( @popularity div 100 ) )"/>px);</xsl:attribute>
 						</i>
 					</div>
 					<div class="cell"><xsl:if test="@dur">

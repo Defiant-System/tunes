@@ -82,6 +82,7 @@ const tunes = {
 		}
 	},
 	library: @import "modules/library.js",
+	sample: @import "sections/sample.js",
 	toolbar: @import "sections/toolbar.js",
 	content: @import "sections/content.js",
 	sidebar: @import "sections/sidebar.js",
