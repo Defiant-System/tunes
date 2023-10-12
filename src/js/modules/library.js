@@ -53,6 +53,7 @@
 				xRoot.selectNodes(`.//*[not(@path)]`).map(x => x.parentNode.removeChild(x));
 				
 				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
+				// console.log( window.bluePrint.selectSingleNode(`//Cdn`) );
 				break;
 			case "create-new-playlist":
 				xRoot = window.bluePrint.selectSingleNode(`//Playlists`);

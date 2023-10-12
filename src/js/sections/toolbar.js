@@ -50,6 +50,7 @@
 			xnode,
 			name,
 			value,
+			path,
 			time,
 			seconds,
 			minutes,
@@ -134,12 +135,9 @@
 					Self.playNode = window.bluePrint.selectSingleNode(`//AllFiles//i[@id = //Playlists//*[@_id="${Self.playTrack}"]/@ref]`);
 				}
 
-				Self.dispatch({
-					type: "reset-display",
-					name: Self.playNode.getAttribute("name"),
-					path: Self.playNode.getAttribute("path"),
-					autoplay: true,
-				});
+				name = Self.playNode.getAttribute("name");
+				path = Self.playNode.getAttribute("path") || Self.playNode.getAttribute("url");
+				Self.dispatch({ type: "reset-display", autoplay: true, name, path });
 				break;
 			case "play-toggle":
 				el = Self.els.btnPlay;

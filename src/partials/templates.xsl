@@ -37,7 +37,8 @@
 		</div>
 		<div class="table-body" data-click="select-track" data-dbl-click="handle-dbl-click">
 			<xsl:for-each select="$node/*">
-				<div class="row">
+				<div class="row" data-ondrag="check-track-drag" data-context="playlist-track">
+					<xsl:attribute name="data-_id"><xsl:value-of select="@_id"/></xsl:attribute>
 					<div class="cell">
 						<i class="icon-play" data-click="play-song"></i>
 						<i class="icon-heart" data-click="toggle-heart"></i>
