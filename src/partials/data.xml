@@ -38,9 +38,7 @@
 		</i>
 	</Playlists>
 	<System>
-		<i name="Samples" icon="folder">
-			
-		</i>
+		<i name="Samples" icon="folder" template="sample-view"/>
 		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
 		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" order="descending" limit="10"/>
 		<i name="All Files" icon="upload" xpath="//AllFiles" sort="@date" limit="999"/>

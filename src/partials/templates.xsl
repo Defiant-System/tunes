@@ -1,5 +1,24 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:template name="sample-view">
+	<div class="sample-view">
+		<h2>Welcome to Tunes.</h2>
+
+		<div class="block-buttons">
+			<div class="btn" data-click="open-filesystem">
+				<i class="icon-folder-open"></i>
+				Open&#8230;
+			</div>
+
+			<div class="btn disabled_" data-click="from-upload">
+				<i class="icon-upload"></i>
+				Upload
+			</div>
+		</div>
+	</div>
+</xsl:template>
+
+
 <xsl:template name="sidebar">
 	<div>
 		<legend>

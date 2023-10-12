@@ -208,6 +208,10 @@
 					if (xnode.getAttribute(k)) options[k] = xnode.getAttribute(k);
 				});
 
+				if (xnode.getAttribute("template")) {
+					options = { template: xnode.getAttribute("template") };
+				}
+
 				title = el.find(".name").html();
 				xpath = el.data("xpath") || `//*[@name = "${el.find(".name").text()}"]`;
 				APP.content.dispatch({ type: "render-playlist", xpath, title, options });
