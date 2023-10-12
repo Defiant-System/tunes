@@ -17,6 +17,7 @@
 		</div>
 
 		<div class="sample-block">
+			<h3>Sample files</h3>
 			<xsl:call-template name="sample-list">
 				<xsl:with-param name="node" select="//Cdn" />
 			</xsl:call-template>

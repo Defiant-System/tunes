@@ -51,6 +51,7 @@
 			name,
 			value,
 			path,
+			duration,
 			time,
 			seconds,
 			minutes,
@@ -69,14 +70,16 @@
 				minutes = parseInt(time / 60, 10);
 				Self.els.timePlayed.html(`${minutes}:${seconds}`);
 				// progress bar update
-				percentage = Self.player.currentTime / Self.player.duration;
+				duration = Self.player.duration === Infinity ? Self.duration : Self.player.duration;
+				percentage = Self.player.currentTime / duration;
 				if (percentage === 1) return Self.dispatch({ type: "play-next" });
 				left = +Self.els.progTrack.prop("offsetWidth") * percentage;
 				Self.els.progKnob.css({ left });
 				Self.els.progPlayed.css({ width: left });
 				break;
 			case "canplaythrough":
-				time = Math.round(Self.player.duration);
+				duration = Self.player.duration === Infinity ? Self.duration : Self.player.duration;
+				time = Math.round(duration);
 				seconds = (time % 60).toString().padStart(2, "0");
 				minutes = parseInt(time / 60, 10);
 				Self.els.timeTotal.html(`${minutes}:${seconds}`);
@@ -95,7 +98,8 @@
 			case "progress":
 				for (var i = 0; i < Self.player.buffered.length; i++) {
 					if (Self.player.buffered.start(Self.player.buffered.length - 1 - i) < Self.player.currentTime) {
-						percentage = parseInt((Self.player.buffered.end(Self.player.buffered.length - 1 - i) / Self.player.duration) * 100, 10);
+						duration = Self.player.duration === Infinity ? Self.duration : Self.player.duration;
+						percentage = parseInt((Self.player.buffered.end(Self.player.buffered.length - 1 - i) / duration) * 100, 10);
 						break;
 					}
 				}
@@ -114,7 +118,7 @@
 
 				// update "last played" attribute
 				xnode = window.bluePrint.selectSingleNode(`.//*[@id="${event.path.sha1()}"]`);
-				xnode.setAttribute("lp", Date.now());
+				if (xnode) xnode.setAttribute("lp", Date.now());
 
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
@@ -134,6 +138,7 @@
 				if (Self.playNode.getAttribute("ref")) {
 					Self.playNode = window.bluePrint.selectSingleNode(`//AllFiles//i[@id = //Playlists//*[@_id="${Self.playTrack}"]/@ref]`);
 				}
+				Self.duration = +Self.playNode.getAttribute("dur") / 1e3;
 
 				name = Self.playNode.getAttribute("name");
 				path = Self.playNode.getAttribute("path") || Self.playNode.getAttribute("url");
@@ -232,7 +237,8 @@
 				break;
 			case "mouseup":
 				// seek to "time"
-				Self.player.currentTime = Self.player.duration * Drag.percentage;
+				let duration = Self.player.duration === Infinity ? Self.duration : Self.player.duration;
+				Self.player.currentTime = duration * Drag.percentage;
 				// reset progress-track
 				Drag.rEl.removeClass("hover");
 				// clean up
