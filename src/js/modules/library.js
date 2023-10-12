@@ -51,7 +51,7 @@
 				});
 				// check if old nodes needs to be purged
 				xRoot.selectNodes(`.//*[not(@path)]`).map(x => x.parentNode.removeChild(x));
-
+				
 				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
 				break;
 			case "create-new-playlist":

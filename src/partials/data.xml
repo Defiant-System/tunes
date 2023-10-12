@@ -44,12 +44,12 @@
 		<i name="All Files" icon="upload" xpath="//AllFiles" sort="@date" limit="999"/>
 	</System>
 	<Cdn>
-		<i name="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
-		<i name="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
-		<i name="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
-		<i name="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
-		<i name="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
-		<i name="/cdn/mp3/Theme - Family Business.mp3" dur="172"/>
+		<i popularity="8" name="Defiant One" artist="Hakan Bilgin" url="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
+		<i popularity="5" name="Westbound" artist="Hakan Bilgin" url="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
+		<i popularity="6" name="C-note" artist="Hakan Bilgin" url="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
+		<i popularity="9" name="Outlaws" artist="Theme" url="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
+		<i popularity="10" name="Black Sails" artist="Theme" url="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
+		<i popularity="7" name="Family Business" artist="Theme" url="/cdn/mp3/Theme - Family Business.mp3" dur="172"/>
 	</Cdn>
 	<AllFiles limit="999">
 		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696241119460" dur="311209"/>

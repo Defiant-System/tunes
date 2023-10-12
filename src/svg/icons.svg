@@ -189,7 +189,7 @@
 
 	<svg id="icon-bars" viewBox="0 0 32 9">
 		<style type="text/css">
-			.st0{fill:#aaa;}
+			.st0{fill:#333;}
 		</style>
 		<rect class="st0" x="1" width="2" height="9"/>
 		<rect class="st0" x="5" width="2" height="9"/>

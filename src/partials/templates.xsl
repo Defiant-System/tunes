@@ -15,6 +15,48 @@
 				Upload
 			</div>
 		</div>
+
+		<div class="sample-block">
+			<xsl:call-template name="sample-list">
+				<xsl:with-param name="node" select="//Cdn" />
+			</xsl:call-template>
+		</div>
+	</div>
+</xsl:template>
+
+
+<xsl:template name="sample-list">
+	<xsl:param name="node"/>
+	<div class="table">
+		<div class="row head">
+			<div class="cell"></div>
+			<div class="cell">Title</div>
+			<div class="cell">Artist</div>
+			<div class="cell"></div>
+			<div class="cell"><i class="icon-clock"></i></div>
+		</div>
+		<div class="table-body" data-click="select-track" data-dbl-click="handle-dbl-click">
+			<xsl:for-each select="$node/*">
+				<div class="row">
+					<div class="cell">
+						<i class="icon-play" data-click="play-song"></i>
+						<i class="icon-heart" data-click="toggle-heart"></i>
+					</div>
+					<div class="cell"><xsl:value-of select="@name"/></div>
+					<div class="cell"><xsl:value-of select="@artist"/></div>
+					<div class="cell">
+						<i class="icon-bars">
+							<xsl:attribute name="style">--clip: inset(0 0 0 <xsl:value-of select="31 - floor( 31 * ( @popularity div 100 ) )"/>px);</xsl:attribute>
+						</i>
+					</div>
+					<div class="cell"><xsl:if test="@dur">
+						<xsl:call-template name="translate-duration">
+							<xsl:with-param name="ms" select="@dur" />
+						</xsl:call-template>
+					</xsl:if></div>
+				</div>
+			</xsl:for-each>
+		</div>
 	</div>
 </xsl:template>
 

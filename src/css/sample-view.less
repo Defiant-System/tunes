@@ -50,7 +50,7 @@
 
 	.block-buttons {
 		padding: 17px 47px;
-		height: 47px;
+		height: 61px;
 		text-align: center;
 
 		.btn {
@@ -83,77 +83,28 @@
 		}
 	}
 
-	.block-recent,
-	.block-samples {
+	.sample-block {
 		margin: 0 auto;
-		width: 600px;
-		height: 193px;
+		width: 570px;
 		color: #999;
 
-		.recent-file,
-		.sample {
-			display: inline-block;
-			background-color: #ccc;
-			position: relative;
-			width: 103px;
-			height: 123px;
-			margin: 0 21px 13px 0;
-			text-align: center;
-			border-radius: 5px;
-			cursor: pointer;
-
-			&[data-kind="mp3"]:after { background-image: url(/app/icons/file-mp3.png); }
-
-			&:last-child {
-				margin-right: 0;
-			}
-
-			&:hover {
-				background-color: #489bf770;
-
-				&:before {
-					box-shadow: 0 0 0 1px #489bf7;
+		.table {
+			.row {
+				.cell:nth-child(3) {
+					width: 147px;
 				}
 
-				span {
-					color: #666;
+				.cell:nth-child(4) {
+					width: 47px;
+				}
+
+				.cell:nth-child(5) {
+					width: 47px;
 				}
 			}
 
-			&:before {
-				content: "";
-				background: #fff;
-				position: absolute;
-				top: 3px;
-				left: 3px;
-				right: 3px;
-				bottom: 3px;
-				border-radius: 3px;
-				pointer-events: none;
-			}
-
-			&:after {
-				content: "";
-				background: 50% 50% no-repeat;
-				position: absolute;
-				top: 3px;
-				left: 3px;
-				right: 3px;
-				bottom: 3px;
-				opacity: .3;
-			}
-
-			span {
-				position: absolute;
-				top: 100%;
-				left: 0;
-				right: 0;
-				padding-top: 5px;
-				font-size: 13px;
-				pointer-events: none;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
+			.table-body {
+				padding-bottom: 3px;
 			}
 		}
 	}
