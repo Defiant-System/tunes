@@ -61,14 +61,19 @@ const tunes = {
 				window.settings.setItem("settings", Self.settings);
 				break;
 			case "open.file":
-				// Self.toolbar.dispatch({ ...event, type: "reset-display" });
-				(event.files || [event]).map(async fHandle =>
+				(event.files || [event]).map(async fHandle => {
+					// temp remove in order to simulate scenario
+					let xTmp = window.bluePrint.selectSingleNode(`//*[@id="${fHandle.path.sha1()}"]`);
+					xTmp.parentNode.removeChild(xTmp)
+					window.bluePrint.selectNodes(`//*[@ref="${fHandle.path.sha1()}"]`).map(x => x.parentNode.removeChild(x));
+
 					Self.sidebar.dispatch({
 						type: "auto-select-play-track",
 						id: fHandle.path.sha1(),
 						name: fHandle.base,
 						path: fHandle.path,
-					}));
+					})
+				});
 				break;
 			// custom events
 			case "open-file":

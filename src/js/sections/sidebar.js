@@ -150,20 +150,25 @@
 				}
 
 				xnode = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
-				pEl = Self.els.el.find(`li[data-_id="${xnode.parentNode.getAttribute("_id")}"]`);
-				if (pEl.length) {
-					// make sidebar folder active
-					pEl.trigger("click");
-					// press play on track
-					el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
-					el.find(`.icon-play`).trigger("click");
+				if (xnode) {
+					pEl = Self.els.el.find(`li[data-_id="${xnode.parentNode.getAttribute("_id")}"]`);
+					if (pEl.length) {
+						// make sidebar folder active
+						pEl.trigger("click");
+						// press play on track
+						el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
+						el.find(`.icon-play`).trigger("click");
+					} else {
+						xnode = window.bluePrint.selectSingleNode(`//*[@xpath="//AllFiles"][@limit="999"]`);
+						pEl = Self.els.el.find(`li[data-_id="${xnode.getAttribute("_id")}"]`);
+						// make sidebar folder active
+						if (pEl.length) pEl.trigger("click");
+					}
+				} else if (event.path.startsWith("/fs/")) {
+					console.log(event);
 				} else {
-					xnode = window.bluePrint.selectSingleNode(`//*[@xpath="//AllFiles"][@limit="999"]`);
-					pEl = Self.els.el.find(`li[data-_id="${xnode.getAttribute("_id")}"]`);
-					// make sidebar folder active
-					if (pEl.length) pEl.trigger("click");
+					APP.toolbar.dispatch({ ...event, type: "reset-display", single: true, autoplay: true });
 				}
-
 				// let xTrack = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
 				// APP.toolbar.dispatch({ ...event, type: "reset-display", autoplay: true });
 				break;

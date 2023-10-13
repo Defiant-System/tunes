@@ -132,6 +132,9 @@
 				// start loading file
 				Self.els.audio.attr({ src: event.path });
 
+				// is it a single mp3 file
+				Self.single = event.single;
+
 				if (event.autoplay) {
 					Self.dispatch({ type: "play-toggle", play: true })
 				}
@@ -157,7 +160,7 @@
 			case "play-toggle":
 				el = Self.els.btnPlay;
 				// get track, if not set
-				if (!Self.playTrack) return Self.dispatch({ type: "play-list" });
+				if (!Self.playTrack && !Self.single) return Self.dispatch({ type: "play-list" });
 				
 				if (!el.hasClass("playing") || event.play === true) {
 					value = "icon-pause";

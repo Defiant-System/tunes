@@ -59,6 +59,9 @@
 				});
 				// console.log( window.bluePrint.selectSingleNode(`//Cdn`) );
 				break;
+			case "parse-single-node":
+				
+				break;
 			case "create-new-playlist":
 				xRoot = window.bluePrint.selectSingleNode(`//Playlists`);
 				xNode = $.nodeFromString(`<i _id="${Date.now()}" owner="me" name="New Playlist"/>`);

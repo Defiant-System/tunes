@@ -164,7 +164,7 @@
 				// ui update
 				Self.els.el.find(`.row[data-_id="${event.id}"] .cell:nth(4)`).html(event.time);
 				// update xml node
-				APP.toolbar.playNode.setAttribute("dur", event.duration);
+				if (APP.toolbar.playNode) APP.toolbar.playNode.setAttribute("dur", event.duration);
 				break;
 			case "get-song-list":
 				return Self.els.el.find(".row[data-_id]").map(r => r.getAttribute("data-_id"));
