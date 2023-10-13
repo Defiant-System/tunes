@@ -62,12 +62,13 @@ const tunes = {
 				break;
 			case "open.file":
 				// Self.toolbar.dispatch({ ...event, type: "reset-display" });
-				(event.files || [event]).map(async fHandle => {
+				(event.files || [event]).map(async fHandle =>
 					Self.sidebar.dispatch({
 						type: "auto-select-play-track",
 						id: fHandle.path.sha1(),
-					});
-				});
+						name: fHandle.base,
+						path: fHandle.path,
+					}));
 				break;
 			// custom events
 			case "open-file":

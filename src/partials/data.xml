@@ -41,7 +41,7 @@
 		<i name="Samples" icon="folder" template="sample-view"/>
 		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
 		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" order="descending" limit="10"/>
-		<i name="All Files" icon="upload" xpath="//AllFiles" sort="@date" limit="999"/>
+		<i name="All Files" icon="upload" xpath="//AllFiles" limit="999"/>
 	</System>
 	<Cdn>
 		<i popularity="89" title="Defiant One - Hakan Bilgin &amp; Ola Persson" url="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>

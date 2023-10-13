@@ -135,7 +135,7 @@
 				break;
 			case "render-playlist":
 				// set limit value
-				window.bluePrint.selectSingleNode(`//AllFiles`).setAttribute("limit", event.options.limit);
+				window.bluePrint.selectSingleNode(`//AllFiles`).setAttribute("limit", event.options.limit || 999);
 				// render list view
 				window.render({
 					match: event.xpath,

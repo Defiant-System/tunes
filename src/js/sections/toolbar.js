@@ -8,6 +8,7 @@
 			doc: $(document),
 			content: window.find(`content`),
 			display: window.find(`.display .toolbar-field_`),
+			btnToggle: window.find(`.toolbar-tool_[data-click="toggle-sidebar"]`),
 			btnPlay: window.find(`.toolbar-tool_[data-click="play-toggle"]`),
 			btnPrev: window.find(`.toolbar-tool_[data-click="play-prev"]`),
 			btnNext: window.find(`.toolbar-tool_[data-click="play-next"]`),
@@ -107,8 +108,13 @@
 				break;
 			// custom events
 			case "reset-display":
-				Self.els.display.toggleClass("blank-display", !!event.name);
-				Self.els.songTitle.html(event.name);
+				name = event.name;
+				if (!name) {
+					name = event.path.slice(event.path.lastIndexOf("/") + 1);
+					if (name.endsWith(".mp3")) name = name.slice(0,-4);
+				}
+				Self.els.display.toggleClass("blank-display", !!name);
+				Self.els.songTitle.html(name || "");
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoad.css({ width: 0 });

@@ -145,13 +145,27 @@
 				break;
 			case "auto-select-play-track":
 				// open sidebar in not already open
-				Self.dispatch({ type: "toggle-sidebar", value: true });
+				if (!Self.els.layout.hasClass("show-sidebar")) {
+					APP.toolbar.els.btnToggle.trigger("click");
+				}
 
 				xnode = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
-				let pId = xnode.parentNode.getAttribute("_id");
-				
-				console.log( xnode );
-				console.log( pId );
+				pEl = Self.els.el.find(`li[data-_id="${xnode.parentNode.getAttribute("_id")}"]`);
+				if (pEl.length) {
+					// make sidebar folder active
+					pEl.trigger("click");
+					// press play on track
+					el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
+					el.find(`.icon-play`).trigger("click");
+				} else {
+					xnode = window.bluePrint.selectSingleNode(`//*[@xpath="//AllFiles"][@limit="999"]`);
+					pEl = Self.els.el.find(`li[data-_id="${xnode.getAttribute("_id")}"]`);
+					// make sidebar folder active
+					if (pEl.length) pEl.trigger("click");
+				}
+
+				// let xTrack = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
+				// APP.toolbar.dispatch({ ...event, type: "reset-display", autoplay: true });
 				break;
 			case "toggle-sidebar":
 				isOn = event.value || Self.els.layout.hasClass("show-sidebar");
