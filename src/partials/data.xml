@@ -44,12 +44,12 @@
 		<i name="All Files" icon="upload" xpath="//AllFiles" sort="@date" limit="999"/>
 	</System>
 	<Cdn>
-		<i popularity="89" name="Defiant One" artist="Hakan Bilgin &amp; Ola Persson" url="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
-		<i popularity="59" name="Westbound" artist="Hakan Bilgin" url="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
-		<i popularity="47" name="C-note" artist="Hakan Bilgin" url="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
-		<i popularity="97" name="Black Sails" artist="Bear McCreary" url="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
-		<i popularity="83" name="Outlaws" artist="David Niles" url="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
-		<i popularity="73" name="Family Business" artist="Julien Grunberg &amp; Paul-Marie Barbier" url="/cdn/mp3/Theme - Family Business.mp3" dur="172000"/>
+		<i popularity="89" title="Defiant One - Hakan Bilgin &amp; Ola Persson" url="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
+		<i popularity="59" title="Westbound - Hakan Bilgin" url="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
+		<i popularity="47" title="C-note - Hakan Bilgin" url="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
+		<i popularity="97" title="Black Sails - Bear McCreary" url="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
+		<i popularity="83" title="Outlaws - David Niles" url="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
+		<i popularity="73" title="Family Business - Julien Grunberg &amp; Paul-Marie Barbier" url="/cdn/mp3/Theme - Family Business.mp3" dur="172000"/>
 	</Cdn>
 	<AllFiles limit="999">
 		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696241119460" dur="311209"/>

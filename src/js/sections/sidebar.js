@@ -143,8 +143,18 @@
 					Self.els.el.find(`li:nth(${APP.settings.Sidebar["active-li"]})`).trigger("click")
 				});
 				break;
+			case "auto-select-play-track":
+				// open sidebar in not already open
+				Self.dispatch({ type: "toggle-sidebar", value: true });
+
+				xnode = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
+				let pId = xnode.parentNode.getAttribute("_id");
+				
+				console.log( xnode );
+				console.log( pId );
+				break;
 			case "toggle-sidebar":
-				isOn = Self.els.layout.hasClass("show-sidebar");
+				isOn = event.value || Self.els.layout.hasClass("show-sidebar");
 				Self.els.layout.toggleClass("show-sidebar", isOn);
 				// save to settings
 				APP.settings.Sidebar["expanded"] = !isOn;

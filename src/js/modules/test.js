@@ -2,11 +2,12 @@
 let Test = {
 	init(APP) {
 		
+		// setTimeout(() => window.find(`.sample-view .btn[data-click="open-filesystem"]`).trigger("click"), 200);
 		// setTimeout(() => window.find(`.new-playlist`).trigger("click"), 200);
 		// setTimeout(() => window.find(`sidebar li:nth(7)`).trigger("click"), 200);
 		// setTimeout(() => window.find(`.toolbar-tool_[data-click="play-toggle"]`).trigger("click"), 300);
 		// setTimeout(() => window.find(`sidebar .icon-arrow:nth(0)`).trigger("click"), 200);
-		setTimeout(() => window.find(`.row:nth(1) .icon-play`).trigger("click"), 200);
+		// setTimeout(() => window.find(`.row:nth(1) .icon-play`).trigger("click"), 200);
 
 		// setTimeout(() => {
 		// 	let el = window.find(`sidebar li:nth(1)`);

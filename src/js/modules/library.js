@@ -46,13 +46,17 @@
 						// new file
 						xNode = $.nodeFromString(`<i id="${id}" name="${file.name}" path="${file.path}"/>`);
 						xNode = xRoot.appendChild(xNode);
-
 					}
 				});
 				// check if old nodes needs to be purged
 				xRoot.selectNodes(`.//*[not(@path)]`).map(x => x.parentNode.removeChild(x));
-				
 				// console.log( window.bluePrint.selectSingleNode(`//AllFiles`) );
+
+				window.bluePrint.selectNodes(`//Cdn/*`).map(x => {
+					let [name, artist] = x.getAttribute("title").split(" - ");
+					x.setAttribute("artist", artist);
+					x.setAttribute("name", name);
+				});
 				// console.log( window.bluePrint.selectSingleNode(`//Cdn`) );
 				break;
 			case "create-new-playlist":

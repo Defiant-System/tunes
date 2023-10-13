@@ -16,14 +16,15 @@
 		switch (event.type) {
 			// custom events
 			case "open-filesystem":
-				console.log(event);
+				APP.dispatch({ ...event, type: "open-file" });
 				break;
 			case "check-track-drag":
 			case "select-track":
 			case "handle-dbl-click":
-			case "toggle-heart":
 				console.log(event);
 				break;
+			case "toggle-heart":
+				return APP.content.dispatch(event);
 			case "play-song":
 				row = event.el.parents(".row");
 				if (row.hasClass("track-playing")) {

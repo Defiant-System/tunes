@@ -4,9 +4,9 @@
 	</Group>
 	<Group class="tools-left">
 		<Options>
-			<Tool symbol="icon-previous" click="play-prev"/>
+			<Tool symbol="icon-previous" click="play-prev" state="disabled"/>
 			<Tool symbol="icon-play" click="play-toggle"/>
-			<Tool symbol="icon-next" click="play-next"/>
+			<Tool symbol="icon-next" click="play-next" state="disabled"/>
 		</Options>
 	</Group>
 	<Group class="display">

@@ -113,6 +113,9 @@
 				Self.els.timeTotal.html(`0:00`);
 				Self.els.progLoad.css({ width: 0 });
 				Self.els.progPlayed.css({ width: 0 });
+				// enable toolbar buttons
+				Self.els.btnPrev.removeClass("tool-disabled_");
+				Self.els.btnNext.removeClass("tool-disabled_");
 				// if it is only "reset"
 				if (!event.path) return APP.content.dispatch({ type: "no-active" });
 
@@ -140,7 +143,8 @@
 				}
 				Self.duration = +Self.playNode.getAttribute("dur") / 1e3;
 
-				name = Self.playNode.getAttribute("name");
+				name = Self.playNode.getAttribute("title");
+				if (Self.playNode.getAttribute("artist")) name += " - "+ Self.playNode.getAttribute("artist");
 				path = Self.playNode.getAttribute("path") || Self.playNode.getAttribute("url");
 				Self.dispatch({ type: "reset-display", autoplay: true, name, path });
 				break;

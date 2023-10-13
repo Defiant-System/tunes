@@ -20,13 +20,13 @@ const tunes = {
 		// if "Playlists" root node already exists, remove first one
 		let xSet = window.settings.getItem("playlists"),
 			xDef = window.bluePrint.selectSingleNode(`.//Data/Playlists`);
-		// if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
-		if (xSet) xSet.parentNode.removeChild(xSet);
+		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
+		// if (xSet) xSet.parentNode.removeChild(xSet);
 
 		xSet = window.settings.getItem("allfiles");
 		xDef = window.bluePrint.selectSingleNode(`.//Data/AllFiles`);
-		// if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
-		if (xSet) xSet.parentNode.removeChild(xSet);
+		if (xSet) xDef.parentNode.replaceChild(xSet, xDef);
+		// if (xSet) xSet.parentNode.removeChild(xSet);
 
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };
@@ -61,9 +61,20 @@ const tunes = {
 				window.settings.setItem("settings", Self.settings);
 				break;
 			case "open.file":
-				Self.toolbar.dispatch({ ...event, type: "reset-display" });
+				// Self.toolbar.dispatch({ ...event, type: "reset-display" });
+				(event.files || [event]).map(async fHandle => {
+					Self.sidebar.dispatch({
+						type: "auto-select-play-track",
+						id: fHandle.path.sha1(),
+					});
+				});
 				break;
 			// custom events
+			case "open-file":
+				window.dialog.open({
+					mp3: fsItem => Self.dispatch(fsItem),
+				});
+				break;
 			case "show-playlist":
 				el = window.find(`sidebar .name:contains("${event.name}")`);
 				if (el.length) el.parent().trigger("click");
