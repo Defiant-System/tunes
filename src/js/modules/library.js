@@ -34,7 +34,7 @@
 						xNode = xRoot.selectNodes(`//*[@id="${id}"]`);
 					if (!xNode.length) {
 						// new file
-						xNode = $.nodeFromString(`<i id="${id}" name="${file.name}" path="${file.path}" lp="${Date.now()}"/>`);
+						xNode = $.nodeFromString(`<i id="${id}" name="${file.name.escapeHtml()}" path="${file.path.escapeHtml()}" lp="${Date.now()}"/>`);
 						xNode = [xRoot.appendChild(xNode)];
 					}
 
