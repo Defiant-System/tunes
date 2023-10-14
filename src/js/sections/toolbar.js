@@ -109,11 +109,12 @@
 			// custom events
 			case "reset-display":
 				name = event.name;
-				if (!name) {
+				if (!name && event.path) {
 					name = event.path.slice(event.path.lastIndexOf("/") + 1);
 					if (name.endsWith(".mp3")) name = name.slice(0,-4);
 				}
 				Self.els.display.toggleClass("blank-display", !!name);
+				if (!name) return;
 				Self.els.songTitle.html(name || "");
 				Self.els.timePlayed.html(`0:00`);
 				Self.els.timeTotal.html(`0:00`);
