@@ -380,13 +380,10 @@ content {
 			margin: 0 19px;
 			border-bottom: 1px solid #66666640;
 			counter-increment: row-num;
+			color: #888;
 
 			.cell:nth-child(1) {
 				width: 67px;
-			}
-
-			.cell:nth-child(2) {
-				color: #777;
 			}
 
 			&.head {
@@ -446,6 +443,10 @@ content {
 
 					&:before { display: none; }
 				}
+			}
+
+			&:not(.head) .cell:nth-child(2) {
+				color: #666;
 			}
 
 			&.active {

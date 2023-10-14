@@ -30,6 +30,15 @@ const tunes = {
 
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };
+
+
+		// temp remove in order to simulate scenario
+		let id = "/fs/Desktop/mp3/Ceza - Feyzal.mp3".sha1(),
+			xTmp = window.bluePrint.selectSingleNode(`//*[@id="${id}"]`);
+		xTmp.parentNode.removeChild(xTmp)
+		window.bluePrint.selectNodes(`//*[@id="${id}" or @ref="${id}"]`).map(x => x.parentNode.removeChild(x));
+
+
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
@@ -62,11 +71,6 @@ const tunes = {
 				break;
 			case "open.file":
 				(event.files || [event]).map(async fHandle => {
-					// temp remove in order to simulate scenario
-					let xTmp = window.bluePrint.selectSingleNode(`//*[@id="${fHandle.path.sha1()}"]`);
-					xTmp.parentNode.removeChild(xTmp)
-					window.bluePrint.selectNodes(`//*[@ref="${fHandle.path.sha1()}"]`).map(x => x.parentNode.removeChild(x));
-
 					Self.sidebar.dispatch({
 						type: "auto-select-play-track",
 						id: fHandle.path.sha1(),

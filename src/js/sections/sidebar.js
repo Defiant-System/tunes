@@ -149,7 +149,7 @@
 					APP.toolbar.els.btnToggle.trigger("click");
 				}
 
-				xnode = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
+				xnode = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}" or @id="${event.id}"]`);
 				if (xnode) {
 					pEl = Self.els.el.find(`li[data-_id="${xnode.parentNode.getAttribute("_id")}"]`);
 					if (pEl.length) {
@@ -159,18 +159,30 @@
 						el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
 						el.find(`.icon-play`).trigger("click");
 					} else {
-						xnode = window.bluePrint.selectSingleNode(`//*[@xpath="//AllFiles"][@limit="999"]`);
-						pEl = Self.els.el.find(`li[data-_id="${xnode.getAttribute("_id")}"]`);
+						let xFolder = window.bluePrint.selectSingleNode(`//*[@xpath="//AllFiles"][@limit="999"]`);
+						pEl = Self.els.el.find(`li[data-_id="${xFolder.getAttribute("_id")}"]`);
 						// make sidebar folder active
 						if (pEl.length) pEl.trigger("click");
+						
+						// press play on track
+						el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
+						el.find(`.icon-play`).trigger("click");
 					}
 				} else if (event.path.startsWith("/fs/")) {
-					console.log(event);
+					// parse all mp3 files again
+					karaqu.shell(`fs -k mp3`)
+						.then(res => {
+							// re-parse music files
+							APP.library.dispatch({
+								type: "parse-music-files",
+								list: res.result,
+							});
+							// dispatch event with refreshed data set
+							Self.dispatch(event);
+						});
 				} else {
 					APP.toolbar.dispatch({ ...event, type: "reset-display", single: true, autoplay: true });
 				}
-				// let xTrack = window.bluePrint.selectSingleNode(`//*[@ref="${event.id}"]`);
-				// APP.toolbar.dispatch({ ...event, type: "reset-display", autoplay: true });
 				break;
 			case "toggle-sidebar":
 				isOn = event.value || Self.els.layout.hasClass("show-sidebar");
