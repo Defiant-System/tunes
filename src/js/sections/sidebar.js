@@ -163,22 +163,27 @@
 						pEl = Self.els.el.find(`li[data-_id="${xFolder.getAttribute("_id")}"]`);
 						// make sidebar folder active
 						if (pEl.length) pEl.trigger("click");
-						
+
 						// press play on track
 						el = APP.content.els.el.find(`.row[data-_id="${xnode.getAttribute("_id")}"]`);
 						el.find(`.icon-play`).trigger("click");
 					}
 				} else if (event.path.startsWith("/fs/")) {
-					// parse all mp3 files again
-					karaqu.shell(`fs -k mp3`)
+					karaqu.shell(`fs -f "${event.path}"`)
 						.then(res => {
-							// re-parse music files
-							APP.library.dispatch({
-								type: "parse-music-files",
-								list: res.result,
-							});
-							// dispatch event with refreshed data set
-							Self.dispatch(event);
+							if (res.result !== false) {
+								// parse all mp3 files again
+								karaqu.shell(`fs -k mp3`)
+									.then(res => {
+										// re-parse music files
+										APP.library.dispatch({
+											type: "parse-music-files",
+											list: res.result,
+										});
+										// dispatch event with refreshed data set
+										Self.dispatch(event);
+									});
+							}
 						});
 				} else {
 					APP.toolbar.dispatch({ ...event, type: "reset-display", single: true, autoplay: true });

@@ -31,14 +31,6 @@ const tunes = {
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || { ...Pref };
 
-
-		// temp remove in order to simulate scenario
-		let id = "/fs/Desktop/mp3/Ceza - Feyzal.mp3".sha1(),
-			xTmp = window.bluePrint.selectSingleNode(`//*[@id="${id}"]`);
-		xTmp.parentNode.removeChild(xTmp)
-		window.bluePrint.selectNodes(`//*[@id="${id}" or @ref="${id}"]`).map(x => x.parentNode.removeChild(x));
-
-
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
