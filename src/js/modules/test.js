@@ -2,6 +2,9 @@
 let Test = {
 	init(APP) {
 		
+		let file = new karaqu.File({ kind: "txt" });
+		window.dialog.saveAs(file, { txt: r => console.log(r) });
+
 		// setTimeout(() => window.find(`.sample-view .btn[data-click="open-filesystem"]`).trigger("click"), 200);
 		// setTimeout(() => window.find(`.new-playlist`).trigger("click"), 200);
 		// setTimeout(() => window.find(`sidebar li:nth(7)`).trigger("click"), 200);

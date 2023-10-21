@@ -1,0 +1,67 @@
+<Data>
+	<Playlists>
+		<i owner="me" name="Hiphop">
+			<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
+			<i ref="18eea04e31813f6a294f920be15d727ae92c8aaa"/>
+			<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+			<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+			<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
+			<i ref="453a3dae0ddba5e62fabb483ae3d0b957310f31a"/>
+			<i ref="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0"/>
+			<i ref="831b87865520e513805e033568a7cdc90bff4881"/>
+			<i ref="4434a582d688eb895f53bfafca20199468785c43"/>
+		</i>
+		<i owner="me" name="Chillout"/>
+		<i owner="me" name="Classic">
+			<i ref="a884a5ae543073430d2a0d01e8186707d06e276f"/>
+		</i>
+		<i owner="me" name="Rock">
+			<i owner="me" name="70's"/>
+			<i owner="me" name="80's"/>
+			<i owner="me" name="90's"/>
+			<i owner="me" name="Death Metal"/>
+		</i>
+		<i owner="me" name="Oldies">
+			<i ref="87ee181bf9f493e82f7829b8f8aeef811c61981f"/>
+		</i>
+		<i owner="me" name="Albums">
+			<i name="Boney M" album="Gold">
+				<i ref="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a"/>
+				<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+				<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+				<i ref="0f584545c8f1741483d5b41fc6215f5e870f1131"/>
+			</i>
+			<i name="Enigma" album="MCMXC a.D.">
+				<i ref="9e18e9019eeea3cab5d4d654475dd272c26564b3"/>
+				<i ref="da3b8426137808f8065765cf3c4b0f3afda317cf"/>
+			</i>
+		</i>
+	</Playlists>
+	<System>
+		<i name="Samples" icon="folder" template="sample-view"/>
+		<i name="Favorites" icon="heart-full" xpath="//AllFiles" changePath="//xsl:for-each" changeSelect="./*[@fav]"/>
+		<i name="History" icon="clock" xpath="//AllFiles" sort="@lp" order="descending" limit="10"/>
+		<i name="All Files" icon="upload" xpath="//AllFiles" limit="999"/>
+	</System>
+	<Cdn>
+		<i popularity="89" title="Defiant One - Hakan Bilgin &amp; Ola Persson" url="/cdn/mp3/Defiant One - Hakan Bilgin.mp3" dur="393000"/>
+		<i popularity="59" title="Westbound - Hakan Bilgin" url="/cdn/mp3/Westbound - Hakan Bilgin.mp3" dur="160000"/>
+		<i popularity="47" title="C-note - Hakan Bilgin" url="/cdn/mp3/C-note - Hakan Bilgin.mp3" dur="127000"/>
+		<i popularity="97" title="Black Sails - Bear McCreary" url="/cdn/mp3/Theme - Black Sails.mp3" dur="197000"/>
+		<i popularity="83" title="Outlaws - David Niles" url="/cdn/mp3/Theme - Outlaws.mp3" dur="127000"/>
+		<i popularity="73" title="Family Business - Julien Grunberg &amp; Paul-Marie Barbier" url="/cdn/mp3/Theme - Family Business.mp3" dur="172000"/>
+	</Cdn>
+	<AllFiles limit="999">
+		<i id="a884a5ae543073430d2a0d01e8186707d06e276f" lp="1696241119460" dur="311209"/>
+		<i id="87ee181bf9f493e82f7829b8f8aeef811c61981f" lp="1696242119460" dur="311209"/>
+		<i id="fcd27e0852dfd2f8cc2a4b92b36a029561aca69a" lp="1696245119460" dur="311209"/>
+		<i id="18eea04e31813f6a294f920be15d727ae92c8aaa" lp="1696245219460" dur="312536"/>
+		<i id="9e18e9019eeea3cab5d4d654475dd272c26564b3" lp="1696245319460" dur="122146"/>
+		<i id="da3b8426137808f8065765cf3c4b0f3afda317cf" lp="1696245419460" dur="751318"/>
+		<i id="0f584545c8f1741483d5b41fc6215f5e870f1131" lp="1696245519460" dur="253453" fav="1"/>
+		<i id="453a3dae0ddba5e62fabb483ae3d0b957310f31a" lp="1696245619460" dur="1012311"/>
+		<i id="2928f4da3eb9510aa7dc6cf1f27cfe7d329611c0" lp="1696245719460" dur="843249" fav="1"/>
+		<i id="831b87865520e513805e033568a7cdc90bff4881" lp="1696245819460" dur="401226"/>
+		<i id="4434a582d688eb895f53bfafca20199468785c43" lp="1696245919460" dur="312109"/>
+	</AllFiles>
+</Data>
