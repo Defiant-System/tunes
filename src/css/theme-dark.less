@@ -84,7 +84,7 @@
 					}
 
 					.name {
-						color: #aaa;
+						color: #bbb;
 					}
 
 					i[class^="icon-"] {
@@ -94,6 +94,16 @@
 							filter: invert(1) brightness(2) drop-shadow(1px 0 0 rgba(#000,.25));
 						}
 					}
+				}
+
+				.new-playlist {
+					i.icon-plus:first-child {
+						filter: invert(1) brightness(2) drop-shadow(0 1px 0 rgba(#000,.25));
+					}
+				}
+
+				.name {
+					color: #aaa;
 				}
 			}
 		}
@@ -110,46 +120,60 @@
 		}
 	}
 
-	.table {
-		color: #ccc;
-
-		i[class^="icon-"] {
-			filter: invert(1) brightness(2);
-		}
-
-		.row {
-			border-bottom-color: rgba(#fff,.1);
-
-			&.head {
-				.cell {
-					i.icon-clock {
-						filter: invert(1) brightness(2) drop-shadow(0 1px 2px rgba(#000,.3));
-					}
-
-					&.sort-desc:after {
-						filter: invert(1) brightness(2) drop-shadow(1px 0 0 rgba(#000,.25));
-					}
-
-					&.sort-asc:after {
-						filter: invert(1) brightness(2) drop-shadow(-1px 0 0 rgba(#000,.25));
-					}
-				}
-			}
-
-			&.track-playing {
-				color: #fff;
-
-				.cell:nth-child(1) {
-					.icon-heart,
-					.icon-heart-full {
-						opacity: .6;
-						filter: invert(1) brightness(3) drop-shadow(0 1px 0 rgba(#000,.25));
-					}
-				}
-			}
+	content {
+		.table {
+			color: #ccc;
 
 			i[class^="icon-"] {
-				filter: invert(1) brightness(2) drop-shadow(0 1px 0 rgba(#000,.25));
+				filter: invert(1) brightness(2);
+			}
+
+			.row {
+				color: #ccc;
+				border-bottom-color: rgba(#fff,.1);
+
+				&.head {
+					.cell {
+						i.icon-clock {
+							filter: invert(1) brightness(2) drop-shadow(0 1px 2px rgba(#000,.3));
+						}
+
+						&.sort-desc:after {
+							filter: invert(1) brightness(2) drop-shadow(1px 0 0 rgba(#000,.25));
+						}
+
+						&.sort-asc:after {
+							filter: invert(1) brightness(2) drop-shadow(-1px 0 0 rgba(#000,.25));
+						}
+					}
+				}
+
+				&.track-playing {
+					color: #fff;
+
+					.cell:nth-child(1) {
+						.icon-heart,
+						.icon-heart-full {
+							opacity: .6;
+							filter: invert(1) brightness(3) drop-shadow(0 1px 0 rgba(#000,.25));
+						}
+					}
+				}
+
+				&:not(.head) .cell:nth-child(2) {
+					color: #ddd;
+				}
+
+				i[class^="icon-"] {
+					filter: invert(1) brightness(2) drop-shadow(0 1px 0 rgba(#000,.25));
+				}
+			}
+		}
+
+		.ux-swap {
+			.rename-field {
+				box-shadow: 0 0 0 1px rgba(#000,.15),
+							0 1px 3px rgba(#000,.25);
 			}
 		}
 	}
