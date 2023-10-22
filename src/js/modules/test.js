@@ -9,7 +9,7 @@ let Test = {
 		// let file = new karaqu.File({ kind: "txt" });
 		// window.dialog.saveAs(file, { txt: r => console.log(r) });
 
-		setTimeout(() => window.find(`.sample-view .btn[data-click="open-filesystem"]`).trigger("click"), 200);
+		// setTimeout(() => window.find(`.sample-view .btn[data-click="open-filesystem"]`).trigger("click"), 200);
 		
 		// setTimeout(() => window.find(`.ant-file_:nth(3)`).trigger("mousedown").trigger("mouseup"), 900);
 		// setTimeout(() => window.find(`.fs-folder-select > div[selected]`).trigger("click"), 900);
