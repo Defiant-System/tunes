@@ -6,8 +6,10 @@ let Test = {
 		// 	window.find(".sample-view").css({ background: `url(/cdn/img/bg/abstract/galaxy-s7.jpg) 50% 50%` })
 		// 	, 300);
 
-		// let file = new karaqu.File({ kind: "txt" });
-		// window.dialog.saveAs(file, { txt: r => console.log(r) });
+		// setTimeout(() => {
+		// 	let file = new karaqu.File({ kind: "txt" });
+		// 	window.dialog.saveAs(file, { txt: r => console.log(r) });
+		// }, 300);
 
 		// setTimeout(() => window.find(`.sample-view .btn[data-click="open-filesystem"]`).trigger("click"), 200);
 		

@@ -1,7 +1,7 @@
 <Application>
 	<Head>
 		<meta name="id" value="tunes"/>
-		<meta name="title" value="Tunes Player" version="1.24"/>
+		<meta name="title" value="Tunes Player" version="1.241"/>
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/tunes"/>
@@ -15,6 +15,7 @@
 		<meta name="icons" value="src/svg/icons.svg"/>
 		<meta name="script" value="src/js/main.js"/>
 		<meta name="style" value="src/css/main.less"/>
+		<meta name="themes" value="src/css/themes.less"/>
 		<meta name="toolbar-style" value="src/css/toolbar.less"/>
 		<meta name="content" value="src/partials/content.htm"/>
 		<meta name="xsl" value="src/partials/templates.xsl"/>
