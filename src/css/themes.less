@@ -126,6 +126,31 @@
 	}
 }
 
+[data-ui="royale-black"] {
+	.win-caption-toolbar_ {
+		.display {
+			.toolbar-field_ {
+				color: #ddc;
+
+				.progress {
+					.progress-track {
+						background: rgba(#ddc,.35);
+
+						.progress-played {
+							background: #ddc;
+						}
+					}
+				}
+
+				span[class^="icon-"],
+				span[class*="icon-"] {
+					filter: invert(1) sepia(1) saturate(2) hue-rotate(155deg);
+				}
+			}
+		}
+	}
+}
+
 [data-ui="royale-emerald"] {
 	.win-caption-toolbar_ {
 		.display {
@@ -145,6 +170,31 @@
 				span[class^="icon-"],
 				span[class*="icon-"] {
 					filter: invert(1) sepia(1) saturate(2) hue-rotate(55deg);
+				}
+			}
+		}
+	}
+}
+
+[data-ui="royale-purple"] {
+	.win-caption-toolbar_ {
+		.display {
+			.toolbar-field_ {
+				color: #dcd;
+
+				.progress {
+					.progress-track {
+						background: rgba(#dcd,.35);
+
+						.progress-played {
+							background: #dcd;
+						}
+					}
+				}
+
+				span[class^="icon-"],
+				span[class*="icon-"] {
+					filter: invert(1) sepia(1) saturate(2) hue-rotate(235deg);
 				}
 			}
 		}
