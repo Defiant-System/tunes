@@ -20,7 +20,7 @@
 		<Menu type="divider"/>
 		<Menu name="Tunes Help"/>
 		<Menu type="divider"/>
-		<Menu name="License"/>
+		<Menu name="License" shell="win -al"/>
 	</Menu>
 
 	<Menu for="user-playlist">
