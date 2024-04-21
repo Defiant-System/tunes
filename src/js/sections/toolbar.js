@@ -252,7 +252,7 @@
 			case "mouseup":
 				// seek to "time"
 				let duration = Self.player.duration === Infinity ? Self.duration : Self.player.duration;
-				Self.player.currentTime = duration * Drag.percentage;
+				Self.player.currentTime = duration * Drag.percentage || 0;
 				// reset progress-track
 				Drag.rEl.removeClass("hover");
 				// clean up
